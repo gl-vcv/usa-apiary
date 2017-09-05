@@ -1,0 +1,4448 @@
+FORMAT: 1A
+HOST: https://test.vcv.me/
+
+# USA project API 1.0
+
+API for usa-web-app.
+Api types:
+  - retrieve list of entities using filters, pagination, sorting:
+    - GET /vacancies
+    - GET /voicebots?vacancy_id=1
+    - GET /video_interviews?vacancy_id=1
+    - GET /responses?status_id=1&stage_id=2
+  - create new entities:
+    - POST /vacancies ["vacancies":{"name":"Finance Director"},{"name":"Finance Manager"}]
+  - update entities:
+    - PUT /vacancies ["vacancies":{"name":"Temporary Finance Director"},{"name":"Temporary Finance Manager"}]
+  - delete entities
+    - DELETE /vacancies {"vacancies":[{"id":"1"},{"id":"2"}]}
+  - retrieve one entity by id:
+    - GET /vacancies/1
+    - GET /voicebots/2
+    - GET /responses/1
+  - create new child-relations for parent entity
+    - POST /voicebots/2/questions {"questions":[{"body":"How are you?","priority":10},{"body":"Where are you from?","priority":20}]}
+  - update child-relations for parent entity
+    - PUT /voicebots/2/questions {"questions":[{"id":"1","priority":20},{"id":"2","body":"Where are you?","priority":10}]}
+  - delete child-relations for parent entity
+    - DELETE /voicebots/2/questions {"questions":[{"id":"1"},{"id":"2"}]}
+
+
+
+## Vacancies [/api/1.0/vacancies{?sort_by,sort_order,count,page,search_term,is_active}]
+
+### Retrieve vacancies [GET]
+
++ Parameters
+    + sort_by (string, `name`) ... Sort name
+    + sort_order (string, `asc`) ... Sort direction
+    + count (integer, `100`) ... Limit
+    + page (integer, `1`) ... Current page number
+    + search_term (string, `Fin`) ... Search term
+    + is_active (bool) ...  null (default behaviour) - do not apply, true - only active, false - only not active
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Finance Director",
+                    "is_active": true,
+                    "is_published": true,
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "has_responses": true,
+                    "has_invites": true,
+                    "response_count": 2,
+                    "expired_at": "2018-09-22T10:15:55+0300",
+                    "modules": [
+                        {
+                            "name": "voicebot",
+                            "label": "Voice bot"
+                        },
+                        {
+                            "name": "video_interview",
+                            "label": "Video interview"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Finance Manager",
+                    "is_active": true,
+                    "is_published": false,
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "has_responses": false,
+                    "has_invites": false,
+                    "response_count": 0,
+                    "expired_at": "2018-09-22T10:15:55+0300",
+                    "modules": [
+                        {
+                            "name": "video_interview",
+                            "label": "Video interview"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new vacancies [POST]
+
++ Request (application/json)
+
+        {
+            "vacancies": [
+                {
+                    "name": "Finance Director",
+                    "is_published": true
+                },
+                {
+                    "name": "Finance Manager",
+                    "is_published": false
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Finance Director",
+                        "is_active": true,
+                        "is_published": true,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": true,
+                        "has_invites": true,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "name": "Finance Manager",
+                        "is_active": true,
+                        "is_published": false,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": false,
+                        "has_invites": false,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update vacancies [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each vacancy.
+
++ Request (application/json)
+
+        {
+            "vacancies": [
+                {
+                    "id": "1",
+                    "name": "Temporary Finance Director",
+                    "is_published": false
+                },
+                {
+                    "id": "2",
+                    "is_published": true
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Temporary Finance Director",
+                        "is_active": true,
+                        "is_published": false,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": true,
+                        "has_invites": true,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "name": "Finance Manager",
+                        "is_active": true,
+                        "is_published": true,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": false,
+                        "has_invites": false,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Delete vacancies [DELETE]
+
+The ID field is required for each vacancy.
+
++ Request (application/json)
+
+        {
+            "vacancies": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Vacancy [/api/1.0/vacancies/{vacancy_id}]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve vacancy [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Finance Director",
+                    "is_active": true,
+                    "is_published": true,
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "has_responses": true,
+                    "has_invites": true,
+                    "modules": [
+                        {
+                            "name": "voicebot",
+                            "label": "Voice bot"
+                        },
+                        {
+                            "name": "video_interview",
+                            "label": "Video interview"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+
+
+
+## Vacancy permission dictionary [/api/1.0/vacancy-permissions]
+
+### Retrieve permissions [GET]
+
+Retrieve vacancy permissions
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "vacancy.admin",
+                        "name": "Admin"
+                    },
+                    {
+                        "id": "vacancy.read",
+                        "name": "Read"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+
+
+## Vacancy user permissions [/api/1.0/vacancies/{vacancy_id}/permissions]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve permissions [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "vacancy.admin",
+                    "user": {
+                        "email": "john.johnson@gmail.com"
+                    }
+                },
+                {
+                    "id": "vacancy.admin",
+                    "user": {
+                        "email": "john.watson@gmail.com"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+### Update permissions [PUT]
+
+The ID and user.email fields are required for each permission.
+
++ Request (application/json)
+
+        {
+            "permissions": [
+                {
+                    "id": "vacancy.read",
+                    "user": {
+                        "email": "john.johnson@gmail.com"
+                    }
+                },
+                {
+                    "id": "vacancy.admin",
+                    "user": {
+                        "email": "john.watson@gmail.com"
+                    }
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "vacancy.read",
+                        "user": {
+                            "email": "john.johnson@gmail.com"
+                        }
+                    },
+                    {
+                        "id": "vacancy.admin",
+                        "user": {
+                            "email": "john.watson@gmail.com"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+### Delete permissions [DELETE]
+
+The ID and user.email fields are required for each permission.
+
++ Request (application/json)
+
+        {
+            "permissions": [
+                {
+                    "id": "vacancy.read",
+                    "user": {
+                        "email": "john.johnson@gmail.com"
+                    }
+                },
+                {
+                    "id": "vacancy.admin",
+                    "user": {
+                        "email": "john.watson@gmail.com"
+                    }
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+
+## Vacancy Sms template [/api/1.0/vacancies/{vacancy_id}/sms-templates]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve vacancy sms template [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "template": "hello {{name}}",
+                    "created_at": "2017-08-25T08:42:02-0700",
+                    "vacancy": {
+                        "id": 34,
+                        "title": "Manager"
+                    },
+                    "response_status": {
+                        "id": 1,
+                        "title": "New"
+                    }
+                },
+                {
+                    "id": "2",
+                    "template": "hello {{name}}",
+                    "created_at": "2017-08-25T08:42:46-0700",
+                    "vacancy": {
+                        "id": 34,
+                        "title": "Manager"
+                    },
+                    "response_status": {
+                        "id": 2,
+                        "title": "Any another status"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new vacancy sms templates [POST]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "response_status_id":4,
+                    "template":"New sms teplate content", 
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "12",
+                        "template": "New sms teplate content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "vacancy": {
+                            "id": 34,
+                            "title": "Manager"
+                        },
+                        "response_status": {
+                            "id": 4,
+                            "title": "Refusal"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update vacancy sms templates [PUT]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "response_status_id":3,
+                    "template":"Updated template content",
+                    "id": 12
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "12",
+                        "template": "Updated template content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "vacancy": {
+                            "id": 34,
+                            "title": "Manager"
+                        },
+                        "response_status": {
+                            "id": 3,
+                            "title": "Response status with id 3 title"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+### Delete vacancy sms templates [DELETE]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "id": 12
+                },
+                {
+                    "id": 11
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "12",
+                        "template": "Updated template content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "vacancy": {
+                            "id": 34,
+                            "title": "Manager"
+                        },
+                        "response_status": {
+                            "id": 3,
+                            "title": "Response status with id 3 title"
+                        }
+                    },
+                    {
+                        "id": "11",
+                        "template": "Updated template content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "vacancy": {
+                            "id": 34,
+                            "title": "Manager"
+                        },
+                        "response_status": {
+                            "id": 3,
+                            "title": "Response status with id 3 title"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+## Tests [/api/1.0/tests{?vacancy_id}]
+
+### Retrieve tests [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "Who was the first president of USA?",
+                            "type": "choice",
+                            "answers": [
+                                {
+                                    "id": "1",
+                                    "body": "George Washington"
+                                },
+                                {
+                                    "id": "2",
+                                    "body": "John Adams"
+                                },
+                                {
+                                    "id": "3",
+                                    "body": "Thomas Jefferson"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Who was the second president of USA?",
+                            "type": "value",
+                            "answers": []
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Update tests [PUT]
+
+The ID field is required for each test.
+
++ Request (application/json)
+
+        {
+            "tests": [
+                {
+                    "id": "1",
+                    "is_active": false
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "is_active": false,
+                        "vacancy": {
+                            "id": "1"
+                        },
+                        "questions": [
+                            {
+                                "id": "1",
+                                "name": "Question 1",
+                                "body": "Who was the first president of USA?",
+                                "type": "choice",
+                                "answers": [
+                                    {
+                                        "id": "1",
+                                        "body": "George Washington"
+                                    },
+                                    {
+                                        "id": "2",
+                                        "body": "John Adams"
+                                    },
+                                    {
+                                        "id": "3",
+                                        "body": "Thomas Jefferson"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "2",
+                                "name": "Question 2",
+                                "body": "Who was the second president of USA?",
+                                "type": "value",
+                                "answers": []
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+        
+## Test [/api/1.0/tests/{test_id}]
+
++ Parameters
+    + test_id (required, string, `1`) ... Test id
+
+### Retrieve test [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": false,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "Who was the first president of USA?",
+                            "type": "choice",
+                            "answers": [
+                                {
+                                    "id": "1",
+                                    "body": "George Washington"
+                                },
+                                {
+                                    "id": "2",
+                                    "body": "John Adams"
+                                },
+                                {
+                                    "id": "3",
+                                    "body": "Thomas Jefferson"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Who was the second president of USA?",
+                            "type": "value",
+                            "answers": []
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+
+
+
+
+## Test questions [/api/1.0/tests/{test_id}/questions]
+
++ Parameters
+    + test_id (required, string, `1`) ... Test id
+    
+### Create new questions [POST]
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "name": "Question 1",
+                    "body": "Who was the first president of USA?",
+                    "type": "choice",
+                    "answers": [
+                        {
+                            "body": "George Washington"
+                        },
+                        {
+                            "body": "John Adams"
+                        },
+                        {
+                            "body": "Thomas Jefferson"
+                        }
+                    ]
+                },
+                {
+                    "name": "Question 2",
+                    "body": "Who was the second president of USA?",
+                    "type": "value",
+                    "answers": [
+                        {
+                            "body": "John Adams"
+                        }
+                    ]
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "name": "Question 1",
+                        "body": "Who was the first president of USA?",
+                        "type": "choice",
+                        "answers": [
+                            {
+                                "id": "1",
+                                "body": "George Washington"
+                            },
+                            {
+                                "id": "2",
+                                "body": "John Adams"
+                            },
+                            {
+                                "id": "3",
+                                "body": "Thomas Jefferson"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Question 2",
+                        "body": "Who was the second president of USA?",
+                        "type": "value",
+                        "answers": [
+                            {
+                                "id": "4",
+                                "body": "John Adams"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update questions [PUT]
+
+The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "Who was the first president of USA?",
+                    "type": "value",
+                    "answers": [
+                        {
+                            "body": "George Washington"
+                        }
+                    ]
+                },
+                {
+                    "type": "choice",
+                    "answers": [
+                        {
+                            "body": "George Washington"
+                        },
+                        {
+                            "id": "4",
+                            "body": "John Adams"
+                        }
+                    ]
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Question 1",
+                        "body": "Who was the first president of USA?",
+                        "type": "value",
+                        "answers": [
+                            {
+                                "id": "5",
+                                "body": "George Washington"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "choice",
+                        "answers": [
+                            {
+                                "id": "6",
+                                "body": "George Washington"
+                            },
+                            {
+                                "id": "4",
+                                "body": "John Adams"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Delete questions [DELETE]
+
+The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Voicebots [/api/1.0/voicebots{?vacancy_id}]
+
+### Retrieve voicebots [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "is_required": false
+                        }
+                    ],
+                    "options": [
+                        {
+                            "id": "1",
+                            "name": "Dialect",
+                            "values": [
+                                {
+                                    "id": "US",
+                                    "name": "US"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Gender",
+                            "values": [
+                                {
+                                    "id": "Female",
+                                    "name": "Female"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3",
+                            "name": "Rate",
+                            "values": [
+                                {
+                                    "id": "default",
+                                    "name": "default"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "4",
+                            "name": "Volume",
+                            "values": [
+                                {
+                                    "id": "default",
+                                    "name": "default"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+### Update voicebots [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each voicebot.
+
++ Request (application/json)
+
+        {
+            "voicebots": [
+                {
+                    "id": "1",
+                    "is_active": false
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "is_active": false,
+                        "vacancy": {
+                            "id": "1"
+                        },
+                        "questions": [
+                            {
+                                "id": "1",
+                                "name": "Question 1",
+                                "body": "How are you?",
+                                "is_required": true
+                            },
+                            {
+                                "id": "2",
+                                "name": "Question 2",
+                                "body": "Do you want to work?",
+                                "is_required": false
+                            }
+                        ],
+                        "options": [
+                            {
+                            "id": "1",
+                            "name": "Dialect",
+                            "values": [
+                                {
+                                    "id": "US",
+                                    "name": "US"
+                                }
+                            ]
+                            },
+                            {
+                                "id": "2",
+                                "name": "Gender",
+                                "values": [
+                                    {
+                                        "id": "Female",
+                                        "name": "Female"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "3",
+                                "name": "Rate",
+                                "values": [
+                                    {
+                                        "id": "default",
+                                        "name": "default"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "4",
+                                "name": "Volume",
+                                "values": [
+                                    {
+                                        "id": "default",
+                                        "name": "default"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+        
+## Voicebot [/api/1.0/voicebots/{voicebot_id}]
+
++ Parameters
+    + voicebot_id (required, string, `1`) ... Voicebot id
+
+### Retrieve voicebot [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "is_required": false
+                        }
+                    ],
+                    "options": [
+                        {
+                            "id": "1",
+                            "name": "Dialect",
+                            "values": [
+                                {
+                                    "id": "US",
+                                    "name": "US"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Gender",
+                            "values": [
+                                {
+                                    "id": "Female",
+                                    "name": "Female"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "3",
+                            "name": "Rate",
+                            "values": [
+                                {
+                                    "id": "default",
+                                    "name": "default"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "4",
+                            "name": "Volume",
+                            "values": [
+                                {
+                                    "id": "default",
+                                    "name": "default"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+
+
+
+
+## Voicebot options dictionary [/api/1.0/voicebot-options]
+
+### Retrieve options [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Dialect",
+                    "type": "list",
+                    "values": [
+                        {
+                            "id": "US",
+                            "name": "US"
+                        },
+                        {
+                            "id": "UK",
+                            "name": "UK"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "Gender",
+                    "type": "list",
+                    "values": [
+                        {
+                            "id": "Male",
+                            "name": "Male"
+                        },
+                        {
+                            "id": "Female",
+                            "name": "Female"
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "name": "Rate",
+                    "type": "list",
+                    "values": [
+                        {
+                            "id": "slow",
+                            "name": "slow"
+                        },
+                        {
+                            "id": "fast",
+                            "name": "fast"
+                        }
+                    ]
+                },
+                {
+                    "id": "4",
+                    "name": "Volume",
+                    "type": "list",
+                    "values": [
+                        {
+                            "id": "soft",
+                            "name": "soft"
+                        },
+                        {
+                            "id": "loud",
+                            "name": "loud"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+## Voicebot options [/api/1.0/voicebots/{voicebot_id}/options]
+
++ Parameters
+    + voicebot_id (required, string, `1`) ... Voicebot id
+
+### Update options [PUT]
+
+The ID field is required for each option.
+
++ Request (application/json)
+
+        {
+            "options": [
+                {
+                    "id": "1",
+                    "values": [
+                        {
+                            "id": "2"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "values": [
+                        {
+                            "id": "3"
+                        }
+                    ]
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Dialect",
+                        "values": [
+                            {
+                                "id": "UK",
+                                "name": "UK"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "name": "Gender",
+                        "values": [
+                            {
+                                "id": "Male",
+                                "name": "Male"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+
+## Voicebot questions [/api/1.0/voicebots/{voicebot_id}/questions]
+
++ Parameters
+    + voicebot_id (required, string, `1`) ... Voicebot id
+    
+### Create new questions [POST]
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": true
+                },
+                {
+                    "name": "Question 2",
+                    "body": "Do you want to work?",
+                    "is_required": false
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Question 1",
+                        "body": "How are you?",
+                        "is_required": true
+                    },
+                    {
+                        "id": "2",
+                        "name": "Question 2",
+                        "body": "Do you want to work?",
+                        "is_required": false
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update questions [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1",
+                    "body": "How are you, buddy?",
+                    "is_required": false
+                },
+                {
+                    "id": "2",
+                    "name": "Important question",
+                    "body": "Do you want to work???"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Question 1",
+                        "body": "How are you, buddy?",
+                        "is_required": false
+                    },
+                    {
+                        "id": "2",
+                        "name": "Important question",
+                        "body": "Do you want to work???",
+                        "is_required": false
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Delete questions [DELETE]
+
+The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Voicebot audios [/api/1.0/voicebot-audios]
+
+### Create new audios [POST]
+
++ Request (application/json)
+
+        {
+            "audios": [
+                {
+                    "hash": "595a4c5ab252b",
+                    "text": "How are you?"
+                },
+                {
+                    "hash": "595a4c6f324b1",
+                    "text": "Do you want to work?"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "hash": "595a4c5ab252b",
+                        "text": "How are you?",
+                        "source": "http://domain.com/595a4c5ab252b.mp3"
+                    },
+                    {
+                        "hash": "595a4c6f324b1",
+                        "text": "Do you want to work?"
+                        "source": "http://domain.com/595a4c6f324b1.mp3"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+
+
+## Video interviews [/api/1.0/video_interviews{?vacancy_id}]
+
+### Retrieve video interviews [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true,
+                            "answer_time": 120,
+                            "preparation_time": 40
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "is_required": false,
+                            "answer_time": 180,
+                            "preparation_time": 40
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+### Update video interviews [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each video interview.
+
++ Request (application/json)
+
+        {
+            "video_interviews": [
+                {
+                    "id": "1",
+                    "is_active": false
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "is_active": false,
+                        "vacancy": {
+                            "id": "1"
+                        },
+                        "questions": [
+                            {
+                                "id": "1",
+                                "name": "Question 1",
+                                "body": "How are you?",
+                                "is_required": true,
+                                "answer_time": 120,
+                                "preparation_time": 40
+                            },
+                            {
+                                "id": "2",
+                                "name": "Question 2",
+                                "body": "Do you want to work?",
+                                "is_required": false,
+                                "answer_time": 180,
+                                "preparation_time": 40
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+
+## Video interview [/api/1.0/video_interviews/{interview_id}]
+
++ Parameters
+    + interview_id (required, string, `1`) ... Video interview id
+
+### Retrieve video interview [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true,
+                            "answer_time": 120,
+                            "preparation_time": 40
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "is_required": false,
+                            "answer_time": 180,
+                            "preparation_time": 40
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+
+
+
+
+## Video interview questions [/api/1.0/video_interviews/{interview_id}/questions]
+
++ Parameters
+    + interview_id (required, string, `1`) ... Video interview id
+    
+### Create new questions [POST]
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": true,
+                    "answer_time": 120,
+                    "preparation_time": 40
+                },
+                {
+                    "name": "Question 2",
+                    "body": "Do you want to work?",
+                    "is_required": false,
+                    "answer_time": 180,
+                    "preparation_time": 40
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Question 1",
+                        "body": "How are you?",
+                        "is_required": true,
+                        "answer_time": 120,
+                        "preparation_time": 40
+                    },
+                    {
+                        "id": "2",
+                        "name": "Question 2",
+                        "body": "Do you want to work?",
+                        "is_required": false,
+                        "answer_time": 180,
+                        "preparation_time": 40
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update questions [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1",
+                    "body": "How are you, buddy?",
+                    "is_required": false,
+                    "answer_time": 90,
+                    "preparation_time": 20
+                },
+                {
+                    "id": "2",
+                    "body": "Do you want to work???"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Question 1",
+                        "body": "How are you, buddy?",
+                        "is_required": false,
+                        "answer_time": 90,
+                        "preparation_time": 20
+                    },
+                    {
+                        "id": "2",
+                        "name": "Question 2",
+                        "body": "Do you want to work???",
+                        "is_required": false,
+                        "answer_time": 180,
+                        "preparation_time": 40
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Delete questions [DELETE]
+
+The ID field is required for each question.
+
++ Request (application/json)
+
+        {
+            "questions": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+## Vacancy competences [/api/1.0/vacancy/{vacancy_id}/competences]
+
+### Retrieve competences settings [GET /api/1.0/vacancy/{vacancy_id}/competences/settings]
+
+List of possible settings list
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "view" : [
+                            {
+                                "id" : "1",
+                                "name" : "Circle"
+                            },
+                            {
+                                "id" : "2",
+                                "name" : "Star"
+                            }
+                        ],
+                        "level" : [
+                            {
+                                "id" : "1",
+                                "name" : "2x",
+                                "min_value" : 1,
+                                "max_value" : 2
+                            },
+                            {
+                                "id" : "2",
+                                "name" : "3x",
+                                "min_value" : 1,
+                                "max_value" : 3
+                            },
+                            {
+                                "id" : "3",
+                                "name" : "4x",
+                                "min_value" : 1,
+                                "max_value" : 4
+                            },
+                            {
+                                "id" : "4",
+                                "name" : "5x",
+                                "min_value" : 1,
+                                "max_value" : 5
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Retrieve competences list [GET /api/1.0/vacancy/{vacancy_id}/competences]
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id" : "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Motivation",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "2",
+                            "name" : "Star"
+                        },
+                        "level" : {
+                            "id" : "3",
+                            "name" : "4x",
+                            "min_value" : 1,
+                            "max_value" : 4
+                        },
+                        "sort_order" : "1000"
+                    },
+                    {
+                        "id" : "2",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Speach",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "2",
+                            "name" : "Star"
+                        },
+                        "level" : {
+                            "id" : "3",
+                            "name" : "4x",
+                            "min_value" : 1,
+                            "max_value" : 4
+                        },
+                        "sort_order" : "1000"
+                    },
+                    {
+                        "id" : "3",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Appearance",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "2",
+                            "name" : "Star"
+                        },
+                        "level" : {
+                            "id" : "3",
+                            "name" : "4x",
+                            "min_value" : 1,
+                            "max_value" : 4
+                        },
+                        "sort_order" : "1000"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 3
+                }
+            }
+            
+### Retrieve competence [GET /api/1.0/vacancy/{vacancy_id}/competences/{competence_id}]
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id" : "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Motivation",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "2",
+                            "name" : "Star"
+                        },
+                        "level" : {
+                            "id" : "3",
+                            "name" : "4x",
+                            "min_value" : 1,
+                            "max_value" : 4
+                        },
+                        "sort_order" : "1000"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+            
+### Create competences [POST /api/1.0/vacancy/{vacancy_id}/competences]
+
+Creating new competence: vacancy id is specified in url
+
++ Request (application/json)
+
+        {
+            "competences": [
+                {
+                    "name" : "Confidence",
+                    "view" : {
+                        "id" : "2"
+                    },
+                    "level" : {
+                        "id" : "3"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id" : "4",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Confidence",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "2",
+                            "name" : "Star"
+                        },
+                        "level" : {
+                            "id" : "3",
+                            "name" : "4x",
+                            "min_value" : 1,
+                            "max_value" : 4
+                        },
+                        "sort_order" : "1000"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+            
+### Update competences [PUT /api/1.0/vacancy/{vacancy_id}/competences]
+
+Update competence: id field should be specified in competence prototype
+
++ Request (application/json)
+
+        {
+            "competences": [
+                {
+                    "id" : "4",
+                    "name" : "Self-confidence",
+                    "view" : {
+                        "id" : "1"
+                    },
+                    "level" : {
+                        "id" : "4"
+                    },
+                    "sort_order" : "2000"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id" : "4",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Self-confidence",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "1",
+                            "name" : "Circle"
+                        },
+                        "level" : {
+                            "id" : "4",
+                            "name" : "5x"
+                        },
+                        "sort_order" : "2000"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+            
+### Delete competences [DELETE /api/1.0/vacancy/{vacancy_id}/competences]
+
+Delete competence: id field should be specified in competence prototype
+
++ Request (application/json)
+
+        {
+            "competences": [
+                {
+                    "id" : "4"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id" : "4",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "name" : "Self-confidence",
+                        "vacancy" : {
+                            "id" : "58",
+                            "name" : "Art-Director"
+                        },
+                        "view" : {
+                            "id" : "1",
+                            "name" : "Circle"
+                        },
+                        "level" : {
+                            "id" : "4",
+                            "name" : "5x"
+                        },
+                        "sort_order" : "2000"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+## Responses [/api/1.0/responses{?vacancy_id,status_id,stage_id,sort_by,sort_order,count,page,search_term}]
+
+### Retrieve responses [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+    + status_id (string, `1`) ... Status id
+    + stage_id (string, `1`) ... Stage id
+    + sort_by (string, `name`) ... Sort name
+    + sort_order (string, `asc`) ... Sort direction
+    + count (integer, `100`) ... Limit
+    + page (integer, `1`) ... Current page number
+    + search_term (string, `Fin`) ... Search term
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "is_viewed": false,
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "2",
+                        "name": "Declined"
+                    },
+                    "star": {
+                        "value": 5,
+                        "created_at": "2017-08-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "1",
+                        "name": "Voice bot"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": {
+                                "id": "2",
+                                "duration": 15,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        }
+                    ],
+                    "comments": []
+                },
+                {
+                    "id": "2",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "is_viewed": true,
+                    "vacancy": {
+                        "id": "2",
+                        "name": "Finance Manager"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3020",
+                        "email": "william.johnson@gmail.com"
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "Approved"
+                    },
+                    "star": {
+                        "value": 4,
+                        "created_at": "2017-09-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "2",
+                        "name": "Video interview"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "3",
+                                "duration": 8,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": null
+                        }
+                    ],
+                    "comments": [
+                        {
+                            "id": "1",
+                            "name": "Very good"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Update responses [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each response.
+
++ Request (application/json)
+
+        {
+            "responses": [
+                {
+                    "id": "1",
+                    "status": {
+                        "id": "1"
+                    },
+                    "stage": {
+                        "id": "2"
+                    }
+                },
+                {
+                    "id": "2",
+                    "status": {
+                        "id": "2"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "is_viewed": false,
+                        "vacancy": {
+                            "id": "1",
+                            "name": "Finance Director"
+                        },
+                        "candidate": {
+                            "name": "John",
+                            "surname": "Smith",
+                            "gender": "male",
+                            "phone": "+1-541-754-3010",
+                            "email": "john.smith@gmail.com"
+                        },
+                        "status": {
+                            "id": "1",
+                            "name": "Approved"
+                        },
+                        "star": {
+                            "value": 5,
+                            "created_at": "2017-08-23T09:26:27-0700"
+                        },
+                        "stage": {
+                            "id": "2",
+                            "name": "Video interview"
+                        },
+                        "source": {
+                            "id": "1",
+                            "name": "monster.com"
+                        },
+                        "questions": [
+                            {
+                                "id": "1",
+                                "name": "Question 1",
+                                "body": "How are you?",
+                                "video": {
+                                    "id": "1",
+                                    "duration": 62,
+                                    "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                }
+                            },
+                            {
+                                "id": "2",
+                                "name": "Question 2",
+                                "body": "Do you want to work?",
+                                "video": {
+                                    "id": "2",
+                                    "duration": 15,
+                                    "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                }
+                            }
+                        ],
+                        "comments": []
+                    },
+                    {
+                        "id": "2",
+                        "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "is_viewed": true,
+                        "vacancy": {
+                            "id": "2",
+                            "name": "Finance Manager"
+                        },
+                        "candidate": {
+                            "name": "William",
+                            "surname": "Johnson",
+                            "gender": "male",
+                            "phone": "+1-541-754-3020",
+                            "email": "william.johnson@gmail.com"
+                        },
+                        "status": {
+                            "id": "2",
+                            "name": "Declined"
+                        },
+                        "star": {
+                            "value": 5,
+                            "created_at": "2017-08-23T09:26:27-0700"
+                        },
+                        "stage": {
+                            "id": "2",
+                            "name": "Video interview"
+                        },
+                        "source": {
+                            "id": "1",
+                            "name": "monster.com"
+                        },
+                        "questions": [
+                            {
+                                "id": "1",
+                                "name": "Question 1",
+                                "body": "How are you?",
+                                "video": {
+                                    "id": "3",
+                                    "duration": 8,
+                                    "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                }
+                            },
+                            {
+                                "id": "2",
+                                "name": "Question 2",
+                                "body": "Do you want to work?",
+                                "video": null,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        ],
+                        "comments": [
+                            {
+                                "id": "1",
+                                "name": "Very good"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 0,
+                    "total": 0
+                }
+            }
+
+### Delete responses [DELETE]
+
+The ID field is required for each response.
+
++ Request (application/json)
+
+        {
+            "responses": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+## Response [/api/1.0/responses/{response_id}]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve response [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "is_viewed": false,
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "Approved"
+                    },
+                    "star": {
+                        "value": 5,
+                        "created_at": "2017-08-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "2",
+                        "name": "Video interview"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": {
+                                "id": "2",
+                                "duration": 15,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            }
+                        }
+                    ],
+                    "comments": []
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+
+
+
+## Response comments [/api/1.0/responses/{response_id}/comments]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve comments [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "2",
+                    "created_at": "2017-06-20T10:12:55+0300",
+                    "message": "Very, very bad",
+                    "user": {
+                        "name": "John",
+                        "surname": "Johnson"
+                    }
+                },
+                {
+                    "id": "1",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "message": "Very, very good",
+                    "user": {
+                        "name": "John",
+                        "surname": "Johnson"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new comments [POST]
+
++ Request (application/json)
+
+        {
+            "comments": [
+                {
+                    "message": "Excellent!"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "message": "Excellent!",
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update comments [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each comment.
+
++ Request (application/json)
+
+        {
+            "comments": [
+                {
+                    "id": "1",
+                    "message": "Very well!"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "message": "Very well!",
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 0,
+                    "total": 0
+                }
+            }
+
+### Delete comments [DELETE]
+
+The ID field is required for each comment.
+
++ Request (application/json)
+
+        {
+            "comments": [
+                {
+                    "id": "1"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Response stars [/api/1.0/responses/{response_id}/stars]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve stars [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "created_at": "2017-06-20T10:12:55+0300",
+                    "value": 5
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+### Update stars [PUT]
+
++ Request (application/json)
+
+        {
+            "stars": [
+                {
+                    "value": 4
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "created_at": "2017-06-20T10:12:55+0300",
+                        "value": 4
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 0,
+                    "total": 0
+                }
+            }
+
+
+## Response competence [/api/1.0/responses/{response_id}/competences]
+
+### Retrieve competences [GET]
+
+Get list of competences related to response. 
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "competences" : [
+                            {
+                                "id" : "122",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Motivation",
+                                "value" : null,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Speach",
+                                "value" : 2,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "created_at": "2017-06-22T10:12:55+0300",
+                                "name" : "Appearance",
+                                "value" : 3,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            }
+                        ],
+                        "overall_rating" : 2.5
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+            
+### Update competences [PUT]
+
+Set competence value for response. Value should be a number in a range of [level.min_value, level.max_value]
+Result response equal to "Retreive competence" method. Ccontains all competence of response, not only updated; with new value of overall_rating.
+ 
+
++ Request (application/json)
+
+            {
+                "competences" : [
+                    {
+                        "id" : "122",
+                        "value" : 4
+                    }
+                ]
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "competences" : [
+                            {
+                                "id" : "122",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Motivation",
+                                "value" : 4,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Speach",
+                                "value" : 2,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "created_at": "2017-06-22T10:12:55+0300",
+                                "name" : "Appearance",
+                                "value" : 3,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            }
+                        ],
+                        "overall_rating" : 3
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+## Response voicebot [/api/1.0/responses/{response_id}/voicebot]
+
+### Retrieve response voicebot data [GET]
+
+Get response voicebot questions and source: file == null if voceicebot is not recorded yet
+When it will be possible to store answer in separate file, api will be changes a little
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id" : "1",    
+                    "response" : {
+                        "id" : "{response_id}"
+                    },
+                    "file" : {
+                        "duration" : 120,
+                        "source" : "path to full voicebot conversation file"
+                    },
+                    "questions" : [
+                        {
+                            "id" : "1",
+                            "name" : "Question 1",
+                            "body" : "Hi! I am robot recruiter VCV. I am calling you regarding the open position at The Coca-Cola Company. Is it convenient for you to talk now? Say \"yes\" or \"no\"."
+                        },
+                        {
+                            "id" : "2",
+                            "name" : "Question 2",
+                            "body" : "Great. Are you looking for a job at the moment? Say \"yes\" or \"no\"."
+                        },
+                        {
+                            "id" : "3",
+                            "name" : "Question 3",
+                            "body" : "Good. Let me please ask you some questions before I tell you about the position. Are you living in New York now? Say \"yes\" or \"no\"."
+                        },
+                        {
+                            "id" : "4",
+                            "name" : "Question 4",
+                            "body" : "Ok, I got it. Let me tell you some words about the position. It is Sales Manager position in New York. Your functions will be client attraction, interesting negotiations with clients and budget planning. Coca Cola gives many opportunities for your professional development, challenging goals, dynamic business, and bright team. We are waiting for active, positive and flexible candidates, who can find a common language with everybody and can overcome obstacles. Are you interested in such position? Say \"yes\" or \"no\"."
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+## Response videointerview [/api/1.0/responses/{response_id}/videointerview]
+
+### Retrieve response videointerview [GET]
+
+Get response videointerview questions and source
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id" : "{response_id}",     
+                    "response" : {
+                        "id" : "{response_id}"
+                    },
+                    "questions": [
+                        {
+                          "id": "1",
+                          "name": "Question 1",
+                          "body": "How are you?",
+                          "video": {
+                            "id": "1",
+                            "duration": 62,
+                            "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                          }
+                        },
+                        {
+                          "id": "2",
+                          "name": "Question 2",
+                          "body": "Do you want to work?",
+                          "video": {
+                            "id": "2",
+                            "duration": 15,
+                            "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                          }
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+## Response statuses dictionary [/api/1.0/response-statuses]
+
+### Retrieve statuses [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Approved",
+                    "is_base": true,
+                    "priority": 10000
+                },
+                {
+                    "id": "2",
+                    "name": "Declined",
+                    "is_base": true,
+                    "priority": 10100
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new statuses [POST]
+
++ Request (application/json)
+
+        {
+            "statuses": [
+                {
+                    "name": "New",
+                    "priority": 20000
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "3",
+                        "name": "New",
+                        "is_base": false,
+                        "priority": 20000
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update statuses [PUT]
+
+The ID field is required for each status.
+
++ Request (application/json)
+
+        {
+            "statuses": [
+                {
+                    "id": "3",
+                    "name": "Created",
+                    "priority": 20000
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "3",
+                        "name": "Created",
+                        "is_base": false,
+                        "priority": 20000
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+### Delete statuses [DELETE]
+
+The ID field is required for each status.
+
++ Request (application/json)
+
+        {
+            "statuses": [
+                {
+                    "id": "3"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Response stages dictionary [/api/1.0/response-stages]
+
+### Retrieve stages [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Voice bot"
+                },
+                {
+                    "id": "2",
+                    "name": "Video interview"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+## Invites [/api/1.0/invites{?vacancy_id,status_id,token}]
+
+### Retrieve invites [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+    + status_id (string, `1`) ... Status id
+    + token (string, `5966314500f31`) ... Token
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "2",
+                        "name": "Sent"
+                    }
+                },
+                {
+                    "id": "2",
+                    "created_at": "2017-06-22T10:12:56+0300",
+                    "vacancy": {
+                        "id": "2",
+                        "name": "Finance Manager"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3011",
+                        "email": "william.johnson@gmail.com"
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "New"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new invites [POST]
+
++ Request (application/json)
+
+        {
+            "invites": [
+                {
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    }
+                },
+                {
+                    "vacancy": {
+                        "id": "2"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3011",
+                        "email": "william.johnson@gmail.com"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "vacancy": {
+                            "id": "1",
+                            "name": "Finance Director"
+                        },
+                        "candidate": {
+                            "name": "John",
+                            "surname": "Smith",
+                            "gender": "male",
+                            "phone": "+1-541-754-3010",
+                            "email": "john.smith@gmail.com"
+                        },
+                        "status": {
+                            "id": "2",
+                            "name": "Sent"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "created_at": "2017-06-22T10:12:56+0300",
+                        "vacancy": {
+                            "id": "2",
+                            "name": "Finance Manager"
+                        },
+                        "candidate": {
+                            "name": "William",
+                            "surname": "Johnson",
+                            "gender": "male",
+                            "phone": "+1-541-754-3011",
+                            "email": "william.johnson@gmail.com"
+                        },
+                        "status": {
+                            "id": "1",
+                            "name": "New"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update invites [PUT]
+
+Sends only modified data. Updates only specified fields. The ID field is required for each invite.
+
++ Request (application/json)
+
+        {
+            "invites": [
+                {
+                    "id": "1",
+                    "status": {
+                        "id": "1"
+                    }
+                },
+                {
+                    "id": "2",
+                    "status": {
+                        "id": "2"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "vacancy": {
+                            "id": "1",
+                            "name": "Finance Director"
+                        },
+                        "candidate": {
+                            "name": "John",
+                            "surname": "Smith",
+                            "gender": "male",
+                            "phone": "+1-541-754-3010",
+                            "email": "john.smith@gmail.com"
+                        },
+                        "status": {
+                            "id": "1",
+                            "name": "New"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "created_at": "2017-06-22T10:12:56+0300",
+                        "vacancy": {
+                            "id": "2",
+                            "name": "Finance Manager"
+                        },
+                        "candidate": {
+                            "name": "William",
+                            "surname": "Johnson",
+                            "gender": "male",
+                            "phone": "+1-541-754-3011",
+                            "email": "william.johnson@gmail.com"
+                        },
+                        "status": {
+                            "id": "2",
+                            "name": "Sent"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 0,
+                    "total": 0
+                }
+            }
+
+
+
+
+## Invite [/api/1.0/invites/{invite_id}]
+
++ Parameters
+    + invite_id (required, string, `1`) ... Invite id
+
+### Retrieve invite [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "2",
+                        "name": "Sent"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+        
+        
+        
+        
+## Invite statuses dictionary [/api/1.0/invite-statuses]
+
+### Retrieve statuses [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Sent"
+                },
+                {
+                    "id": "2",
+                    "name": "Visited"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+
+## Calls [/api/1.0/calls]
+
+### Create new calls [POST]
+
++ Request (application/json)
+
+        {
+            "calls": [
+                {
+                    "phone": "+1-541-754-3010"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "phone": "+1-541-754-3010",
+                        "status": {
+                            "id": "1",
+                            "name": "Created"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Call [/api/1.0/calls/{call_id}]
+
++ Parameters
+    + call_id (required, string, `1`) ... Call id
+
+### Retrieve call [GET]
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "phone": "+1-541-754-3010",
+                        "status": {
+                            "id": "1",
+                            "name": "Created"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Access tokens [/api/1.0/access-tokens]
+
+### Create new access tokens [POST]
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "email": "john@gmail.com",
+                    "password": "j0H#"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "token": "5966314500f31",
+                        "expired_at": "2017-09-22T10:12:55+0300",
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson",
+                            "email": "john@gmail.com",
+                            "gender": "male",
+                            "created_at": "2017-01-02T10:12:55+0300"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Delete access tokens [DELETE]
+
+The TOKEN field is required for each acceess-token.
+
++ Request (application/json)
+
+        {
+            "access_tokens": [
+                {
+                    "token": "5966314500f31"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
+## Authorization token [/api/1.0/access-tokens/authorization]
+
+### Retrieve token [GET]
+
+Requested once
+
++ Request
+    + Headers
+
+            Authorization: (Token)
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "token": "5966314500f31",
+                        "expired_at": "2017-09-22T10:12:55+0300",
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson",
+                            "email": "john@gmail.com",
+                            "gender": "male",
+                            "created_at": "2017-01-02T10:12:55+0300"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Password recovery token [/api/1.0/access-tokens/password-recovery]
+
+### Retrieve token [GET]
+
++ Request
+    + Headers
+
+            Authorization: (Token)
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "token": "5966314500f31",
+                        "expired_at": "2017-09-22T10:12:55+0300",
+                        "user": {
+                            "email": "john@gmail.com"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Create new tokens [POST]
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "email": "john@gmail.com"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "expired_at": "2017-09-22T10:12:55+0300",
+                        "user": {
+                            "email": "john@gmail.com"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Users [/api/1.0/users]
+
+### Create new users [POST]
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "name": "John",
+                    "surname": "Johnson",
+                    "email": "john@gmail.com",
+                    "phone": "+1-541-754-3010",
+                    "company": {
+                        "id": "1",
+                        "name": "Coca-Cola"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update users [PUT]
+
+The EMAIL field is required for each user.
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "email": "john@gmail.com",
+                    "password": "j0H#"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "email": "john@gmail.com"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+## User [/api/1.0/users/{accessToken}]
+
+### Retrieve user [GET]
+
++ Parameters
+    + accessToken (string, `5966314500f31`) ... Access token
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## User companies [/api/1.0/users/{accessToken}/companies]
+
++ Parameters
+    + accessToken (string, `5966314500f31`) ... User access token (replaces user id)
+
+### Retrieve companies [GET]
+
+Retrieve company by access token
+
++ Request
+    + Headers
+
+            Authorization: (Token)
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Coca-Cola",
+                    "city": {
+                        "id": "102",
+                        "name": "Georgia",
+                        "parent": {
+                            "id": "32",
+                            "name": "Atlanta",
+                            "parent": {
+                                "id": "1",
+                                "name": "USA"
+                            }
+                        }
+                    },
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "logo": {
+                        "source": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+### Update companies [PUT]
+
+The ID field is required for each company.
+
++ Request (application/json)
+
+        {
+            "companies": [
+                {
+                    "id": "1",
+                    "name": "Coca-Cola Company"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Coca-Cola Company",
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "logo": {
+                            "source": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Save logo for company [/api/1.0/users/{accessToken}/companies/{id}/logo]
+
++ Parameters
+    + accessToken (string, `5966314500f31`) ... User access token (replaces user id)
+    + id (string, `1`) ... Company id
+
+### Save logo [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="source"; filename="8445314500f13.mp4"
+            Content-Type: video/mp4
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "source": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
+## Company users [/api/1.0/company-users]
+
+
+### Retrieve users [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "name": "John",
+                    "surname": "Johnson",
+                    "email": "john@gmail.com",
+                    "phone": "+1-541-754-3010",
+                    "skype": "john_johnson"
+                },
+                {
+                    "name": "John",
+                    "surname": "Watson",
+                    "email": "john.watson@gmail.com",
+                    "phone": "+1-541-754-3011",
+                    "skype": "john_watson"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new users [POST]
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "name": "John",
+                    "surname": "Johnson",
+                    "email": "john@gmail.com",
+                    "phone": "+1-541-754-3010",
+                    "skype": "john_johnson"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "john_johnson"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update users [PUT]
+
+The EMAIL field is required for each user.
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "name": "John",
+                    "surname": "Watson",
+                    "phone": "+1-541-754-3011",
+                    "skype": "john_watson"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Watson",
+                        "email": "john.watson@gmail.com",
+                        "phone": "+1-541-754-3011",
+                        "skype": "john_watson"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+## Interview [/api/1.0/interviews/{token}]
+
+### Retrieve interview [GET]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "token": "5966314500f31",
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "stage": {
+                        "id": "videointerview",
+                        "name": "Videointerview"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
+## Video interview for interview [/api/1.0/interviews/{token}/video_interviews]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### Retrieve video interview [GET]
+
+Question is completely filled if it is unlocked (answered)
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true,
+                            "answer_time": 120,
+                            "preparation_time": 10,
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            },
+                            "is_shown": true,
+                            "is_available": true
+                        },
+                        {
+                            "id": "2",
+                            "preparation_time": 20,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": true
+                        },
+                        {
+                            "id": "3",
+                            "preparation_time": 10,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": false
+                        },
+                        {
+                            "id": "4",
+                            "preparation_time": null,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": false
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+
+## End video interview for interview [/api/1.0/interviews/{token}/video_interviews/end]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### End video interview [PUT]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "is_active": true,
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "is_required": true,
+                            "answer_time": 120,
+                            "preparation_time": 10,
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            },
+                            "is_shown": true,
+                            "is_available": true
+                        },
+                        {
+                            "id": "2",
+                            "preparation_time": 20,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": true
+                        },
+                        {
+                            "id": "3",
+                            "preparation_time": 10,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": false
+                        },
+                        {
+                            "id": "4",
+                            "preparation_time": null,
+                            "video": null,
+                            "is_shown": false,
+                            "is_available": false
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+## Show question for video interview [/api/1.0/interviews/{token}/video_interview/questions/{question_id}/show]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Show question [PUT]
+Tries to show question
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": true,
+                    "answer_time": 120,
+                    "preparation_time": 10,
+                    "video": null,
+                    "is_shown": true,
+                    "is_available": true
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+        
+
+
+## Start video for video interview [/api/1.0/interviews/{token}/video_interview/questions/{question_id}/start-video]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Start video [POST]
+
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": true,
+                    "answer_time": 120,
+                    "preparation_time": 10,
+                    "video": null,
+                    "is_shown": true,
+                    "is_available": true
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+        
+        
+        
+## Save video for video interview [/api/1.0/interviews/{token}/video_interview/questions/{question_id}/save-video]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Save video [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="video[source]"; filename="8445314500f13.mp4"
+            Content-Type: video/mp4
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": true,
+                    "answer_time": 120,
+                    "preparation_time": 10,
+                    "video": {
+                        "id": "1",
+                        "duration": 62,
+                        "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                    },
+                    "is_shown": true
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+
+
+
+## Save test video for video interview [/api/1.0/interviews/{token}/video_interview/save-test_video]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### Save video [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="video[source]"; filename="8445314500f13.mp4"
+            Content-Type: video/mp4
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "3",
+                    "duration": 12,
+                    "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
+## Cities [/api/1.0/cities{?sort_by,sort_order,count,page,search_term}]
+
+### Retrieve cities [GET]
+
++ Parameters
+    + sort_by (string, `name`) ... Sort name
+    + sort_order (string, `asc`) ... Sort direction
+    + count (integer, `100`) ... Limit
+    + page (integer, `1`) ... Current page number
+    + search_term (string, `Fil`) ... Search term
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "102",
+                    "name": "Georgia",
+                    "parent": {
+                        "id": "32",
+                        "name": "Atlanta",
+                        "parent": {
+                            "id": "1",
+                            "name": "USA"
+                        }
+                    }
+                },
+                {
+                    "id": "232",
+                    "name": "Los Angeles",
+                    "parent": {
+                        "id": "30",
+                        "name": "California",
+                        "parent": {
+                            "id": "1",
+                            "name": "USA"
+                        }
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+## Orders [/api/1.0/orders]
+
+### Create new order [POST]
+
++ Request (application/json)
+
+        {
+            "orders": [
+                {
+                    "user": {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.johnson@gmail.com",
+                        "job_function": ""
+                    },
+                    "company": {
+                        "name": "Coca-Cola"
+                    },
+                    "source": "site",
+                    "desired_date": "2017-06-22T10:15:55+0300"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson",
+                            "phone": "+1-541-754-3010",
+                            "email": "john.johnson@gmail.com",
+                            "job_function": ""
+                        },
+                        "company": {
+                            "name": "Coca-Cola"
+                        },
+                        "source": "site",
+                        "desired_date": "2017-06-22"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
