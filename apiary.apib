@@ -812,28 +812,12 @@ The ID field is required for each test.
                 {
                     "name": "Question 1",
                     "body": "Who was the first president of USA?",
-                    "type": "choice",
-                    "answers": [
-                        {
-                            "body": "George Washington"
-                        },
-                        {
-                            "body": "John Adams"
-                        },
-                        {
-                            "body": "Thomas Jefferson"
-                        }
-                    ]
+                    "type": "choice"
                 },
                 {
                     "name": "Question 2",
                     "body": "Who was the second president of USA?",
-                    "type": "value",
-                    "answers": [
-                        {
-                            "body": "John Adams"
-                        }
-                    ]
+                    "type": "value"
                 }
             ]
         }
@@ -847,32 +831,12 @@ The ID field is required for each test.
                     {
                         "name": "Question 1",
                         "body": "Who was the first president of USA?",
-                        "type": "choice",
-                        "answers": [
-                            {
-                                "id": "1",
-                                "body": "George Washington"
-                            },
-                            {
-                                "id": "2",
-                                "body": "John Adams"
-                            },
-                            {
-                                "id": "3",
-                                "body": "Thomas Jefferson"
-                            }
-                        ]
+                        "type": "choice"
                     },
                     {
                         "name": "Question 2",
                         "body": "Who was the second president of USA?",
-                        "type": "value",
-                        "answers": [
-                            {
-                                "id": "4",
-                                "body": "John Adams"
-                            }
-                        ]
+                        "type": "value"
                     }
                 ],
                 "meta": {
@@ -894,24 +858,11 @@ The ID field is required for each question.
                     "id": "1",
                     "name": "Question 1",
                     "body": "Who was the first president of USA?",
-                    "type": "value",
-                    "answers": [
-                        {
-                            "body": "George Washington"
-                        }
-                    ]
+                    "type": "value"
                 },
                 {
-                    "type": "choice",
-                    "answers": [
-                        {
-                            "body": "George Washington"
-                        },
-                        {
-                            "id": "4",
-                            "body": "John Adams"
-                        }
-                    ]
+                    "id": "2",
+                    "type": "choice"
                 }
             ]
         }
@@ -935,6 +886,7 @@ The ID field is required for each question.
                         ]
                     },
                     {
+                        "id": "2",
                         "type": "choice",
                         "answers": [
                             {
@@ -991,13 +943,16 @@ The ID field is required for each question.
         {
             "answers": [
                 {
-                    "body": "George Washington"
+                    "body": "George Washington",
+                    "valid": true
                 },
                 {
-                    "body": "John Adams"
+                    "body": "John Adams",
+                    "valid": false
                 },
                 {
-                    "body": "Thomas Jefferson"
+                    "body": "Thomas Jefferson",
+                    "valid": false
                 }
             ]
         }
@@ -1010,21 +965,24 @@ The ID field is required for each question.
                 "data": [
                     {
                         "id": "1",
-                        "body": "George Washington"
+                        "body": "George Washington",
+                        "valid": true
                     },
                     {
                         "id": "2",
-                        "body": "John Adams"
+                        "body": "John Adams",
+                        "valid": false
                     },
                     {
                         "id": "3",
-                        "body": "Thomas Jefferson"
+                        "body": "Thomas Jefferson",
+                        "valid": false
                     }
                 ],
                 "meta": {
                     "error": null,
                     "page": 1,
-                    "total": 2
+                    "total": 3
                 }
             }
 
@@ -1038,11 +996,13 @@ The ID field is required for each answer.
             "answers": [
                 {
                     "id": "1",
-                    "body": "George Washington"
+                    "body": "George Washington",
+                    "valid": false
                 },
                 {
                     "id": "2",
-                    "body": "John Adams"
+                    "body": "John Adams",
+                    "valid": true
                 }
             ]
         }
@@ -1055,11 +1015,13 @@ The ID field is required for each answer.
                 "data": [
                     {
                         "id": "1",
-                        "body": "George Washington"
+                        "body": "George Washington",
+                        "valid": false
                     },
                     {
                         "id": "2",
-                        "body": "John Adams"
+                        "body": "John Adams",
+                        "valid": true
                     }
                 ],
                 "meta": {
