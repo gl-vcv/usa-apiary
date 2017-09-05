@@ -977,6 +977,120 @@ The ID field is required for each question.
 
 
 
+
+## Test answers [/api/1.0/tests/{test_id}/questions/{question_id}/answers]
+
++ Parameters
+    + test_id (required, string, `1`) ... Test id
+    + question_id (required, string, `2`) ... Question id
+    
+### Create new answers for question [POST]
+
++ Request (application/json)
+
+        {
+            "answers": [
+                {
+                    "body": "George Washington"
+                },
+                {
+                    "body": "John Adams"
+                },
+                {
+                    "body": "Thomas Jefferson"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "body": "George Washington"
+                    },
+                    {
+                        "id": "2",
+                        "body": "John Adams"
+                    },
+                    {
+                        "id": "3",
+                        "body": "Thomas Jefferson"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Update answers for question [PUT]
+
+The ID field is required for each answer.
+
++ Request (application/json)
+
+        {
+            "answers": [
+                {
+                    "id": "1",
+                    "body": "George Washington"
+                },
+                {
+                    "id": "2",
+                    "body": "John Adams"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "body": "George Washington"
+                    },
+                    {
+                        "id": "2",
+                        "body": "John Adams"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+### Delete answers for question [DELETE]
+
+The ID field is required for each answer.
+
++ Request (application/json)
+
+        {
+            "answers": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
 ## Voicebots [/api/1.0/voicebots{?vacancy_id}]
 
 ### Retrieve voicebots [GET]
