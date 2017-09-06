@@ -1476,12 +1476,14 @@ The ID field is required for each option.
                 {
                     "name": "Question 1",
                     "body": "How are you?",
-                    "is_required": true
+                    "is_required": true,
+                    "priority": 1000
                 },
                 {
                     "name": "Question 2",
                     "body": "Do you want to work?",
-                    "is_required": false
+                    "is_required": false,
+                    "priority": 2000
                 }
             ]
         }
@@ -1496,13 +1498,15 @@ The ID field is required for each option.
                         "id": "1",
                         "name": "Question 1",
                         "body": "How are you?",
-                        "is_required": true
+                        "is_required": true,
+                        "priority": 1000
                     },
                     {
                         "id": "2",
                         "name": "Question 2",
                         "body": "Do you want to work?",
-                        "is_required": false
+                        "is_required": false,
+                        "priority": 2000
                     }
                 ],
                 "meta": {
@@ -1523,7 +1527,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                 {
                     "id": "1",
                     "body": "How are you, buddy?",
-                    "is_required": false
+                    "is_required": false,
+                    "priority": 3000
                 },
                 {
                     "id": "2",
@@ -1543,13 +1548,15 @@ Sends only modified data. Updates only specified fields. The ID field is require
                         "id": "1",
                         "name": "Question 1",
                         "body": "How are you, buddy?",
-                        "is_required": false
+                        "is_required": false,
+                        "priority": 3000
                     },
                     {
                         "id": "2",
                         "name": "Important question",
                         "body": "Do you want to work???",
-                        "is_required": false
+                        "is_required": false,
+                        "priority": 2000
                     }
                 ],
                 "meta": {
@@ -1792,14 +1799,16 @@ Sends only modified data. Updates only specified fields. The ID field is require
                     "body": "How are you?",
                     "is_required": true,
                     "answer_time": 120,
-                    "preparation_time": 40
+                    "preparation_time": 40,
+                    "priority": 1000
                 },
                 {
                     "name": "Question 2",
                     "body": "Do you want to work?",
                     "is_required": false,
                     "answer_time": 180,
-                    "preparation_time": 40
+                    "preparation_time": 40,
+                    "priority": 2000
                 }
             ]
         }
@@ -1816,7 +1825,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                         "body": "How are you?",
                         "is_required": true,
                         "answer_time": 120,
-                        "preparation_time": 40
+                        "preparation_time": 40,
+                        "priority": 1000
                     },
                     {
                         "id": "2",
@@ -1824,7 +1834,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                         "body": "Do you want to work?",
                         "is_required": false,
                         "answer_time": 180,
-                        "preparation_time": 40
+                        "preparation_time": 40,
+                        "priority": 2000
                     }
                 ],
                 "meta": {
@@ -1847,7 +1858,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                     "body": "How are you, buddy?",
                     "is_required": false,
                     "answer_time": 90,
-                    "preparation_time": 20
+                    "preparation_time": 20,
+                    "priority": 3000
                 },
                 {
                     "id": "2",
@@ -1868,7 +1880,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                         "body": "How are you, buddy?",
                         "is_required": false,
                         "answer_time": 90,
-                        "preparation_time": 20
+                        "preparation_time": 20,
+                        "priority": 3000
                     },
                     {
                         "id": "2",
@@ -1876,7 +1889,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                         "body": "Do you want to work???",
                         "is_required": false,
                         "answer_time": 180,
-                        "preparation_time": 40
+                        "preparation_time": 40,
+                        "priority": 2000
                     }
                 ],
                 "meta": {
@@ -3056,7 +3070,8 @@ Get response videointerview questions and source
                             "id": "1",
                             "duration": 62,
                             "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
-                          }
+                          },
+                          "priority": 1000
                         },
                         {
                           "id": "2",
@@ -3066,7 +3081,8 @@ Get response videointerview questions and source
                             "id": "2",
                             "duration": 15,
                             "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
-                          }
+                          },
+                          "priority": 2000
                         }
                     ]
                 }
