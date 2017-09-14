@@ -339,6 +339,125 @@ Retrieve vacancy permissions
 
 
 
+## Vacancy sources [/api/1.0/vacancies/{vacancy_id}/sources]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve sources [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "source": {
+                        "id": 4,
+                        "name": "HeadHunter"
+                    },
+                    "external_id": "22699090"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+### Create sources [POST]
+
++ Request (application/json)
+
+        {
+            "sources": [
+                {
+                    "source": {
+                        "id": "3"
+                    },
+                    "external_id": "22699090"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "source": {
+                            "id": 4,
+                            "name": "HeadHunter"
+                        },
+                        "external_id": "22699090"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update sources [PUT]
+
+The ID field is required for each source.
+
++ Request (application/json)
+
+        {
+            "id": "3",
+            "external_id": "22699090"
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "source": {
+                            "id": 4,
+                            "name": "HeadHunter"
+                        },
+                        "external_id": "22699090"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Delete sources [DELETE]
+
+The ID field is required for each source.
+
++ Request (application/json)
+
+        {
+            "sources": [
+                {
+                    "id": "1"
+                },
+                {
+                    "id": "2"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
 
 ## Vacancy permission dictionary [/api/1.0/vacancy-permissions]
 
