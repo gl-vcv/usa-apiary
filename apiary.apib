@@ -294,6 +294,52 @@ The ID field is required for each vacancy.
 
 
 
+## Vacancy sources dictionary [/api/1.0/vacancy-sources]
+
+### Retrieve sources [GET]
+
+Retrieve vacancy permissions
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "name": "Monster"
+                    },
+                    {
+                        "id": "2",
+                        "name": "Indeed"
+                    },
+                    {
+                        "id": "3",
+                        "name": "LinkedIn"
+                    },
+                    {
+                        "id": "4",
+                        "name": "HeadHunter"
+                    },
+                    {
+                        "id": "5",
+                        "name": "SuperJob"
+                    },
+                    {
+                        "id": "6",
+                        "name": "Avito"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 6
+                }
+            }
+
+
+
+
+
 ## Vacancy permission dictionary [/api/1.0/vacancy-permissions]
 
 ### Retrieve permissions [GET]
