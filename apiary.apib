@@ -470,12 +470,12 @@ Retrieve vacancy permissions
             {
                 "data": [
                     {
-                        "id": "vacancy.admin",
+                        "id": "admin",
                         "name": "Admin"
                     },
                     {
-                        "id": "vacancy.read",
-                        "name": "Read"
+                        "id": "read",
+                        "name": "Only read"
                     }
                 ],
                 "meta": {
@@ -500,13 +500,13 @@ Retrieve vacancy permissions
         {
             "data": [
                 {
-                    "id": "vacancy.admin",
+                    "id": "admin",
                     "user": {
                         "email": "john.johnson@gmail.com"
                     }
                 },
                 {
-                    "id": "vacancy.admin",
+                    "id": "admin",
                     "user": {
                         "email": "john.watson@gmail.com"
                     }
@@ -529,13 +529,13 @@ The ID and user.email fields are required for each permission.
         {
             "permissions": [
                 {
-                    "id": "vacancy.read",
+                    "id": "read",
                     "user": {
                         "email": "john.johnson@gmail.com"
                     }
                 },
                 {
-                    "id": "vacancy.admin",
+                    "id": "admin",
                     "user": {
                         "email": "john.watson@gmail.com"
                     }
@@ -550,13 +550,13 @@ The ID and user.email fields are required for each permission.
             {
                 "data": [
                     {
-                        "id": "vacancy.read",
+                        "id": "read",
                         "user": {
                             "email": "john.johnson@gmail.com"
                         }
                     },
                     {
-                        "id": "vacancy.admin",
+                        "id": "admin",
                         "user": {
                             "email": "john.watson@gmail.com"
                         }
@@ -579,13 +579,13 @@ The ID and user.email fields are required for each permission.
         {
             "permissions": [
                 {
-                    "id": "vacancy.read",
+                    "id": "read",
                     "user": {
                         "email": "john.johnson@gmail.com"
                     }
                 },
                 {
-                    "id": "vacancy.admin",
+                    "id": "admin",
                     "user": {
                         "email": "john.watson@gmail.com"
                     }
@@ -4147,7 +4147,7 @@ The ID field is required for each company.
     + Body
 
             ---BOUNDARY
-            Content-Disposition: form-data; name="source"; filename="8445314500f13.mp4"
+            Content-Disposition: form-data; name="logo"; filename="8445314500f13.mp4"
             Content-Type: video/mp4
 
             data
