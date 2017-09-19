@@ -3922,6 +3922,42 @@ Requested once
 
 
 
+## User passwords [/api/1.0/user-passwords]
+
+### Update passwords [PUT]
+
+The PASSWORD field is required for each user.
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "password": "j0H#"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "email": "john@gmail.com"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
 ## Users [/api/1.0/users]
 
 ### Create new users [POST]
