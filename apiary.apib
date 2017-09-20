@@ -3376,6 +3376,133 @@ The ID field is required for each status.
 
 
 
+## Response links [/api/1.0/response-links]
+
+### Retrieve links [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "subject": "Subject 1",
+                    "body": "Hello",
+                    "response": {
+                        "id": "1"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    },
+                    "link": "http://vcv.ai/responses/w3vexy21"
+                },
+                {
+                    "id": "2",
+                    "subject": "Subject 2",
+                    "body": "Hello 2",
+                    "response": {
+                        "id": "2"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    },
+                    "link": "http://vcv.ai/responses/w3vexy22"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new links [POST]
+
++ Request (application/json)
+
+        {
+            "links": [
+                {
+                    "subject": "Subject 1",
+                    "body": "Hello",
+                    "response": {
+                        "id": "1"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    }
+                },
+                {
+                    "subject": "Subject 2",
+                    "body": "Hello 2",
+                    "response": {
+                        "id": "2"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "subject": "Subject 1",
+                        "body": "Hello",
+                        "response": {
+                            "id": "1"
+                        },
+                        "user": {
+                            "email": "john@gmail.com"
+                        },
+                        "link": "http://vcv.ai/responses/w3vexy21"
+                    },
+                    {
+                        "id": "2",
+                        "subject": "Subject 2",
+                        "body": "Hello 2",
+                        "response": {
+                            "id": "2"
+                        },
+                        "user": {
+                            "email": "john@gmail.com"
+                        },
+                        "link": "http://vcv.ai/responses/w3vexy22"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+### Delete links [DELETE]
+
+The ID field is required for each link.
+
++ Request (application/json)
+
+        {
+            "links": [
+                {
+                    "id": "3"
+                }
+            ]
+        }
+
++ Response 204 (application/json)
+
+
+
+
 ## Response stages dictionary [/api/1.0/response-stages]
 
 ### Retrieve stages [GET]
