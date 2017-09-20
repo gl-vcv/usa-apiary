@@ -4091,6 +4091,9 @@ The PASSWORD field is required for each user.
 
 ### Create new users [POST]
 
+roles field is required, list of all available roles while creating can be get by api method.
+only one role is required and allowed
+
 + Request (application/json)
 
         {
@@ -4100,10 +4103,17 @@ The PASSWORD field is required for each user.
                     "surname": "Johnson",
                     "email": "john@gmail.com",
                     "phone": "+1-541-754-3010",
+                    "skype": "skype_login",
+                    "position": "director",
                     "company": {
                         "id": "1",
                         "name": "Coca-Cola"
-                    }
+                    },
+                    "roles": [
+                        {
+                            "id": "1"
+                        }
+                    ]
                 }
             ]
         }
@@ -4119,10 +4129,32 @@ The PASSWORD field is required for each user.
                         "surname": "Johnson",
                         "email": "john@gmail.com",
                         "phone": "+1-541-754-3010",
+                        "skype": "skype_login",
+                        "position": "director",
+                        "logo": null,
                         "company": {
                             "id": "1",
                             "name": "Coca-Cola"
-                        }
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "1",
+                                "name": "Admin",
+                                "role": "ROLE_ADMIN"
+                            }
+                        ]                        
                     }
                 ],
                 "meta": {
@@ -4132,9 +4164,73 @@ The PASSWORD field is required for each user.
                 }
             }
 
+### Delete users [DELETE]
+
+Can accept several users
+
++ Request (application/json)
+
+        {
+            "users": [
+                {
+                    "email": "john@gmail.com"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "skype_login",
+                        "position": "director",
+                        "logo": null,
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "1",
+                                "name": "Admin",
+                                "role": "ROLE_ADMIN"
+                            }
+                        ]                        
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
 ### Update users [PUT]
 
-The EMAIL field is required for each user.
+The EMAIL field is required for each user. It is used to find user.
+role is nor necessary, only one role can be set.
+When changing password new_password field is required
+
 
 + Request (application/json)
 
@@ -4142,7 +4238,14 @@ The EMAIL field is required for each user.
             "users": [
                 {
                     "email": "john@gmail.com",
-                    "password": "j0H#"
+                    "name": "Maksim",
+                    "password": "new_password",
+                    "old_password": "old_password",
+                    "roles": [
+                        {
+                            "id": "1"
+                        }
+                    ]                    
                 }
             ]
         }
@@ -4154,7 +4257,36 @@ The EMAIL field is required for each user.
             {
                 "data": [
                     {
-                        "email": "john@gmail.com"
+                        "name": "Maksim",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "skypelogin",
+                        "position": "manager",
+                        "logo": "https://s3.eu-centr.../pig.jpg",
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "1",
+                                "name": "Admin",
+                                "role": "ROLE_ADMIN"
+                            }
+                        ]                           
                     }
                 ],
                 "meta": {
@@ -4166,12 +4298,12 @@ The EMAIL field is required for each user.
 
 
 
-## User [/api/1.0/users/{accessToken}]
+## User [/api/1.0/users/{email}]
 
 ### Retrieve user [GET]
 
 + Parameters
-    + accessToken (string, `5966314500f31`) ... Access token
+    + email (string, `ma@vcv.ru`) 
 
 + Response 200 (application/json)
 
@@ -4182,10 +4314,32 @@ The EMAIL field is required for each user.
                         "surname": "Johnson",
                         "email": "john@gmail.com",
                         "phone": "+1-541-754-3010",
+                        "skype": "skypelogin",
+                        "position": "manager",
+                        "logo": "https://s3.eu-centr.../pig.jpg",
                         "company": {
                             "id": "1",
                             "name": "Coca-Cola"
-                        }
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "2",
+                                "name": "Admin",
+                                "role": "ROLE_COMPANY_ADMIN"
+                            }
+                        ]                          
                     }
                 ],
                 "meta": {
@@ -4195,7 +4349,124 @@ The EMAIL field is required for each user.
                 }
             }
 
+## Creat user roles dictionary [/api/1.0/dictionary/users-creation-roles]
 
+### Retrieve roles [GET]
+
+Retrive roles, available when creating user
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "2",
+                        "name": "Admin",
+                        "role": "ROLE_ADMIN_COMPANY"
+                    },
+                    {
+                        "id": "3",
+                        "name": "User",
+                        "role": "ROLE_USER_COMPANY"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+            
+## Update user roles dictionary [/api/1.0/dictionary/users-update-roles]
+
+### Retrieve roles [GET]
+
+Retrive roles, available when updating user
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "2",
+                        "name": "Admin",
+                        "role": "ROLE_ADMIN_COMPANY"
+                    },
+                    {
+                        "id": "3",
+                        "name": "User",
+                        "role": "ROLE_USER_COMPANY"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+## User logo [/api/1.0/users/{email}/logo]
+
++ Parameters
+    + email (string, `ma@vcv.ru`) 
+
+### Save logo [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="logo"; filename="8445314500f13.mp4"
+            Content-Type: video/mp4
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "skypelogin",
+                        "position": "manager",
+                        "logo": "https://s3.eu-centr.../pig.jpg",
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "2",
+                                "name": "Admin",
+                                "role": "ROLE_COMPANY_ADMIN"
+                            }
+                        ]                          
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+            
 
 
 ## User companies [/api/1.0/users/{accessToken}/companies]
@@ -4323,7 +4594,7 @@ The ID field is required for each company.
         {
             "data": [
                 {
-                    "source": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg"
+                    "logo": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg"
                 }
             ],
             "meta": {
@@ -4345,20 +4616,38 @@ The ID field is required for each company.
 
         {
             "data": [
-                {
-                    "name": "John",
-                    "surname": "Johnson",
-                    "email": "john@gmail.com",
-                    "phone": "+1-541-754-3010",
-                    "skype": "john_johnson"
-                },
-                {
-                    "name": "John",
-                    "surname": "Watson",
-                    "email": "john.watson@gmail.com",
-                    "phone": "+1-541-754-3011",
-                    "skype": "john_watson"
-                }
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "skype_login",
+                        "position": "director",
+                        "logo": "http://...",
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        },
+                        "city": {
+                            "id": "102",
+                            "name": "Georgia",
+                            "parent": {
+                                "id": "32",
+                                "name": "Atlanta",
+                                "parent": {
+                                    "id": "1",
+                                    "name": "USA"
+                                }
+                            }
+                        },
+                        "roles": [
+                            {
+                                "id": "1",
+                                "name": "Admin",
+                                "role": "ROLE_ADMIN"
+                            }
+                        ]                        
+                    }
             ],
             "meta": {
                 "error": null,
