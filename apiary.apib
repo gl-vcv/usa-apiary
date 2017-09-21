@@ -3819,7 +3819,27 @@ Sends only modified data. Updates only specified fields. The ID field is require
             }
         }
 
+## Invite xls file [/api/1.0/invites/report/xls]
 
+### Retrieve invite xls file url [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "url": "https://s3.eu-central-1.amazonaws.com/ ... /report_f89a347295b23d5d863fc3a972e62637.xls"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+        
+        
+        
 
 
 
