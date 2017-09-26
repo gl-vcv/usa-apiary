@@ -3461,6 +3461,73 @@ The ID field is required for each link.
 
 
 
+## Response candidate emails [/api/1.0/response-candidate-emails]
+
+### Create new emails [POST]
+
++ Request (application/json)
+
+        {
+            "emails": [
+                {
+                    "subject": "Subject 1",
+                    "body": "Hello",
+                    "response": {
+                        "id": "1"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    }
+                },
+                {
+                    "subject": "Subject 2",
+                    "body": "Hello 2",
+                    "response": {
+                        "id": "2"
+                    },
+                    "user": {
+                        "email": "john@gmail.com"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "response": {
+                            "id": "1"
+                        },
+                        "user": {
+                            "email": "john@gmail.com"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "response": {
+                            "id": "2"
+                        },
+                        "user": {
+                            "email": "john@gmail.com"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+
+
+
 ## Response stages dictionary [/api/1.0/response-stages]
 
 ### Retrieve stages [GET]
