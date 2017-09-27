@@ -4430,6 +4430,63 @@ When changing password new_password field is required
             }
 
 
+## Email activation [/api/1.0/user-emails-activation]
+
+### Create new activation [POST]
+
++ Request (application/json)
+    + Body
+
+            {
+                "users": [
+                    {
+                        "email": "my_current_email@mail.ru",
+                        "new_email": "want_this_email@mail.ru"
+                    }
+                ]
+            }
+        
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "20",
+                        "email": "want_this_email@mail.ru",
+                        "activated": false
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Confirm activation [PUT /api/1.0/user-emails-activation/{code}]
++ Parameters
+    + code (string, `1092d2c65161f2545a27a00f356504043`) 
+    
++ Request (application/json)
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "20",
+                        "email": "want_this_email@mail.ru",
+                        "activated": true
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
 ## User logo [/api/1.0/users/{email}/logo]
 
 + Parameters
