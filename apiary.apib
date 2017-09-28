@@ -3865,10 +3865,54 @@ Sends only modified data. Updates only specified fields. The ID field is require
                 "total": 0
             }
         }
-        
-        
-        
 
+
+
+
+
+## Retrieve invites from excel file [/api/1.0/invites-from-xls]
+
+### Transform invites [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="sources[]"; filename="send_interview_example.xls"
+            Content-Type: application/vnd.ms-excel
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "candidate": {
+                        "email": "john.one@gmail.com",
+                        "name": "John",
+                        "surname": "One",
+                        "phone": 79999999999
+                    }
+                },
+                {
+                    "candidate": {
+                        "email": "john.second@gmail.com",
+                        "name": "John",
+                        "surname": "Second",
+                        "phone": 79999999998
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }        
+        
+        
 
 
 ## Calls [/api/1.0/calls]
