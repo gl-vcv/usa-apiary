@@ -5271,50 +5271,24 @@ The ID field is required for each answer. If question type is "value" then BODY 
 
 
 
-## Cities [/api/1.0/cities{?sort_by,sort_order,count,page,search_term}]
+## Google autocomplete URL [/api/1.0/geo/autocomplete-url]
 
-### Retrieve cities [GET]
+### Retrieve autocomplete url [GET]
 
-+ Parameters
-    + sort_by (string, `name`) ... Sort name
-    + sort_order (string, `asc`) ... Sort direction
-    + count (integer, `100`) ... Limit
-    + page (integer, `1`) ... Current page number
-    + search_term (string, `Fil`) ... Search term
+
 
 + Response 200 (application/json)
 
         {
             "data": [
                 {
-                    "id": "102",
-                    "name": "Georgia",
-                    "parent": {
-                        "id": "32",
-                        "name": "Atlanta",
-                        "parent": {
-                            "id": "1",
-                            "name": "USA"
-                        }
-                    }
-                },
-                {
-                    "id": "232",
-                    "name": "Los Angeles",
-                    "parent": {
-                        "id": "30",
-                        "name": "California",
-                        "parent": {
-                            "id": "1",
-                            "name": "USA"
-                        }
-                    }
+                     "url": "https://maps.googleapis.com/maps/api/place/autocomplete/json?sensor=false&types=(cities)&language=EN&key=AIzaSyB6JeYKA0OTk9Ov4q72ABraZYiQ_Zv7178&input={INPUT}"
                 }
             ],
             "meta": {
                 "error": null,
                 "page": 1,
-                "total": 2
+                "total": 1
             }
         }
 
