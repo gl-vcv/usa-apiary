@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://test.vcv.me/
+HOST: https://test.vcv.ai/
 
 # USA project API 1.0
 
@@ -5118,6 +5118,148 @@ Tries to show question
                 "total": 1
             }
         }
+
+
+
+
+## Test for interview [/api/1.0/interviews/{token}/tests]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### Retrieve test [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "Who was the first president of USA?",
+                            "type": "choice",
+                            "answers": [
+                                {
+                                    "id": "1",
+                                    "body": "George Washington"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Who was the second president of USA?",
+                            "type": "value",
+                            "answers": []
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
+
+
+## End test for interview [/api/1.0/interviews/{token}/tests/end]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### End test [PUT]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "Who was the first president of USA?",
+                            "type": "choice",
+                            "answers": [
+                                {
+                                    "id": "1",
+                                    "body": "George Washington"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Who was the second president of USA?",
+                            "type": "value",
+                            "answers": [
+                                {
+                                    "id": "4",
+                                    "body": "Nobody"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+## Answer questions for test [/api/1.0/interviews/{token}/test/questions/{question_id}/answers]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Answer questions [PUT]
+The ID field is required for each answer. If question type is "value" then BODY field is required.
+
++ Request (application/json)
+
+        {
+            "answers": [
+                {
+                    "id": "1",
+                    "body": "George Washington"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "body": "George Washington"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
 
 
 
