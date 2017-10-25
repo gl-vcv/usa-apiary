@@ -2518,6 +2518,7 @@ Delete competence: id field should be specified in competence prototype
                                 "id": "1",
                                 "duration": 62,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks"
                             }
                         },
                         {
@@ -2528,6 +2529,7 @@ Delete competence: id field should be specified in competence prototype
                                 "id": "2",
                                 "duration": 15,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks"
                             }
                         }
                     ],
@@ -2671,6 +2673,7 @@ Sends only modified data. Updates only specified fields. The ID field is require
                                     "id": "1",
                                     "duration": 62,
                                     "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                    "text": "I am fine, thanks"
                                 }
                             },
                             {
@@ -2681,6 +2684,7 @@ Sends only modified data. Updates only specified fields. The ID field is require
                                     "id": "2",
                                     "duration": 15,
                                     "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                    "text": "I am fine, thanks"
                                 }
                             }
                         ],
@@ -2727,6 +2731,7 @@ Sends only modified data. Updates only specified fields. The ID field is require
                                     "id": "3",
                                     "duration": 8,
                                     "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                    "text": "I am fine, thanks"
                                 }
                             },
                             {
@@ -2825,6 +2830,7 @@ The ID field is required for each response.
                                 "id": "1",
                                 "duration": 62,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks"
                             }
                         },
                         {
@@ -2835,6 +2841,7 @@ The ID field is required for each response.
                                 "id": "2",
                                 "duration": 15,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "No, work sux"
                             }
                         }
                     ],
@@ -3286,6 +3293,7 @@ Get response videointerview questions and source
                             "id": "1",
                             "duration": 62,
                             "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            "text": "I am fine, thanks"
                           },
                           "priority": 1000
                         },
@@ -3297,6 +3305,7 @@ Get response videointerview questions and source
                             "id": "2",
                             "duration": 15,
                             "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                            "text": "I am fine, thanks"
                           },
                           "priority": 2000
                         }
@@ -4856,6 +4865,7 @@ Question is completely filled if it is unlocked (answered)
                                 "id": "1",
                                 "duration": 62,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks"
                             },
                             "is_shown": true,
                             "is_available": true,
@@ -4928,6 +4938,7 @@ Question is completely filled if it is unlocked (answered)
                                 "id": "1",
                                 "duration": 62,
                                 "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": null
                             },
                             "is_shown": true,
                             "is_available": true,
@@ -5074,6 +5085,7 @@ Tries to show question
                         "id": "1",
                         "duration": 62,
                         "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                        "text": null
                     },
                     "is_shown": true,
                     "retryable": false
@@ -5148,10 +5160,25 @@ Tries to show question
                             "name": "Question 1",
                             "body": "Who was the first president of USA?",
                             "type": "choice",
+                            "priority": 1000,
                             "answers": [
                                 {
                                     "id": "1",
-                                    "body": "George Washington"
+                                    "body": "George Washington",
+                                    "is_choosen": false,
+                                    "priority": 1000
+                                },
+                                {
+                                    "id": "2",
+                                    "body": "John Adams",
+                                    "is_choosen": true,
+                                    "priority": 2000
+                                },
+                                {
+                                    "id": "3",
+                                    "body": "Thomas Jefferson",
+                                    "is_choosen": false,
+                                    "priority": 3000
                                 }
                             ]
                         },
@@ -5201,7 +5228,21 @@ Tries to show question
                             "answers": [
                                 {
                                     "id": "1",
-                                    "body": "George Washington"
+                                    "body": "George Washington",
+                                    "is_choosen": false,
+                                    "priority": 1000
+                                },
+                                {
+                                    "id": "2",
+                                    "body": "John Adams",
+                                    "is_choosen": true,
+                                    "priority": 2000
+                                },
+                                {
+                                    "id": "3",
+                                    "body": "Thomas Jefferson",
+                                    "is_choosen": false,
+                                    "priority": 3000
                                 }
                             ]
                         },
@@ -5213,7 +5254,9 @@ Tries to show question
                             "answers": [
                                 {
                                     "id": "4",
-                                    "body": "Nobody"
+                                    "body": "Nobody",
+                                    "is_choosen": true,
+                                    "priority": 1000
                                 }
                             ]
                         }
