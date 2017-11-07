@@ -4856,6 +4856,31 @@ The ID field is required for each company.
             }
         }
 
+## Company personal managers [/api/1.0/company-personal-managers]
+
+
+### Retrieve personal managers [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "first_name": "John",
+                    "second_name": null,
+                    "last_name": "Johnson",
+                    "email": "john@gmail.com",
+                    "phone": "+1-541-754-3010"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
 
 
 
