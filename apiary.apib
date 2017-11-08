@@ -296,6 +296,86 @@ The ID field is required for each vacancy.
 
 
 
+## Copy vacancies [/api/1.0/vacancy-copies]
+
+### Copy vacancies [POST]
+
++ Request (application/json)
+
+        {
+            "vacancies": [
+                {
+                    "id": "2"
+                },
+                {
+                    "id": "4"
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "5",
+                        "name": "Finance Director",
+                        "description": "Finance Director Vacancy",
+                        "is_active": true,
+                        "is_published": true,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": true,
+                        "has_invites": true,
+                        "geo": {
+                            "id": "8",
+                            "formatted_address": "Beijing, China",
+                            "description": "Peking, Beijing, China",
+                            "place_id": "ChIJuSwU55ZS8DURiqkPryBWYrk"
+                        },                        
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "6",
+                        "name": "Finance Manager",
+                        "description": null,
+                        "is_active": true,
+                        "is_published": false,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": false,
+                        "has_invites": false,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+
+
+
+
 ## Vacancy [/api/1.0/vacancies/{vacancy_id}]
 
 + Parameters
