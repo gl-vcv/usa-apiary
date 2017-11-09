@@ -5005,30 +5005,67 @@ The ID field is required for each company.
         {
             "data": [
                 {
-                    "id": "13",
+                    "id": "1",
                     "reason": "I want to come personally",
                     "description": null,
                     "priority": 1
                 },
                 {
-                    "id": "15",
+                    "id": "2",
                     "reason": "Hardware problem",
                     "description": null,
-                    "priority": 3
+                    "priority": 2
                 },
                 {
-                    "id": "18",
+                    "id": "3",
                     "reason": "Other",
                     "description": "No, thanks",
-                    "priority": 4
+                    "priority": 3
                 }
             ],
             "meta": {
                 "error": null,
                 "page": 1,
-                "total": 6
+                "total": 3
             }
         }
+
+
+
+### Update interview refusals [PUT]
+
+The ID field is required for each refusals. Only one refusal expected. Description field is optional.
+
++ Request (application/json)
+
+        {
+            "refusals": [
+                {
+                    "id": "3",
+                    "description": "No, no, no!!!"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "3",
+                        "reason": "Other",
+                        "description": "No, no, no!!!",
+                        "priority": 3
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
 
 
 
