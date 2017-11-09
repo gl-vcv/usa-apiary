@@ -4992,6 +4992,43 @@ The ID field is required for each company.
 
 
 
+## Interview refusals [/api/1.0/interviews/{token}/refusals]
+
+### Retrieve interview refusals [GET]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "13",
+                    "reason": "I want to come personally",
+                    "priority": 1
+                },
+                {
+                    "id": "15",
+                    "reason": "Hardware problem",
+                    "priority": 3
+                },
+                {
+                    "id": "18",
+                    "reason": "Other",
+                    "priority": 6
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 6
+            }
+        }
+
+
+
+
 ## Video interview for interview [/api/1.0/interviews/{token}/video_interviews]
 
 + Parameters
