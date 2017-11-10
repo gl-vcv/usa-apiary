@@ -433,6 +433,35 @@ The ID field is required for each vacancy.
 
 
 
+
+## Public vacancies [/api/1.0/public-vacancies/{vacancy_token}]
+
+### Retrieve public vacancy [GET]
+
++ Parameters
+    + vacancy_token (string, `c5ed975f`) ... Vacancy token
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "token": "41ea619a",
+                    "name": "Product Manager",
+                    "description": null,
+                    "geo": null
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
 ## Vacancy sources dictionary [/api/1.0/vacancy-sources]
 
 ### Retrieve sources [GET]
