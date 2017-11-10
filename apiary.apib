@@ -3013,6 +3013,62 @@ The ID field is required for each response.
 
 
 
+## Create responses by public vacancy [/api/1.0/public-vacancies/{vacancy_token}/responses]
+
+### Create responses [POST]
+
++ Parameters
+    + vacancy_token (string, `c5ed975f`) ... Vacancy token
+
++ Request (application/json)
+
+        {
+            "responses": [
+                {
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john.johnson@gmail.com",
+                        "phone": "+1-541-754-3010"
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "229",
+                    "created_at": "2017-11-10T04:12:29-0800",
+                    "vacancy": {
+                        "token": "41ea619a",
+                        "name": "Product Manager"
+                    },
+                    "interview": {
+                        "token": "2990b565"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "second_name": "",
+                        "gender": null,
+                        "phone": "+1-541-754-3010",
+                        "email": "john.johnson@gmail.com"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
 ## Response comments [/api/1.0/responses/{response_id}/comments]
 
 + Parameters
