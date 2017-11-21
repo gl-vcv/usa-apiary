@@ -4915,10 +4915,7 @@ When changing password new_password field is required
             
 
 
-## User companies [/api/1.0/users/{accessToken}/companies]
-
-+ Parameters
-    + accessToken (string, `5966314500f31`) ... User access token (replaces user id)
+## User companies [/api/1.0/user-companies]
 
 ### Retrieve companies [GET]
 
@@ -5006,10 +5003,9 @@ The ID field is required for each company.
 
 
 
-## Save logo for company [/api/1.0/users/{accessToken}/companies/{id}/logo]
+## Save logo for company [/api/1.0/user-companies/{id}/logo]
 
 + Parameters
-    + accessToken (string, `5966314500f31`) ... User access token (replaces user id)
     + id (string, `1`) ... Company id
 
 ### Save logo [POST]
