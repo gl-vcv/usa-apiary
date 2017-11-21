@@ -1889,6 +1889,236 @@ The ID field is required for each question.
 + Response 204 (application/json)
 
 
+## Voicebot scenarios [/api/1.0/voicebots/{voicebot_id}/scenarios]
+
++ Parameters
+    + voicebot_id (required, string, `1`) ... Voicebot id
+
+
+### Retrieve scenarios [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "nodes": [
+                        {
+                            "id": "4297f44b",
+                            "type": "start",
+                            "text": "How are you?",
+                            "action_id": 1,
+                            "result": null
+                        },
+                        {
+                            "id": "399d7a93",
+                            "type": "question",
+                            "text": "Do you want to work?",
+                            "action_id": 2,
+                            "result": null
+                        },
+                        {
+                            "id": "235245bz",
+                            "type": "terminate",
+                            "text": "Ok, bye",
+                            "action_id": 3,
+                            "result": "refused"
+                        },
+                        {
+                            "id": "1d18e56e",
+                            "type": "terminate",
+                            "text": "Ok, bye",
+                            "action_id": 4,
+                            "result": "confirmed"
+                        },
+                    ],
+                    "edges": [
+                        {
+                            "source": "4297f44b",
+                            "target": "399d7a93",
+                            "label": null,
+                            "options": null,
+                        },
+                        {
+                            "source": "399d7a93",
+                            "target": "235245bz",
+                            "label": "no",
+                            "options": [],
+                        },
+                        {
+                            "source": "399d7a93",
+                            "target": "1d18e56e",
+                            "label": "yes",
+                            "options": ["true"],
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+### Update scenarios [PUT]
+
+
++ Request (application/json)
+
+        {
+            "scenarios": [
+                {
+                    "id": 1,
+                    "nodes": [
+                        {
+                            "id": "4297f44b",
+                            "type": "start",
+                            "text": "How are you?",
+                            "action_id": 1,
+                            "result": null
+                        },
+                        {
+                            "id": "399d7a93",
+                            "type": "question",
+                            "text": "Do you want to work?",
+                            "action_id": 2,
+                            "result": null
+                        },
+                        {
+                            "id": "235245bz",
+                            "type": "terminate",
+                            "text": "Ok, bye",
+                            "action_id": 3,
+                            "result": "refused"
+                        },
+                        {
+                            "id": "1d18e56e",
+                            "type": "terminate",
+                            "text": "Ok, bye",
+                            "action_id": 4,
+                            "result": "confirmed"
+                        },
+                        {
+                            "id": "ab1f953c",
+                            "type": "terminate",
+                            "text": "",
+                            "action_id": null,
+                            "result": "recall"
+                        }
+                    ],
+                    "edges": [
+                        {
+                            "source": "4297f44b",
+                            "target": "399d7a93",
+                            "label": null,
+                            "options": null,
+                        },
+                        {
+                            "source": "399d7a93",
+                            "target": "235245bz",
+                            "label": "no",
+                            "options": [],
+                        },
+                        {
+                            "source": "399d7a93",
+                            "target": "1d18e56e",
+                            "label": "yes",
+                            "options": ["true"],
+                        },
+                        {
+                            "source": "399d7a93",
+                            "target": "ab1f953c",
+                            "label": "call back later",
+                            "options": [],
+                        }
+                    ]
+                }
+            ],
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "nodes": [
+                            {
+                                "id": "4297f44b",
+                                "type": "start",
+                                "text": "How are you?",
+                                "action_id": 1,
+                                "result": null
+                            },
+                            {
+                                "id": "399d7a93",
+                                "type": "question",
+                                "text": "Do you want to work?",
+                                "action_id": 2,
+                                "result": null
+                            },
+                            {
+                                "id": "235245bz",
+                                "type": "terminate",
+                                "text": "Ok, bye",
+                                "action_id": 3,
+                                "result": "refused"
+                            },
+                            {
+                                "id": "1d18e56e",
+                                "type": "terminate",
+                                "text": "Ok, bye",
+                                "action_id": 4,
+                                "result": "confirmed"
+                            },
+                            {
+                                "id": "ab1f953c",
+                                "type": "terminate",
+                                "text": "",
+                                "action_id": 5,
+                                "result": "recall"
+                            }
+                        ],
+                        "edges": [
+                            {
+                                "source": "4297f44b",
+                                "target": "399d7a93",
+                                "label": null,
+                                "options": null,
+                            },
+                            {
+                                "source": "399d7a93",
+                                "target": "235245bz",
+                                "label": "no",
+                                "options": [],
+                            },
+                            {
+                                "source": "399d7a93",
+                                "target": "1d18e56e",
+                                "label": "yes",
+                                "options": ["true"],
+                            },
+                            {
+                                "source": "399d7a93",
+                                "target": "ab1f953c",
+                                "label": "call back later",
+                                "options": [],
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
 
 
 ## Voicebot audios [/api/1.0/voicebot-audios]
