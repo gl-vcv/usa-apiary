@@ -4622,6 +4622,46 @@ The TOKEN field is required for each acceess-token.
 
 
 
+## Access tokens by user [/api/1.0/user-access-tokens/{email}]
+
+For authorized admin user only
+
++ Parameters
+    + email (string, `gl@vcv.ru`)
+
+### Create new access token by user [POST]
+
++ Request (application/json)
+
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "token": "5966314500f31",
+                        "expired_at": "2017-09-22T10:12:55+0300",
+                        "user": {
+                            "name": "John",
+                            "surname": "Johnson",
+                            "email": "john@gmail.com",
+                            "gender": "male",
+                            "created_at": "2017-01-02T10:12:55+0300"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
 ## Authorization token [/api/1.0/access-tokens/authorization]
 
 ### Retrieve token [GET]
