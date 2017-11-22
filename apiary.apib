@@ -4800,6 +4800,53 @@ The PASSWORD field is required for each user.
 
 ## Users [/api/1.0/users]
 
+### Retrieve users [GET /api/1.0/users?{company_id}]
+
+For authorized admin users only
+
++ Parameters
+    + company_id (required, string, `1`) ... Company id
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "name": "John",
+                        "surname": "Johnson",
+                        "email": "john@gmail.com",
+                        "phone": "+1-541-754-3010",
+                        "skype": "skype_login",
+                        "position": "director",
+                        "logo": null,
+                        "company": {
+                            "id": "1",
+                            "name": "Coca-Cola"
+                        },
+                        "geo": {
+                            "id": "3",
+                            "formatted_address": "Buenos Aires, Nay., Mexico",
+                            "description": "Buenos Aires, Mexico",
+                            "place_id": "ChIJfaHK0Y5MJ4QR7DLfNrzqGrI"
+                        },
+                        "roles": [
+                            {
+                                "id": "1",
+                                "name": "Admin",
+                                "role": "ROLE_ADMIN"
+                            }
+                        ]                        
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
 ### Create new users [POST]
 
 roles field is required, list of all available roles while creating can be get by api method.
