@@ -920,6 +920,174 @@ Not implemented
             }
 
 
+## Vacancy searchbot [/api/1.0/vacancies/{vacancy_id}/searchbot-tasks]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve vacancy searchbot tasks [GET]
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (object)
+            + id: 2 (number) - Searchbot task id
+            + time_start: 3600 (number, nullable) - Searchbot start time, seconds elapsed from 00:00
+            + time_end: 7200 (number, nullable) - Searchbot end time, seconds elapsed from 00:00
+            + time_offset: 0 (number, nullable) - Timezone offset, seconds
+            + hourly_limit: 10 (number, nullable) - Hourly resume search limit
+            + daily_limit: 100 (number, nullable) - Daily resume search limit
+            + vacancy (object)
+                + id: 7 (number)
+                + name: `test` (string)
+            + vacancy_link: `https://www.superjob.ru/vakansii/senior-php-developer-30495259.html` (string, nullable) - Superjob/headhunter vacancy link
+            + vacancy_source (object) - Vacancy source [see](#/api/1.0/vacancy-sources)
+                + id: 5 (number)
+                + name: `SuperJob` (string)
+            + service_login: `test`  (string, nullable) - Superjob/headhunter login
+            + service_app_id: `715`  (string, nullable) - Superjob application id
+            + service_secret_key: `hash` (string, nullable) - Superjob application secret key
+            + is_response_collection: true (boolean) - Is responce collection enabled
+            + is_resume_search: true (boolean) - Is resume search enabled
+            + created_at: `2017-11-28T02:14:12-0800` (string) - Task creation datetime
+        + meta (object)
+            + error: null (string, nullable)
+            + page: 1 (number, nullable)
+            + total: 3 (number, nullable)
+            
+### Create searchbot tasks [POST]
+
++ Request (application/json)
+
+        {
+            "tasks": [
+                {
+                    "id": 2,
+                    "time_start": null,
+                    "time_end": null,
+                    "time_offset": null,
+                    "hourly_limit": 25,
+                    "daily_limit": null,
+                    "vacancy_link": "https://www.superjob.ru/vakansii/senior-php-developer-30495259.html",
+                    "vacancy_source": {
+                        "id": 5
+                    },
+                    "service_login": "123",
+                    "service_password": "123",
+                    "service_app_id": "321",
+                    "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
+                    "is_resume_search": false,
+                    "created_at": "2017-11-28T02:14:12-0800"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 4,
+                        "time_start": null,
+                        "time_end": null,
+                        "time_offset": null,
+                        "hourly_limit": 25,
+                        "daily_limit": null,
+                        "vacancy": {
+                            "id": 7,
+                            "name": "test"
+                        },
+                        "vacancy_link": "https://www.superjob.ru/vakansii/senior-php-developer-30495259.html",
+                        "vacancy_source": {
+                            "id": 5,
+                            "name": "SuperJob"
+                        },
+                        "service_login": "123",
+                        "service_app_id": "321",
+                        "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
+                        "is_response_collection": true,
+                        "is_resume_search": true,
+                        "created_at": "2017-11-28T07:55:41-0800"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update searchbot tasks [PUT]
+
+The ID field is required for each task.
+
++ Request (application/json)
+
+        {
+            "tasks": [
+                {
+                    "id": 2,
+                    "time_start": null,
+                    "time_end": null,
+                    "time_offset": null,
+                    "hourly_limit": 25,
+                    "daily_limit": null,
+                    "vacancy_link": "https://www.superjob.ru/vakansii/senior-php-developer-30495259.html",
+                    "vacancy_source": {
+                        "id": 5
+                    },
+                    "service_login": "123",
+                    "service_password": "service password here",
+                    "service_app_id": "321",
+                    "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
+                    "is_response_collection": true,
+                    "is_resume_search": true,
+                    "created_at": "2017-11-28T02:14:12-0800"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 2,
+                        "time_start": null,
+                        "time_end": null,
+                        "time_offset": null,
+                        "hourly_limit": 25,
+                        "daily_limit": null,
+                        "vacancy": {
+                            "id": 7,
+                            "name": "test"
+                        },
+                        "vacancy_link": "https://www.superjob.ru/vakansii/senior-php-developer-30495259.html",
+                        "vacancy_source": {
+                            "id": 5,
+                            "name": "SuperJob"
+                        },
+                        "service_login": "123",
+                        "service_app_id": "321",
+                        "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
+                        "is_response_collection": true,
+                        "is_resume_search": false,
+                        "created_at": "2017-11-28T02:14:12-0800"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
 ## Tests [/api/1.0/tests{?vacancy_id}]
 
 ### Retrieve tests [GET]
