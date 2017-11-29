@@ -930,26 +930,27 @@ Not implemented
 + Response 200 (application/json)
 
     + Attributes
-        + data (object)
-            + id: 2 (number) - Searchbot task id
-            + time_start: 3600 (number, nullable) - Searchbot start time, seconds elapsed from 00:00
-            + time_end: 7200 (number, nullable) - Searchbot end time, seconds elapsed from 00:00
-            + time_offset: 0 (number, nullable) - Timezone offset, seconds
-            + hourly_limit: 10 (number, nullable) - Hourly resume search limit
-            + daily_limit: 100 (number, nullable) - Daily resume search limit
-            + vacancy (object)
-                + id: 7 (number)
-                + name: `test` (string)
-            + vacancy_link: `https://www.superjob.ru/vakansii/senior-php-developer-30495259.html` (string, nullable) - Superjob/headhunter vacancy link
-            + vacancy_source (object) - Vacancy source [see](#/api/1.0/vacancy-sources)
-                + id: 5 (number)
-                + name: `SuperJob` (string)
-            + service_login: `test`  (string, nullable) - Superjob/headhunter login
-            + service_app_id: `715`  (string, nullable) - Superjob application id
-            + service_secret_key: `hash` (string, nullable) - Superjob application secret key
-            + is_response_collection: true (boolean) - Is responce collection enabled
-            + is_resume_search: true (boolean) - Is resume search enabled
-            + created_at: `2017-11-28T02:14:12-0800` (string) - Task creation datetime
+        + data (array)
+            + (object)
+                + id: 2 (number) - Searchbot task id
+                + time_start: 3600 (number, nullable) - Searchbot start time, seconds elapsed from 00:00
+                + time_end: 7200 (number, nullable) - Searchbot end time, seconds elapsed from 00:00
+                + time_offset: 0 (number, nullable) - Timezone offset, seconds
+                + hourly_limit: 10 (number, nullable) - Hourly resume search limit
+                + daily_limit: 100 (number, nullable) - Daily resume search limit
+                + vacancy (object)
+                    + id: 7 (number)
+                    + name: `test` (string)
+                + vacancy_link: `https://www.superjob.ru/vakansii/senior-php-developer-30495259.html` (string, nullable) - Superjob/headhunter vacancy link
+                + vacancy_source (object) - Vacancy source
+                    + id: 5 (number)
+                    + name: `SuperJob` (string)
+                + service_login: `test`  (string, nullable) - Superjob/headhunter login
+                + service_app_id: `715`  (string, nullable) - Superjob application id
+                + service_secret_key: `hash` (string, nullable) - Superjob application secret key
+                + is_response_collection: true (boolean) - Is responce collection enabled
+                + is_resume_search: true (boolean) - Is resume search enabled
+                + created_at: `2017-11-28T02:14:12-0800` (string) - Task creation datetime
         + meta (object)
             + error: null (string, nullable)
             + page: 1 (number, nullable)
@@ -1087,6 +1088,679 @@ The ID field is required for each task.
             }
 
 
+## Searchbot superjob filters [/api/1.0/searchbot-tasks/{task_id}/superjob-filters]
+
++ Parameters
+    + task_id (required, string, `1`) ... Searchbot task id
+
+### Retrieve searchbot superjob filters [GET]
+
++ Response 200 (application/json)
+
+    + Attributes
+        + data (array)
+            + (object)
+                + id: 1 (number) - Filter id
+                + keyword: `PHP` (string, nullable) - Search keyword
+                + age_min: 22 (number, nullable) - Min age filter
+                + age_max: 30 (number, nullable) - Max age filter
+                + payment_from: 30000 (number, nullable) - Min salary filter
+                + payment_to: 200000 (number, nullable) - Max salary filter
+                + experience_month_from: 6 (number, nullable) - Min experience filter
+                + experience_month_to: 120 (number, nullable) - Max experience filter
+                + gender: 2 (number, nullable) - gender filter (see superjob filter references)
+                + type_of_work: 6 (number, nullable) - Type of work filter (see superjob filter references)
+                + place_of_work: 1 (number, nullable) - Place of work filter (see superjob filter references)
+                + period: 60 (number, nullable) - Resume publication days filter (see superjob filter references)
+                + moveable: 1 (number, nullable) - Moveable filter (see superjob filter references)
+                + language: 1 (number, nullable) - Language filter (see superjob filter references)
+                + language_levels (array, nullable) - Language level filter (see superjob filter lang level reference)
+                    + 5 - (number)
+                + business_trip: 1 (number, nullable) - Business trip filter (see superjob filter references)
+                + maritalstatus: 1 (number, nullable) - Marital status filter (see superjob filter references)
+                + catalogues (array, nullable) - Catalogues filter (see superjob filter catalogues)
+                    + 33 (number)
+                + citizenship (array, nullable) - Citizenship filter (see superjob filter references)
+                    + 1 (number)
+                    + 23 (number)
+                + city: `Казань` (string, nullable) - City filter 
+                + education: 2 (number, nullable) - Education filter (see superjob filter references)
+        + meta (object)
+            + error: null (string, nullable)
+            + page: 1 (number, nullable)
+            + total: 3 (number, nullable)
+            
+### Create searchbot superjob filter [POST]
+
++ Request (application/json)
+All filter fields are optional
+
+    + Attributes
+        + filters (array)
+            + (object)
+                + keyword: `PHP` (optional, nullable, string) - Search keyword
+                + age_min: 22 (number, nullable, optional) - Min age filter
+                + age_max: 30 (number, nullable, optional) - Max age filter
+                + payment_from: 30000 (number, nullable, optional) - Min salary filter
+                + payment_to: 200000 (number, nullable, optional) - Max salary filter
+                + experience_month_from: 6 (number, nullable, optional) - Min experience filter
+                + experience_month_to: 120 (number, nullable, optional) - Max experience filter
+                + gender: 2 (number, nullable, optional) - gender filter (see superjob filter references)
+                + type_of_work: 6 (number, nullable, optional) - Type of work filter (see superjob filter references)
+                + place_of_work: 1 (number, nullable, optional) - Place of work filter (see superjob filter references)
+                + period: 60 (number, nullable, optional) - Resume publication days filter (see superjob filter references)
+                + moveable: 1 (number, nullable, optional) - Moveable filter (see superjob filter references)
+                + language: 1 (number, nullable, optional) - Language filter (see superjob filter references)
+                + language_levels (array, nullable, optional) - Language level filter (see superjob filter lang level reference)
+                    + 5 - (number)
+                + business_trip: 1 (number, nullable, optional) - Business trip filter (see superjob filter references)
+                + maritalstatus: 1 (number, nullable, optional) - Marital status filter (see superjob filter references)
+                + catalogues (array, nullable, optional) - Catalogues filter (see superjob filter catalogues)
+                    + 33 (number)
+                + citizenship (array, nullable, optional) - Citizenship filter (see superjob filter references)
+                    + 1 (number)
+                    + 23 (number)
+                + city: `Казань` (string, nullable, optional) - City filter 
+                + education: 2 (number, nullable, optional) - Education filter (see superjob filter references)
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 8,
+                        "keyword": "PHP",
+                        "age_min": 22,
+                        "age_max": 30,
+                        "payment_from": 30000,
+                        "payment_to": 200000,
+                        "experience_month_from": 6,
+                        "experience_month_to": 6,
+                        "gender": 2,
+                        "type_of_work": 6,
+                        "place_of_work": 1,
+                        "period": 60,
+                        "moveable": 1,
+                        "language": 1,
+                        "language_levels": [
+                            5
+                        ],
+                        "business_trip": 1,
+                        "maritalstatus": 1,
+                        "catalogues": [
+                            33
+                        ],
+                        "citizenship": [
+                            1,
+                            23
+                        ],
+                        "city": "Казань",
+                        "education": 2
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+### Update searchbot superjob filter [PUT]
+
+Only ID field is required for each filter. Skip field if value hasn't changed
+
++ Request (application/json)
+
+        {
+            "filters": [
+                {
+                    "id": 8,
+                    "keyword": "Backend php",
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": 8,
+                        "keyword": "Backend php",
+                        "age_min": 22,
+                        "age_max": 30,
+                        "payment_from": 30000,
+                        "payment_to": 200000,
+                        "experience_month_from": 6,
+                        "experience_month_to": 6,
+                        "gender": 2,
+                        "type_of_work": 6,
+                        "place_of_work": 1,
+                        "period": 60,
+                        "moveable": 1,
+                        "language": 1,
+                        "language_levels": [
+                            5
+                        ],
+                        "business_trip": 1,
+                        "maritalstatus": 1,
+                        "catalogues": [
+                            33
+                        ],
+                        "citizenship": [
+                            1,
+                            23
+                        ],
+                        "city": "Казань",
+                        "education": 2
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+## Searchbot superjob filter references [/api/1.0/searchbot-tasks/{task_id}/superjob-filters/references]
+
+### Retrieve searchbot superjob filter references [GET]
+
++ Parameters
+    + task_id (required, string, `1`) ... Searchbot task id
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "code": "gender",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "Не имеет значения"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Мужской"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Женский"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "type_of_work",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "не имеет значения"
+                            },
+                            {
+                                "id": 6,
+                                "title": "полный рабочий день"
+                            },
+                            {
+                                "id": 10,
+                                "title": "неполный рабочий день"
+                            },
+                            {
+                                "id": 12,
+                                "title": "сменный график работы"
+                            },
+                            {
+                                "id": 13,
+                                "title": "частичная занятость"
+                            },
+                            {
+                                "id": 7,
+                                "title": "временная работа / freelance"
+                            },
+                            {
+                                "id": 9,
+                                "title": "работа вахтовым методом"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "place_of_work",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "не имеет значения"
+                            },
+                            {
+                                "id": 1,
+                                "title": "на территории работодателя"
+                            },
+                            {
+                                "id": 2,
+                                "title": "на дому"
+                            },
+                            {
+                                "id": 3,
+                                "title": "разъездного характера"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "period",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "все время"
+                            },
+                            {
+                                "id": 1,
+                                "title": "24 часа"
+                            },
+                            {
+                                "id": 3,
+                                "title": "3 дня"
+                            },
+                            {
+                                "id": 7,
+                                "title": "неделю"
+                            },
+                            {
+                                "id": 14,
+                                "title": "2 недели"
+                            },
+                            {
+                                "id": 30,
+                                "title": "1 месяц"
+                            },
+                            {
+                                "id": 60,
+                                "title": "2 месяца"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "moveable",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "не готов"
+                            },
+                            {
+                                "id": 1,
+                                "title": "готов"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "language",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "Не имеет значения"
+                            },
+                            {
+                                "id": 1,
+                                "title": "Английский"
+                            },
+                            {
+                                "id": 62,
+                                "title": "Аварский"
+                            },
+                            {
+                                "id": 50,
+                                "title": "Азербайджанский"
+                            },
+                            {
+                                "id": 58,
+                                "title": "Албанский"
+                            },
+                            {
+                                "id": 82,
+                                "title": "Амхарский"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Арабский"
+                            },
+                            {
+                                "id": 7,
+                                "title": "Армянский"
+                            },
+                            {
+                                "id": 83,
+                                "title": "Африкаанс"
+                            },
+                        ]
+                    },
+                    {
+                        "code": "lang_level",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "Не имеет значения"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Базовый"
+                            },
+                            {
+                                "id": 5,
+                                "title": "Технический"
+                            },
+                            {
+                                "id": 7,
+                                "title": "Разговорный"
+                            },
+                            {
+                                "id": 9,
+                                "title": "Свободно владею"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "business_trip",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "не имеет значения"
+                            },
+                            {
+                                "id": 1,
+                                "title": "не готов"
+                            },
+                            {
+                                "id": 2,
+                                "title": "готов"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "maritalstatus",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "не имеет значения"
+                            },
+                            {
+                                "id": 2,
+                                "title": "cостоит в браке"
+                            },
+                            {
+                                "id": 3,
+                                "title": "не состоит в браке"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "citizenship",
+                        "values": [
+                            {
+                                "id": 1,
+                                "title": "Россия"
+                            },
+                            {
+                                "id": 23,
+                                "title": "Абхазия"
+                            },
+                            {
+                                "id": 14,
+                                "title": "Азербайджан"
+                            },
+                            {
+                                "id": 13,
+                                "title": "Армения"
+                            },
+                            {
+                                "id": 10,
+                                "title": "Беларусь"
+                            },
+                            {
+                                "id": 12,
+                                "title": "Грузия"
+                            },
+                            {
+                                "id": 15,
+                                "title": "Казахстан"
+                            },
+                            {
+                                "id": 18,
+                                "title": "Кыргызстан"
+                            },
+                            {
+                                "id": 20,
+                                "title": "Латвия"
+                            },
+                            {
+                                "id": 21,
+                                "title": "Литва"
+                            },
+                            {
+                                "id": 11,
+                                "title": "Молдова"
+                            },
+                            {
+                                "id": 17,
+                                "title": "Таджикистан"
+                            },
+                            {
+                                "id": 19,
+                                "title": "Туркменистан"
+                            },
+                            {
+                                "id": 16,
+                                "title": "Узбекистан"
+                            },
+                            {
+                                "id": 9,
+                                "title": "Украина"
+                            },
+                            {
+                                "id": 22,
+                                "title": "Эстония"
+                            },
+                            {
+                                "id": 24,
+                                "title": "Южная Осетия"
+                            },
+                            {
+                                "id": 1000,
+                                "title": "Дальнее зарубежье"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "education",
+                        "values": [
+                            {
+                                "id": 0,
+                                "title": "Не имеет значения"
+                            },
+                            {
+                                "id": 2,
+                                "title": "Высшее"
+                            },
+                            {
+                                "id": 3,
+                                "title": "Неполное высшее"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Среднее специальное"
+                            },
+                            {
+                                "id": 5,
+                                "title": "Среднее"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Учащийся школы"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 11
+                }
+            }
+
+
+## Searchbot superjob filter catalogues [/api/1.0/searchbot-tasks/{task_id}/superjob-filters/catalogues]
+
+### Retrieve searchbot superjob filter catalogues [GET]
++ Parameters
+    + task_id (required, string, `1`) ... Searchbot task id
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "title": "Административная работа, секретариат, АХО",
+                        "catalogues": [
+                            {
+                                "id": 3,
+                                "title": "Архивное дело"
+                            },
+                            {
+                                "id": 2,
+                                "title": "АХО"
+                            },
+                            {
+                                "id": 4,
+                                "title": "Делопроизводство, ввод данных, систематизация"
+                            },
+                            {
+                                "id": 5,
+                                "title": "Диспетчерская служба"
+                            },
+                            {
+                                "id": 6,
+                                "title": "Курьерская служба"
+                            },
+                            {
+                                "id": 7,
+                                "title": "Переводы"
+                            },
+                            {
+                                "id": 8,
+                                "title": "Секретариат, ресепшн, офис-менеджмент"
+                            },
+                            {
+                                "id": 9,
+                                "title": "Другое"
+                            },
+                            {
+                                "id": 10,
+                                "title": "Начало карьеры, мало опыта"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 62,
+                        "title": "Дизайн",
+                        "catalogues": [
+                            {
+                                "id": 63,
+                                "title": "Архитектура"
+                            },
+                            {
+                                "id": 64,
+                                "title": "Аудио, видео"
+                            },
+                            {
+                                "id": 65,
+                                "title": "Верстка, дизайн"
+                            },
+                            {
+                                "id": 66,
+                                "title": "Графическое искусство, иллюстрации"
+                            },
+                            {
+                                "id": 67,
+                                "title": "Дизайн интерьера"
+                            },
+                            {
+                                "id": 68,
+                                "title": "Компьютерная анимация и мультимедиа"
+                            },
+                            {
+                                "id": 69,
+                                "title": "Ландшафтный дизайн"
+                            },
+                            {
+                                "id": 70,
+                                "title": "Мода и Аксессуары"
+                            },
+                            {
+                                "id": 71,
+                                "title": "Промышленный дизайн"
+                            },
+                            {
+                                "id": 72,
+                                "title": "Рекламный дизайн"
+                            },
+                            {
+                                "id": 73,
+                                "title": "Фотография"
+                            },
+                            {
+                                "id": 74,
+                                "title": "Другое"
+                            },
+                            {
+                                "id": 75,
+                                "title": "Начало карьеры, мало опыта"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 471,
+                        "title": "Домашний персонал",
+                        "catalogues": [
+                            {
+                                "id": 472,
+                                "title": "Ведение хозяйства"
+                            },
+                            {
+                                "id": 473,
+                                "title": "Домашний уход за больными, престарелыми, инвалидами"
+                            },
+                            {
+                                "id": 474,
+                                "title": "Домашний уход за детьми"
+                            },
+                            {
+                                "id": 475,
+                                "title": "Уборка и помощь по дому"
+                            },
+                            {
+                                "id": 476,
+                                "title": "Другое"
+                            },
+                            {
+                                "id": 477,
+                                "title": "Начало карьеры, мало опыта"
+                            }
+                        ]
+                    },
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 30
+                }
+            }
 
 ## Tests [/api/1.0/tests{?vacancy_id}]
 
