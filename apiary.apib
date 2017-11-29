@@ -977,8 +977,7 @@ Not implemented
                     "service_password": "123",
                     "service_app_id": "321",
                     "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
-                    "is_resume_search": false,
-                    "created_at": "2017-11-28T02:14:12-0800"
+                    "is_resume_search": false
                 }
             ]
         }
@@ -1044,8 +1043,7 @@ The ID field is required for each task.
                     "service_app_id": "321",
                     "service_secret_key": "8fb67bf00b6867713b4ab31d3b2d0e7f82e944a",
                     "is_response_collection": true,
-                    "is_resume_search": true,
-                    "created_at": "2017-11-28T02:14:12-0800"
+                    "is_resume_search": true
                 }
             ]
         }
@@ -1115,7 +1113,7 @@ The ID field is required for each task.
                 + moveable: 1 (number, nullable) - Moveable filter (see superjob filter references)
                 + language: 1 (number, nullable) - Language filter (see superjob filter references)
                 + language_levels (array, nullable) - Language level filter (see superjob filter lang level reference)
-                    + 5 - (number)
+                    + 5 (number)
                 + business_trip: 1 (number, nullable) - Business trip filter (see superjob filter references)
                 + maritalstatus: 1 (number, nullable) - Marital status filter (see superjob filter references)
                 + catalogues (array, nullable) - Catalogues filter (see superjob filter catalogues)
@@ -1132,8 +1130,9 @@ The ID field is required for each task.
             
 ### Create searchbot superjob filter [POST]
 
-+ Request (application/json)
 All filter fields are optional
+
++ Request (application/json)
 
     + Attributes
         + filters (array)
@@ -1152,7 +1151,7 @@ All filter fields are optional
                 + moveable: 1 (number, nullable, optional) - Moveable filter (see superjob filter references)
                 + language: 1 (number, nullable, optional) - Language filter (see superjob filter references)
                 + language_levels (array, nullable, optional) - Language level filter (see superjob filter lang level reference)
-                    + 5 - (number)
+                    + 5 (number)
                 + business_trip: 1 (number, nullable, optional) - Business trip filter (see superjob filter references)
                 + maritalstatus: 1 (number, nullable, optional) - Marital status filter (see superjob filter references)
                 + catalogues (array, nullable, optional) - Catalogues filter (see superjob filter catalogues)
