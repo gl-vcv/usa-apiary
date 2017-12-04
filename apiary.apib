@@ -6991,9 +6991,7 @@ The ID field is required for each answer. If question type is "value" then BODY 
 
 
 
-## Analytics: response status count [/api/1.0/analytics/response-status-count{vacancy_id,created_after,created_before,user_email}]
-
-https://storage.www.wrike.com/attachments/49349880/2017-12-01_11-42-34.png?accountId=1741102
+## Analytics [/api/1.0/analytics{?vacancy_id,created_after,created_before,user_email}]
 
 + Parameters
     + vacancy_id (required, string, `1`) ... Vacancy id
@@ -7001,7 +6999,9 @@ https://storage.www.wrike.com/attachments/49349880/2017-12-01_11-42-34.png?accou
     + created_before (required, string, `2017-12-29`) ... Date to
     + user_email (required, string, `john@gmail.com`) ... User email
 
-### Retrieve analytics [GET]
+### Response status count [GET /api/1.0/analytics/response-status-count{?vacancy_id,created_after,created_before,user_email}]
+
+https://storage.www.wrike.com/attachments/49349880/2017-12-01_11-42-34.png?accountId=1741102
 
 + Response 200 (application/json)
 
