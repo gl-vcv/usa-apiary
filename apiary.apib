@@ -7001,7 +7001,7 @@ The ID field is required for each answer. If question type is "value" then BODY 
 
 ### Response status count [GET /api/1.0/analytics/response-status-count{?vacancy_id,created_after,created_before,user_email}]
 
-https://storage.www.wrike.com/attachments/49349880/2017-12-01_11-42-34.png?accountId=1741102
+https://storage.www.wrike.com/filemeta/oriented/F49349880.A1741102
 
 + Response 200 (application/json)
 
@@ -7041,6 +7041,29 @@ https://storage.www.wrike.com/attachments/49349880/2017-12-01_11-42-34.png?accou
                     "priority": 2000,
                     "count": 0,
                     "percent": 0
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 5,
+                "active_process": null
+            }
+        }
+
+
+
+
+### Response count [GET /api/1.0/analytics/response-count{?vacancy_id,created_after,created_before,user_email}]
+
+https://storage.www.wrike.com/filemeta/oriented/F49456634.A1741102
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "count": 234
                 }
             ],
             "meta": {
