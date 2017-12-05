@@ -7069,7 +7069,93 @@ https://storage.www.wrike.com/filemeta/oriented/F49456634.A1741102
             "meta": {
                 "error": null,
                 "page": 1,
-                "total": 5,
+                "total": 1,
+                "active_process": null
+            }
+        }
+
+
+
+
+### Invite status count [GET /api/1.0/analytics/invite-status-count{?vacancy_id,created_after,created_before,user_email}]
+
+https://storage.www.wrike.com/filemeta/oriented/F49471094.A1741102
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "name": "Sent",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Visited",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Call",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Refused after call",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Agreed after call",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Call error",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Response",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Refused",
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Viewed",
+                    "count": 0,
+                    "percent": 0
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 9,
+                "active_process": null
+            }
+        }
+
+
+
+
+### Invite count [GET /api/1.0/analytics/invite-count{?vacancy_id,created_after,created_before,user_email}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "count": 234
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1,
                 "active_process": null
             }
         }
