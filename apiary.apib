@@ -3310,7 +3310,7 @@ The ID field is required for each question.
             ]
         }
 
-+ Response 204 (application/json)
++ Response 200 (application/json)
 
 ## Vacancy competences [/api/1.0/vacancy/{vacancy_id}/competences]
 
@@ -6676,6 +6676,12 @@ Tries to show question
 
             data
             ---BOUNDARY--
+            
+            --BOUNDARY
+            Content-Disposition: form-data; name="text"
+        
+            This is some text answer
+            ---BOUNDARY--
         
 + Response 201 (application/json)
 
@@ -6693,6 +6699,10 @@ Tries to show question
                         "duration": 62,
                         "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
                         "text": null
+                    },
+                    "text": {
+                        "id": 12,
+                        "text": "This is some text answer"
                     },
                     "is_shown": true,
                     "retryable": false
