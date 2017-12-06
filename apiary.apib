@@ -7060,6 +7060,61 @@ https://storage.www.wrike.com/filemeta/oriented/F49349880.A1741102
 
 
 
+### Response status count [GET /api/1.0/analytics/response-status-funnel{?vacancy_id,created_after,created_before,user_email}]
+
+https://storage.www.wrike.com/filemeta/oriented/F49450376.A1741102
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "name": "New",
+                    "color": null,
+                    "priority": 10,
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Awaiting decision",
+                    "color": null,
+                    "priority": 20,
+                    "count": 50,
+                    "percent": 62.5
+                },
+                {
+                    "name": "Refused",
+                    "color": null,
+                    "priority": 40,
+                    "count": 0,
+                    "percent": 0
+                },
+                {
+                    "name": "Accepted",
+                    "color": null,
+                    "priority": 30,
+                    "count": 28,
+                    "percent": 35
+                },
+                {
+                    "name": "Special",
+                    "color": "FF00FF ",
+                    "priority": 2000,
+                    "count": 0,
+                    "percent": 0
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 5,
+                "active_process": null
+            }
+        }
+
+
+
+
 ### Response star count [GET /api/1.0/analytics/response-star-count{?vacancy_id,created_after,created_before,user_email}]
 
 https://storage.www.wrike.com/filemeta/oriented/F49623963.A1741102
