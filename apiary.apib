@@ -7293,6 +7293,84 @@ https://storage.www.wrike.com/filemeta/oriented/F49471094.A1741102
 
 
 
+### Invite status count table [GET /api/1.0/analytics/invite-status-count-table{?vacancy_id,created_after,created_before,user_email,period}]
+
+https://storage.www.wrike.com/filemeta/oriented/F49624024.A1741102
+
++ Parameters
+    + period (required, string, `month`) ... Period: hour, day, month, year
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "columns": [
+                        {
+                            "title": "Created",
+                            "name": "created_at"
+                        },
+                        {
+                            "title": "Sent",
+                            "name": "1"
+                        },
+                        {
+                            "title": "Visited",
+                            "name": "2"
+                        },
+                        {
+                            "title": "Response",
+                            "name": "7"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "cells": [
+                                {
+                                    "value": "2017-12-06 00:00:00"
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 2
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "2017-12-07 00:00:00"
+                                },
+                                {
+                                    "value": 1
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "count": 3
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+
+
+
+
 ### Invite count [GET /api/1.0/analytics/invite-count{?vacancy_id,created_after,created_before,user_email}]
 
 + Response 200 (application/json)
