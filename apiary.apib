@@ -7293,12 +7293,14 @@ https://storage.www.wrike.com/filemeta/oriented/F49471094.A1741102
 
 
 
-### Invite status count table [GET /api/1.0/analytics/invite-status-count-table{?vacancy_id,created_after,created_before,user_email,period}]
+### Invite status count table [GET /api/1.0/analytics/invite-status-count-table{?vacancy_id,created_after,created_before,user_email,period,page,count}]
 
 https://storage.www.wrike.com/filemeta/oriented/F49624024.A1741102
 
 + Parameters
     + period (required, string, `month`) ... Period: hour, day, month, year
+    + page (integer, `1`) ... Page number
+    + count (integer, `10000`) ... Items per page
 
 + Response 200 (application/json)
 
