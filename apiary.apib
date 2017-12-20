@@ -4148,6 +4148,60 @@ The ID field is required for each response.
 
 
 
+## Public vacancy: response resume [/api/1.0/public-vacancies/{vacancy_token}/responses/{response_token}/resume]
+
++ Parameters
+    + vacancy_token (string, `c5ed975f`) ... Vacancy token
+    + response_token (string, `a3c0783b`) ... Response token
+
+### Save resume [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="resume"; filename="resume.docx"
+            Content-Type: application/msword
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+            {
+                "data": [
+                    {
+                        "token": "a3c0783b",
+                        "resume_url": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/127.0.0.1/responses/1700/resumes/resume.docx",
+                        "created_at": "2017-11-10T04:12:29-0800",
+                        "vacancy": {
+                            "token": "41ea619a",
+                            "name": "Product Manager"
+                        },
+                        "interview": {
+                            "token": "2990b565"
+                        },
+                        "candidate": {
+                            "name": "John",
+                            "surname": "Johnson",
+                            "second_name": "",
+                            "gender": null,
+                            "phone": "+1-541-754-3010",
+                            "email": "john.johnson@gmail.com"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
+
 ## Response comments [/api/1.0/responses/{response_id}/comments]
 
 + Parameters
