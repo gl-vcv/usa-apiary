@@ -3640,7 +3640,7 @@ Delete competence: id field should be specified in competence prototype
                 }
             }
 
-## Responses [/api/1.0/responses{?vacancy_id,status_id,stage_id,sort_by,sort_order,count,page,search_term}]
+## Responses [/api/1.0/responses{?vacancy_id,vacancy_active,status_id,stage_id,sort_by,sort_order,count,page,search_term}]
 
 ### Retrieve responses [GET]
 
@@ -3653,6 +3653,7 @@ Delete competence: id field should be specified in competence prototype
     + count (integer, `100`) ... Limit
     + page (integer, `1`) ... Current page number
     + search_term (string, `Fin`) ... Search term
+    + vacancy_active (integer, `1`) ... Vacancy active flag 
 
 + Response 200 (application/json)
 
