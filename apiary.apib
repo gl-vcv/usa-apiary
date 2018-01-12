@@ -6703,7 +6703,40 @@ Tries to show question
             }
         }
         
-        
+## Skip question for video interview [/api/1.0/interviews/{token}/video_interview/questions/{question_id}/skip]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Skip question [PUT]
+Skip question. Available only for an optional questions (is_required: false)
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "How are you?",
+                    "is_required": false,
+                    "answer_time": 120,
+                    "preparation_time": 10,
+                    "video": null,
+                    "is_shown": true,
+                    "is_available": true,
+                    "retryable": false,
+                    "is_video_answer_enabled": true,
+                    "is_text_answer_enabled": false                    
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
 
 
 ## Start video for video interview [/api/1.0/interviews/{token}/video_interview/questions/{question_id}/start-video]
