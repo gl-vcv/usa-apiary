@@ -931,6 +931,66 @@ Not implemented
             }
 
 
+## Vacancy Sms remind template [/api/1.0/vacancies/{vacancy_id}/sms-remind-templates]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve vacancy sms template [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "template": "hello {{name}}",
+                    "created_at": "2017-08-25T08:42:02-0700",
+                    "enabled": true
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Update vacancy sms remind templates [PUT]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template":"Updated template content",
+                    "enabled": false,
+                    "id": 12
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "12",
+                        "template": "Updated template content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "enabled": false
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
 ## Vacancy searchbot [/api/1.0/vacancies/{vacancy_id}/searchbot-tasks]
 
 + Parameters
