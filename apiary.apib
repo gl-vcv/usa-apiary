@@ -4741,6 +4741,97 @@ Result response equal to "Retreive competence" method. Ccontains all competence 
                 }
             }
 
+
+
+## Public response competence [/api/1.0/public-responses/{response_token}/competences]
+
++ Parameters
+    + response_token (required, string, `e4beb9e11cc7b678760a93e8321ecf10`) ... Response token
+
+### Retrieve competences [GET]
+
+Get list of competences related to response. Method is public
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "data": [
+                    {
+                        "competences" : [
+                            {
+                                "id" : "122",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Motivation",
+                                "value" : null,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "name" : "Speach",
+                                "value" : 2,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            },
+                            {
+                                "id" : "123",
+                                "response" : {
+                                    "id" : "{response_id}"
+                                },
+                                "created_at": "2017-06-22T10:12:55+0300",
+                                "name" : "Appearance",
+                                "value" : 3,
+                                "view" : {
+                                    "id" : "2",
+                                    "name" : "Star"
+                                },
+                                "level" : {
+                                    "id" : "3",
+                                    "name" : "4x",
+                                    "min_value" : 1,
+                                    "max_value" : 4
+                                },
+                                "sort_order" : "1000"
+                            }
+                        ],
+                        "overall_rating" : 2.5
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+
 ## Response voicebot [/api/1.0/responses/{response_id}/voicebot]
 
 ### Retrieve response voicebot data [GET]
