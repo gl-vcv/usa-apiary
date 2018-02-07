@@ -7884,6 +7884,78 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
         
 # Group Special process: Schlum
 
+### Create questionnaire [GET /api/1.0/spec-public/schlum/questionnaire]
+
++ Request (application/json)
+
+        {
+          "questionnaire": 
+            {
+              "first_name": "Иван",
+              "last_name": "Иванов",
+              "second_name": "Иванович",
+              "gender": "f",
+              "birth_date": "01.05.1990",
+              "citizenship": "РФ",
+              "phone": "+79153892314",
+              "email": "ss@rr.ru",
+              "university": "Уфимский Государственный Нефтяной Технический Университет",
+              "speciality": "инженер",
+              "average_score": "4",
+              "graduation_year": "2011",
+              "english_level": "средний",
+              "ready_for_shift_method": true,
+              "already_interviewed": false,
+              "last_interview_date": null,
+              "have_international_passport": true,
+              "have_driver_license": true,
+              "have_military_id": true,
+              "have_relatives_in_company": false,
+              "have_relatives_in_clients": false,
+              "have_relatives_in_government": true
+            }
+        }
+
+    
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "first_name" : "Иван",
+                    "last_name": "Иванов",
+                    "second_name": "Иванович",
+                    "gender": "f",
+                    "birth_date": "01.05.1990",
+                    "citizenship": "РФ",
+                    "phone": "+79153892314",
+                    "email": "ss@rr.ru",
+                    "university": "МФТИ",
+                    "speciality": "инженер",
+                    "average_score": "4",
+                    "graduation_year": "2011",
+                    "english_level": "средний",
+                    "ready_for_shift_method": true,
+                    "already_interviewed": false,
+                    "last_interview_date": null,
+                    "have_international_passport": true,
+                    "have_driver_license": true,
+                    "have_military_id": true,
+                    "have_relatives_in_company": false,
+                    "have_relatives_in_clients": false,
+                    "have_relatives_in_government": true
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": "schlum"
+            }
+        }te
+        
+
 ### Response questionnaire data [GET /api/1.0/spec-private/schlum/questionnaire/{response_id}]
 
 + Response 200 (application/json)
