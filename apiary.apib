@@ -8048,3 +8048,134 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
                 "active_process": "schlum"
             }
         }
+        
+                
+### Retrieve test questions [GET /api/1.0/spec-private/schlum/test-questions/{response_id}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "7",
+                    "title": "Математика",
+                    "pass_rate": 8,
+                    "questions": [
+                        {
+                            "id": "14",
+                            "name": "",
+                            "body": " Вопрос 2",
+                            "type": "choice",
+                            "priority": 10000,
+                            "picture": "picutre 2",
+                            "answers": [
+                                {
+                                    "id": "43",
+                                    "body": " ответ1",
+                                    "is_chosen": true,
+                                    "priority": 10000,
+                                    "is_valid": true
+                                },
+                                {
+                                    "id": "44",
+                                    "body": "ответ2",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                },
+                                {
+                                    "id": "45",
+                                    "body": "ответ3",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                },
+                                {
+                                    "id": "46",
+                                    "body": "ответ4",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                }
+                            ]
+                        },
+                        {
+                            "id": "15",
+                            "name": "",
+                            "body": " Вопрос 1",
+                            "type": "choice",
+                            "priority": 10000,
+                            "picture": "picture 1",
+                            "answers": [
+                                {
+                                    "id": "47",
+                                    "body": " Ответ 1",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": true
+                                },
+                                {
+                                    "id": "48",
+                                    "body": "  Ответ 2",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                },
+                                {
+                                    "id": "49",
+                                    "body": "  Ответ 3",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                },
+                                {
+                                    "id": "50",
+                                    "body": "  Ответ 4",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "6",
+                    "title": "Логика",
+                    "pass_rate": 6,
+                    "questions": [
+                        {
+                            "id": "13",
+                            "name": "",
+                            "body": " Вопрос на логику",
+                            "type": "choice",
+                            "priority": 10000,
+                            "picture": null,
+                            "answers": [
+                                {
+                                    "id": "41",
+                                    "body": " правильный",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": true
+                                },
+                                {
+                                    "id": "42",
+                                    "body": " неправильный",
+                                    "is_chosen": false,
+                                    "priority": 10000,
+                                    "is_valid": false
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "5a82e6e8e26bc",
+                "error": null,
+                "page": 1,
+                "total": 2,
+                "active_process": null
+            }
+        }
