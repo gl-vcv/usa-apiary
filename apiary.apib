@@ -7911,7 +7911,7 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
         
 # Group Special process: Schlum
 
-### Create questionnaire [GET /api/1.0/spec-public/schlum/questionnaire]
+### Create questionnaire [POST /api/1.0/spec-public/schlum/questionnaire]
 
 + Request (application/json)
 
@@ -7983,6 +7983,136 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
             }
         }
         
+        
+### Response test public [GET /api/1.0/spec-public/schlum/test/{token}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1143",
+                    "vacancy": {
+                        "id": "218"
+                    },
+                    "groups": [
+                        {
+                            "id": "7",
+                            "title": "Математика",
+                            "pass_rate": 8,
+                            "questions": [
+                                {
+                                    "id": "14",
+                                    "name": "",
+                                    "body": " Вопрос 2",
+                                    "type": "choice",
+                                    "priority": 10000,
+                                    "answers": [
+                                        {
+                                            "id": "43",
+                                            "body": " ответ1",
+                                            "is_chosen": true,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "44",
+                                            "body": "ответ2",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "45",
+                                            "body": "ответ3",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "46",
+                                            "body": "ответ4",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        }
+                                    ],
+                                    "picture": "picutre 2"
+                                },
+                                {
+                                    "id": "15",
+                                    "name": "",
+                                    "body": " Вопрос 1",
+                                    "type": "choice",
+                                    "priority": 10000,
+                                    "answers": [
+                                        {
+                                            "id": "47",
+                                            "body": " Ответ 1",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "48",
+                                            "body": "  Ответ 2",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "49",
+                                            "body": "  Ответ 3",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "50",
+                                            "body": "  Ответ 4",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        }
+                                    ],
+                                    "picture": "picture 1"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "6",
+                            "title": "Логика",
+                            "pass_rate": 6,
+                            "questions": [
+                                {
+                                    "id": "13",
+                                    "name": "",
+                                    "body": " Вопрос на логику",
+                                    "type": "choice",
+                                    "priority": 10000,
+                                    "answers": [
+                                        {
+                                            "id": "41",
+                                            "body": " правильный",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        },
+                                        {
+                                            "id": "42",
+                                            "body": " неправильный",
+                                            "is_chosen": false,
+                                            "priority": 10000
+                                        }
+                                    ],
+                                    "picture": null
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "5a8300b82f293",
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+        
+
 
 ### Response questionnaire data [GET /api/1.0/spec-private/schlum/questionnaire/{response_id}]
 
