@@ -7983,6 +7983,97 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
             }
         }
         
+### Questionnaire university suggest [POST /api/1.0/spec-public/schlum/questionnaire/search-university{?query}]
+
++ Parameters
+    + query (required, string, `моск`) ... University search string
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "title": "Московский Государственный университет им.М.В.Ломоносова"
+                },
+                {
+                    "id": 5,
+                    "title": "Московский Физико-Технический Институт"
+                },
+                {
+                    "id": 8,
+                    "title": "Московский Государственный Технический Университет им.Н.Э.Баумана"
+                },
+                {
+                    "id": 9,
+                    "title": "Московский Энергетический Институт"
+                },
+                {
+                    "id": 10,
+                    "title": "Московский Авиационный Институт"
+                },
+                {
+                    "id": 11,
+                    "title": "Московский Институт Сталей и Сплавов"
+                },
+                {
+                    "id": 26,
+                    "title": "Московский государственный институт электронной техники"
+                },
+                {
+                    "id": 27,
+                    "title": "Московский Технический университет связи и информатики"
+                },
+                {
+                    "id": 28,
+                    "title": "Московский государственный технологический университет Станкин"
+                },
+                {
+                    "id": 30,
+                    "title": "Московский государственный университет геодезии и картографии"
+                },
+                {
+                    "id": 31,
+                    "title": "Московский Государственный Строительный Университет"
+                },
+                {
+                    "id": 32,
+                    "title": "Московский государственный технический университет гражданской авиации"
+                },
+                {
+                    "id": 33,
+                    "title": "Московский государственный индустриальный университет"
+                },
+                {
+                    "id": 34,
+                    "title": "Московский автомобильно-дорожный государственный технический университет"
+                },
+                {
+                    "id": 35,
+                    "title": "Московский государственный университет приборостроения и информатики"
+                },
+                {
+                    "id": 36,
+                    "title": "Московский технологический университет"
+                },
+                {
+                    "id": 37,
+                    "title": "Московский государственный университет прикладной биотехнологии"
+                },
+                {
+                    "id": 38,
+                    "title": "Московский Государственный Университет Приборостроения и Информатики"
+                }
+            ],
+            "meta": {
+                "id": "5a8abe3a7b39f",
+                "error": null,
+                "page": 1,
+                "total": 18,
+                "active_process": null
+            }
+        }
+        
         
 ### Response test public [GET /api/1.0/spec-public/schlum/test/{token}]
 
@@ -8267,7 +8358,7 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
             }
         }
 
-### Upload response picture public [GET /api/1.0/spec-public/schlum/create-response-picture/{token}]
+### Upload response picture public [POST /api/1.0/spec-public/schlum/create-response-picture/{token}]
 
 + Response 200 (application/json)
 
