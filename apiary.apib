@@ -8314,3 +8314,81 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
                 "active_process": null
             }
         }
+        
+### Retrieve responses [GET /api/1.0/spec-private/schlum/response{?sort_by}]
+
++ Parameters
+    + sort_by (required, string, `Логика`) ... Additional options: Логика, Математика
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "4030",
+                    "preview_link": null,
+                    "created_at": "2018-02-13T06:27:41-0800",
+                    "vacancy": {
+                        "id": "218",
+                        "name": "Spec"
+                    },
+                    "candidate": {
+                        "name": "Иван",
+                        "surname": "Иванов",
+                        "second_name": "Иванович",
+                        "gender": "female",
+                        "phone": "+79451899234",
+                        "email": "ss23as445@rr.ru"
+                    },
+                    "status": {
+                        "id": "7",
+                        "is_base": true,
+                        "is_hidden": false,
+                        "priority": 3000,
+                        "color": null,
+                        "has_responses": false,
+                        "responses_count": 0,
+                        "name": "Test"
+                    },
+                    "stage": {
+                        "id": "4",
+                        "name": "Test"
+                    },
+                    "star": {
+                        "value": 3,
+                        "created_at": "2018-02-14T06:34:49-0800"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "Invite"
+                    },
+                    "questions": [],
+                    "comments": [],
+                    "voicebot": {
+                        "id": "1143"
+                    },
+                    "meta": {
+                        "active_process": "schlum"
+                    },
+                    "schlum_test_result": [
+                        {
+                            "score": 2,
+                            "is_passed": false,
+                            "title": "Логика"
+                        },
+                        {
+                            "score": 3,
+                            "is_passed": false,
+                            "title": "Математика"
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "5a8a8cfb28e13",
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
