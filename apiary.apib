@@ -8267,6 +8267,28 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
             }
         }
 
+### Upload response picture public [GET /api/1.0/spec-public/schlum/create-response-picture/{token}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "url": "https://s3-eu-west-1.amazonaws.com/ ... /5a8ab01ed3893.png",
+                    "preview": "https://s3-eu-west-1.amazonaws.com/ ... /preview_5a8ab01ed3893.png",
+                    "created_at": "2018-02-19T03:08:15-08:00"
+                }
+            ],
+            "meta": {
+                "id": "5a8ab01ebec32",
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+        
 ### Response questionnaire data [GET /api/1.0/spec-private/schlum/questionnaire/{response_id}]
 
 + Response 200 (application/json)
