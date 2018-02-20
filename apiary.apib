@@ -5280,6 +5280,29 @@ The ID field is required for each link.
             }
         }
 
+## Response xls file [/api/1.0/invites/report/xls{?vacancy_id,status_id,ids}]
+
+### Retrieve response xls file url [GET]
+
++ Parameters
+    + vacancy_id (string, `1`, optional) ... Vacancy id
+    + status_id (string, `1`, optional) ... Status id
+    + ids (array, ``, optional) ... Array of response ids to export
+    
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "url": "https://s3.eu-central-1.amazonaws.com/ ... /report_f89a347295b23d5d863fc3a972e62637.xls"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
 
 
 
