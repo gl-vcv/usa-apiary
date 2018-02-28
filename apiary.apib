@@ -4911,6 +4911,131 @@ When it will be possible to store answer in separate file, api will be changes a
             }
         }
 
+## Response test [/api/1.0/responses/{response_id}/test]
+
+### Retrieve response test data [GET]
+
+Get response test questions and answers
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1162",
+                    "vacancy": {
+                        "id": "218"
+                    },
+                    "questions": [
+                        {
+                            "id": "34",
+                            "name": "",
+                            "body": " Вопрос 1",
+                            "type": "choice",
+                            "priority": 10000,
+                            "answers": [
+                                {
+                                    "id": "109",
+                                    "body": " Ответ 1",
+                                    "is_valid": true,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "110",
+                                    "body": "  Ответ 2",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "111",
+                                    "body": "  Ответ 3",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "112",
+                                    "body": "  Ответ 4",
+                                    "is_valid": false,
+                                    "is_chosen": true,
+                                    "priority": 10000
+                                }
+                            ]
+                        },
+                        {
+                            "id": "33",
+                            "name": "",
+                            "body": " Вопрос 2",
+                            "type": "choice",
+                            "priority": 10000,
+                            "answers": [
+                                {
+                                    "id": "105",
+                                    "body": " ответ1",
+                                    "is_valid": true,
+                                    "is_chosen": true,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "106",
+                                    "body": "ответ2",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "107",
+                                    "body": "ответ3",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "108",
+                                    "body": "ответ4",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                }
+                            ]
+                        },
+                        {
+                            "id": "32",
+                            "name": "",
+                            "body": " Вопрос на логику",
+                            "type": "choice",
+                            "priority": 10000,
+                            "answers": [
+                                {
+                                    "id": "103",
+                                    "body": " правильный",
+                                    "is_valid": true,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                },
+                                {
+                                    "id": "104",
+                                    "body": " неправильный",
+                                    "is_valid": false,
+                                    "is_chosen": false,
+                                    "priority": 10000
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "5a96c73375de7",
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+        
 ## Response videointerview [/api/1.0/responses/{response_id}/videointerview]
 
 ### Retrieve response videointerview [GET]
