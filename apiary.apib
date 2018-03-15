@@ -8887,13 +8887,20 @@ get data for current token (to check if team is already submit plan for current 
 
 + Parameters
     + token (required, string, `oe2f4t51`) - token which identifi team from competitions
+        
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
 
-+ Request (application/json)
-
-        {
-            "video_link": "https://www.youtube.com/watch?v=d6CShHzTBJE",
-            "file": blob here
-        }
+            ---BOUNDARY
+            Content-Disposition: form-data; name="file"; filename="file.docx"
+            Content-Type: application/msword
+            
+            
+            ---BOUNDARY
+            Content-Disposition: form-data; name="video_link"
+            
+            https://www.youtube.com/watch?v=d6CShHzTBJE
+            ---BOUNDARY--
 
     
 
