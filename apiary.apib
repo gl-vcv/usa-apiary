@@ -5442,7 +5442,7 @@ The ID field is required for each link.
 
 
 
-## Invites [/api/1.0/invites{?vacancy_id,status_id,token}]
+## Invites [/api/1.0/invites{?vacancy_id,status_id,token,force}]
 
 ### Retrieve invites [GET]
 
@@ -5510,6 +5510,9 @@ The ID field is required for each link.
         }
 
 ### Create new invites [POST]
+
++ Parameters
+    + force (integer, `1`) ... Force send invites
 
 + Request (application/json)
 
