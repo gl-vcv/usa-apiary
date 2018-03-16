@@ -8071,6 +8071,103 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
                 "active_process": null
             }
         }
+
+### Vacancy response summary table [GET /api/1.0/analytics/vacancy-response-summary-table{?vacancy_id,created_after,created_before,user_email}]
+
+https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "columns": [
+                        {
+                            "title": "Vacancy",
+                            "name": "vacancy"
+                        },
+                        {
+                            "title": "Candidates/New",
+                            "name": "response_count"
+                        },
+                        {
+                            "title": "New",
+                            "name": "status-1"
+                        },
+                        {
+                            "title": "Videointerview",
+                            "name": "status-9"
+                        },
+                        {
+                            "title": "Awaiting decision",
+                            "name": "status-2"
+                        },
+                        {
+                            "title": "Invited",
+                            "name": "status-3"
+                        },
+                        {
+                            "title": "Refused",
+                            "name": "status-4"
+                        },
+                        {
+                            "title": "Employees",
+                            "name": "employees"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "cells": [
+                                {
+                                    "value": "Сombine operator"
+                                },
+                                {
+                                    "value": 1
+                                },
+                                {
+                                    "value": 2
+                                },
+                                {
+                                    "value": 10
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 1
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": [
+                                        {
+                                            "email": "john@mail.com",
+                                            "name": "John",
+                                            "surname": "Johnson",
+                                            "logo": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/new.vcv.ru/users/1/logo_1513682990117"
+                                        },
+                                        {
+                                            "email": "bob@mail.com",
+                                            "name": "Bob",
+                                            "surname": "Bobson",
+                                            "logo": null
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "count": 3
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
         
 # Group Special process: Schlum
 
