@@ -8990,11 +8990,35 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
                 "active_process": null
             }
         }
+
+### Retrieve groups data [GET /api/1.0/spec-private/schlum/groups]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 13,
+                    "title": "Математика",
+                    "min_score": 1,
+                    "max_score": 10,
+                    "pass_rate": 7
+                },
+                {
+                    "id": 13,
+                    "title": "Логика",
+                    "min_score": 1,
+                    "max_score": 10,
+                    "pass_rate": 7
+                }
+            ]
+        }
         
-### Retrieve responses [GET /api/1.0/spec-private/schlum/response{?sort_by}]
+### Retrieve responses [GET /api/1.0/spec-private/schlum/response{?sort_by}{?group}]
 
 + Parameters
     + sort_by (required, string, `Логика`) ... Additional options: Логика, Математика
+    + group (optional, array) ... Filter by group score range, example: group[13][value_min] = 7, group[13][value_max] = 10
 
 + Response 200 (application/json)
 
