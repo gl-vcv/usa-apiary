@@ -9074,7 +9074,7 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
 ## Championship: business plan [/api/1.0/spec-public/bat-championship/business-plan/{token}]
 
 + Parameters
-    + token (required, string, `oe2f4t51`) - token which identifi team from competitions
+    + token (required, string, `oe2f4t51`) - token which identify team from competitions
 
 ### Get data [GET]
 
@@ -9169,6 +9169,102 @@ get data for current token (to check if team is already submit plan for current 
                         "token": "oe2f4t51" 
                     }
                 },
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+        
+## Championship: retrieve response [/api/1.0/spec-private/bat-championship/responses/{responseId}]
+
++ Parameters
+    + responseId (required, numeric, `4089`) - response id
+
+### Get data [GET]
+
+get response data specified for bat team championship
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "4089",
+                    "preview_link": null,
+                    "created_at": "2018-03-02T03:07:03-08:00",
+                    "vacancy": {
+                        "id": "282",
+                        "name": "championship"
+                    },
+                    "candidate": {
+                        "name": "Иван",
+                        "surname": "Иванов",
+                        "second_name": null,
+                        "gender": null,
+                        "phone": "+79153872929",
+                        "email": "ss@vcv.ai"
+                    },
+                    "status": {
+                        "id": "10",
+                        "is_base": false,
+                        "is_hidden": false,
+                        "priority": 100,
+                        "color": null,
+                        "on_top": false,
+                        "has_responses": false,
+                        "responses_count": 0,
+                        "name": "Created"
+                    },
+                    "stage": {
+                        "id": "6",
+                        "name": "Finished"
+                    },
+                    "star": null,
+                    "source": {
+                        "id": "1",
+                        "name": "Invite"
+                    },
+                    "questions": [],
+                    "comments": [],
+                    "voicebot": {
+                        "id": "1173"
+                    },
+                    "bat-championship": {
+                        "team_name": "Команда",
+                        "file_url": null,
+                        "video_link": null,
+                        "members": [
+                            {
+                                "first_name": "Иван",
+                                "last_name": "Иван",
+                                "city": "Москва, Russia",
+                                "university": "МФТИ",
+                                "graduation_year": 2013,
+                                "graduation_degree": "бакалавр",
+                                "direction_of_study": "прикладная математика",
+                                "english_level": "fluent",
+                                "phone": "+79153872929",
+                                "email": "ss@vcv.ai"
+                            },
+                            {
+                                "first_name": "Петр",
+                                "last_name": "Петр",
+                                "city": "Moscow, Russia",
+                                "university": "КФУ",
+                                "graduation_year": 2013,
+                                "graduation_degree": "123",
+                                "direction_of_study": "321",
+                                "english_level": "111",
+                                "phone": "+79531235123",
+                                "email": "sq@rr.ru"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "meta": {
+                "id": "5aafa5fe0783c",
+                "error": null,
                 "page": 1,
                 "total": 1,
                 "active_process": null
