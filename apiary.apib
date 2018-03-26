@@ -27,6 +27,185 @@ Api types:
   - delete child-relations for parent entity
     - DELETE /voicebots/2/questions {"questions":[{"id":"1"},{"id":"2"}]}
 
+## Vacancy job interview email template [/api/1.0/vacancies/{vacancy_id}/email-template-job-interview]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve job interview email template [GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nМы рады пригласить вас на собеседование в {{company_name}} на {{vacancy_title}}!\n\nСобеседование пройдёт по адресу:\n\nС собой необходимо иметь:\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{recruiter_email}}\n{{recruiter_phone}}\n",
+              "header": "Вы приглашены на собеседование в компанию {{company_name}}",
+              "active": 1
+            }
+          ],
+          "meta": {
+            "id": "5ab8d43d4c315",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+### Update job interview email template  [PUT]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template_text":"Updated template content",
+                    "active": false,
+                    "id": 301
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nМы рады пригласить вас на собеседование в {{company_name}} на {{vacancy_title}}!\n\nСобеседование пройдёт по адресу:\n\nС собой необходимо иметь:\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{recruiter_email}}\n{{recruiter_phone}}\n",
+              "header": "Вы приглашены на собеседование в компанию {{company_name}}",
+              "active": 1
+            }
+          ],
+          "meta": {
+            "id": "5ab8d43d4c315",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+## Vacancy refuse email template [/api/1.0/vacancies/{vacancy_id}/email-template-refuse]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve refuse email template [GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nБлагодарим за отклик!\nК сожалению, мы не можем пригласить вас на следующий этап. В случае, если будут открыты новые вакансии, мы с вами свяжемся.\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{company_name}}\n",
+              "header": "К сожалению, мы не можем вас пригласить на следующий этап",
+              "active": 0,
+              "manual": 0
+            }
+          ],
+          "meta": {
+            "id": "5ab8d3325ee2f",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+### Update refuse email template  [PUT]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template_text":"Updated template content",
+                    "active": false,
+                    "id": 301
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nБлагодарим за отклик!\nК сожалению, мы не можем пригласить вас на следующий этап. В случае, если будут открыты новые вакансии, мы с вами свяжемся.\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{company_name}}\n",
+              "header": "К сожалению, мы не можем вас пригласить на следующий этап",
+              "active": 0,
+              "manual": 0
+            }
+          ],
+          "meta": {
+            "id": "5ab8d3325ee2f",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+
+## Vacancy response notification email template [/api/1.0/vacancies/{vacancy_id}/email-template-response-notice]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve new response notification email template [GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{recruiter_name}}!\n\nВ системе появился новый отклик:\nКандидат {{candidate_name}} {{candidate_surname}}  на вакансию {{vacancy_title}}.\nПосмотреть отклик можно по ссылке: {{response_link}}.\n\nВ случае возникновения вопросов, вы можете обратиться в службу поддержки:\n{{support_phone}}\n{{support_email}}\n\nС уважением,\nКоманда VCV.\n",
+              "header": "Новый отклик кандидата {{candidate_name}} {{candidate_surname}} на вакансию {{vacancy_title}}",
+              "active": 1
+            }
+          ],
+          "meta": {
+            "id": "5ab8d0615df8a",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+### Update new response notification email template  [PUT]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template_text":"Updated template content",
+                    "active": false,
+                    "id": 301
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте, {{recruiter_name}}!\n\nВ системе появился новый отклик:\nКандидат {{candidate_name}} {{candidate_surname}}  на вакансию {{vacancy_title}}.\nПосмотреть отклик можно по ссылке: {{response_link}}.\n\nВ случае возникновения вопросов, вы можете обратиться в службу поддержки:\n{{support_phone}}\n{{support_email}}\n\nС уважением,\nКоманда VCV.\n",
+              "header": "Новый отклик кандидата {{candidate_name}} {{candidate_surname}} на вакансию {{vacancy_title}}",
+              "active": 1
+            }
+          ],
+          "meta": {
+            "id": "5ab8d0615df8a",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
 
 
 ## Vacancies [/api/1.0/vacancies{?sort_by,sort_order,count,page,search_term,is_active}]
