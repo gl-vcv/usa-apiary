@@ -27,6 +27,72 @@ Api types:
   - delete child-relations for parent entity
     - DELETE /voicebots/2/questions {"questions":[{"id":"1"},{"id":"2"}]}
 
+## Response refuse email [/api/1.0/responses/{response_id}/email-refuse]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve precompiled refuse email [GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 301,
+              "template_text": "Здравствуйте",
+              "header": "Вы приглашены на собеседование в компанию",
+              "manual": 0
+              "active": 1
+            }
+          ],
+          "meta": {
+            "id": "5ab8d43d4c315",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+### Send refuse email  [POST]
+
++ Request (application/json)
+
+        {
+          "templates": [
+            {
+              "template_text": " Hello, Анна! \n We are glad to invite you for an interview in the company British American Tobacco Russia for a \"Intern in marketing\" position!  Interview will take place:  You need to have:  Yours faithfully, Bat Admin  batemail@batemail.com  ",
+              "header": "You are invited for an interview in the company British American Tobacco Russia"
+            }
+          ],
+          "meta": {
+            "id": "5ab4d49a42e09",
+            "error": null,
+            "page": 1,
+            "total": 1,
+            "active_process": null
+          }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "templates": [
+            {
+              "template_text": " Hello, Анна! \n We are glad to invite you for an interview in the company British American Tobacco Russia for a \"Intern in marketing\" position!  Interview will take place:  You need to have:  Yours faithfully, Bat Admin  batemail@batemail.com  ",
+              "header": "You are invited for an interview in the company British American Tobacco Russia"
+            }
+          ],
+          "meta": {
+            "id": "5ab4d49a42e09",
+            "error": null,
+            "page": 1,
+            "total": 1,
+            "active_process": null
+          }
+        }
+
+
 ## Vacancy job interview email template [/api/1.0/vacancies/{vacancy_id}/email-template-job-interview]
 
 + Parameters
