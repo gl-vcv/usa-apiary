@@ -27,6 +27,81 @@ Api types:
   - delete child-relations for parent entity
     - DELETE /voicebots/2/questions {"questions":[{"id":"1"},{"id":"2"}]}
 
+
+## Response refuse email (default) [/api/1.0/responses/{response_id}/email-refuse-default]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Send default refuse email  [POST]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+          "templates": [
+            {
+              "template_text": " Hello, Анна! \n We are glad to invite you for an interview in the company British American Tobacco Russia for a \"Intern in marketing\" position!  Interview will take place:  You need to have:  Yours faithfully, Bat Admin  batemail@batemail.com  ",
+              "header": "You are invited for an interview in the company British American Tobacco Russia"
+            }
+          ],
+          "meta": {
+            "id": "5ab4d49a42e09",
+            "error": null,
+            "page": 1,
+            "total": 1,
+            "active_process": null
+          }
+        }
+
+
+## Response job interview email [/api/1.0/responses/{response_id}/email-job-interview]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve precompiled invite email [GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": 102,
+              "template_text": "Hello",
+              "header": "You are invited for an interview in the company British American Tobacco Russia"
+            }
+          ],
+          "meta": {
+            "id": "5ab4d49a42e09",
+            "error": null,
+            "page": 1,
+            "total": 1,
+            "active_process": null
+          }
+        }
+
+### Send invite email  [POST]
+
++ Response 200 (application/json)
+
+        {
+          "templates": [
+            {
+              "template_text": " Hello, Анна! \n We are glad to invite you for an interview in the company British American Tobacco Russia for a \"Intern in marketing\" position!  Interview will take place:  You need to have:  Yours faithfully, Bat Admin  batemail@batemail.com  ",
+              "header": "You are invited for an interview in the company British American Tobacco Russia"
+            }
+          ],
+          "meta": {
+            "id": "5ab4d49a42e09",
+            "error": null,
+            "page": 1,
+            "total": 1,
+            "active_process": null
+          }
+        }
+
 ## Response refuse email [/api/1.0/responses/{response_id}/email-refuse]
 
 + Parameters
