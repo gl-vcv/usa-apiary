@@ -8279,6 +8279,91 @@ Duration unit: ms
 
 
 
+### Response average recruitment duration table [GET /api/1.0/analytics/response-average-recruitment-duration-table{?vacancy_id,created_after,created_before,user_email}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "columns": [
+                        {
+                            "name": "accepted_at",
+                            "title": "Accepted",
+                            "unit": null
+                        },
+                        {
+                            "name": "average_duration",
+                            "title": "Average duration",
+                            "unit": null
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "cells": [
+                                {
+                                    "value": "2017-11-12"
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "2017-12-12"
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "2018-01-12"
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "2018-02-12"
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "2018-03-12"
+                                },
+                                {
+                                    "value": 18.333333333333332
+                                }
+                            ]
+                        }
+                    ],
+                    "count": 18
+                }
+            ],
+            "meta": {
+                "id": "5abbaa3c12702",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
 
 ### Invite status count [GET /api/1.0/analytics/invite-status-count{?vacancy_id,created_after,created_before,user_email}]
 
