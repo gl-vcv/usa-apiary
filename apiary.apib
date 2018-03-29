@@ -9714,3 +9714,85 @@ get response data specified for bat team championship
                 "active_process": null
             }
         }
+        
+# Group Special process: Questionnaire Landing
+
+## Get response landing data [/api/1.0/spec-private/questionnaire-landing/questionnaire/{responseId}]
+
++ Parameters
+    + responseId (required, numeric, `4089`) - response id
+
+### Get data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 13,
+                    "value": "4",
+                    "question": {
+                        "id": 6,
+                        "type": "string",
+                        "text": "When would you be available to start? Are you available for 3 months, for 35 hours a week, working from our offices in Waterloo?",
+                        "is_required": true
+                    }
+                },
+                {
+                    "id": 14,
+                    "value": "23",
+                    "question": {
+                        "id": 2,
+                        "type": "string",
+                        "text": "CV Link",
+                        "is_required": true
+                    }
+                },
+                {
+                    "id": 15,
+                    "value": "1",
+                    "question": {
+                        "id": 3,
+                        "type": "string",
+                        "text": "How you would improve Sweatcoin app if you were a founder?",
+                        "is_required": true
+                    }
+                },
+                {
+                    "id": 16,
+                    "value": "2",
+                    "question": {
+                        "id": 4,
+                        "type": "string",
+                        "text": "In your view, what are the main risks for SweatCoins?",
+                        "is_required": true
+                    }
+                },
+                {
+                    "id": 17,
+                    "value": "3",
+                    "question": {
+                        "id": 5,
+                        "type": "string",
+                        "text": "How much of a role does physical exercise play in your life?",
+                        "is_required": true
+                    }
+                },
+                {
+                    "id": 18,
+                    "value": "3123",
+                    "question": {
+                        "id": 1,
+                        "type": "string",
+                        "text": "LinkedIn/Facebook profile link",
+                        "is_required": true
+                    }
+                }
+            ],
+            "meta": {
+                "id": "5abcb88063e2b",
+                "error": null,
+                "page": 1,
+                "total": 6
+            }
+        }
