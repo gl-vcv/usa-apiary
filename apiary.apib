@@ -8818,6 +8818,31 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
             }
         }
         
++ Response 400 (application/json)
+
+        {
+            "data": [
+            ],
+            "meta": {
+                "id": "5a7b200320dea",
+                "error": {
+                    "message": "Данные не прошли валидацию",
+                    "details": [
+                        {
+                            "phone" : "Пользователь с таким телефоном существует",
+                        },
+                        {
+                            "email" : "Пользователь с таким email существует"
+                        }
+                        
+                    ]
+                },
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+        
 ### Questionnaire university suggest [POST /api/1.0/spec-public/schlum/questionnaire/search-university{?query}]
 
 + Parameters
