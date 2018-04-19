@@ -9578,6 +9578,148 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
         
 # Group Special process: Bat
 
+
+## Personal account: categories [/api/1.0/spec-public/bat-personal-account/categories]
+
+### Get data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "name": "Финансы"
+                },
+                {
+                    "id": 2,
+                    "name": "Отдел по работе с персоналом"
+                },
+                {
+                    "id": 3,
+                    "name": "Информационные технологии"
+                },
+                {
+                    "id": 4,
+                    "name": "Маркетинг"
+                },
+                {
+                    "id": 5,
+                    "name": "Департамент по правовым вопросам"
+                },
+                {
+                    "id": 6,
+                    "name": "Управление производством"
+                }
+            ],
+            "meta": {
+                "id": "5ad88e008e754",
+                "error": null,
+                "page": 1,
+                "total": 6
+            }
+        }
+        
+## Personal account: vacancy descriptions public [/api/1.0/spec-public/bat-personal-account/vacancy-descriptions]
+
+### Get data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "category": {
+                        "id": 1,
+                        "name": "Финансы"
+                    },
+                    "description_ru": "Описание",
+                    "description_en": "Description",
+                    "is_landing": true,
+                    "vacancy": {
+                        "id": 281,
+                        "title": "Intern in Operations"
+                    }
+                }
+            ],
+            "meta": {
+                "id": "5ad88e4c57955",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+## Personal account: vacancy description [/api/1.0/spec-private/bat-personal-account/vacancy-description/{vacancyId}]
+
+### Get data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "category": {
+                        "id": 1,
+                        "name": "Финансы"
+                    },
+                    "description_ru": "Иванович 321",
+                    "description_en": "Ivanovich",
+                    "is_landing": true,
+                    "vacancy": {
+                        "id": 281,
+                        "title": "Intern in Operations"
+                    }
+                }
+            ],
+            "meta": {
+                "id": "5ad88f119394f",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+### Update vacancy description  [PUT]
+
++ Request (application/json)
+
+        {
+            "category": 1,
+            "description_ru": "Иванович 321",
+            "description_en": "Ivanovich",
+            "is_landing": true
+        }
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+                    "id": 1,
+                    "category": {
+                        "id": 1,
+                        "name": "Финансы"
+                    },
+                    "description_ru": "Иванович 321",
+                    "description_en": "Ivanovich",
+                    "is_landing": true,
+                    "vacancy": {
+                        "id": 281,
+                        "title": "Intern in Operations"
+                    }
+                }
+          ],
+          "meta": {
+            "id": "5ab8d43d4c315",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
 ## Championship: business plan [/api/1.0/spec-public/bat-championship/business-plan/{token}]
 
 + Parameters
