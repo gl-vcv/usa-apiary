@@ -7919,9 +7919,9 @@ The ID field is required for each answer. If question type is "value" then BODY 
 
 ### Response status count [GET /api/1.0/analytics/response-status-count{?vacancy_id,created_after,created_before,user_email}]
 
-Количество откликов по статусам
+Количество откликов по статусам. Используется в виджете "Ожидают решения" (круговая диаграмма).
 
-Нужно уточнить как фильтровать статусы для "ожидают решения"
+НУЖНО добавить фильтрацию статусов для "ожидают решения".
 
 https://storage.www.wrike.com/filemeta/oriented/F49349880.A1741102
 
@@ -8119,7 +8119,9 @@ https://storage.www.wrike.com/filemeta/oriented/F49349880.A1741102
 
 ### Response status funnel [GET /api/1.0/analytics/response-status-funnel{?vacancy_id,created_after,created_before,user_email}]
 
-Данные для отображения воронки
+Данные для отображения виджета воронки статусов "Воронка рекрутмента".
+
+НУЖНО добавить фильтрацию для отображения в воронке не всех статусов.
 
 https://storage.www.wrike.com/filemeta/oriented/F49450376.A1741102
 
@@ -8177,7 +8179,7 @@ https://storage.www.wrike.com/filemeta/oriented/F49450376.A1741102
 ### Response star count [GET /api/1.0/analytics/response-star-count{?vacancy_id,created_after,created_before,user_email}]
 
 Количество звёздочек у отклика
-Устарело, нужно удалять
+УСТАРЕЛО, нужно удалять
 
 https://storage.www.wrike.com/filemeta/oriented/F49623963.A1741102
 
@@ -8220,7 +8222,7 @@ https://storage.www.wrike.com/filemeta/oriented/F49623963.A1741102
 ### Response count [GET /api/1.0/analytics/response-count{?vacancy_id,created_after,created_before,user_email}]
 
 Количество всех откликов
-Устарело, нужно удалять
+УСТАРЕЛО, нужно удалять
 
 https://storage.www.wrike.com/filemeta/oriented/F49456634.A1741102
 
@@ -8245,6 +8247,8 @@ https://storage.www.wrike.com/filemeta/oriented/F49456634.A1741102
 
 ### Response performance [GET /api/1.0/analytics/response-performance{?vacancy_id,created_after,created_before,user_email}]
 
+???
+Не используется
 https://storage.www.wrike.com/filemeta/oriented/F49621993.A1741102
 
 + Response 200 (application/json)
@@ -8269,6 +8273,8 @@ https://storage.www.wrike.com/filemeta/oriented/F49621993.A1741102
 
 ### Response saved time [GET /api/1.0/analytics/response-saved-time{?vacancy_id,created_after,created_before,user_email}]
 
+???
+Не используется
 https://storage.www.wrike.com/filemeta/oriented/F49623921.A1741102
 
 Duration unit: ms
@@ -8294,7 +8300,8 @@ Duration unit: ms
 
 ### Response average recruitment duration table [GET /api/1.0/analytics/response-average-recruitment-duration-table{?vacancy_id,created_after,created_before,user_email}]
 
-Устарело, нужно изменять
+???
+УСТАРЕЛО, нужно изменять
 
 + Response 200 (application/json)
 
@@ -8382,6 +8389,9 @@ Duration unit: ms
 
 ### Invite status count [GET /api/1.0/analytics/invite-status-count{?vacancy_id,created_after,created_before,user_email}]
 
+???
+Не используется
+
 https://storage.www.wrike.com/filemeta/oriented/F49471094.A1741102
 
 + Response 200 (application/json)
@@ -8446,6 +8456,9 @@ https://storage.www.wrike.com/filemeta/oriented/F49471094.A1741102
 
 
 ### Invite status count table [GET /api/1.0/analytics/invite-status-count-table{?vacancy_id,created_after,created_before,user_email,period,page,count}]
+
+???
+Не используется
 
 https://storage.www.wrike.com/filemeta/oriented/F49624024.A1741102
 
@@ -8527,6 +8540,9 @@ https://storage.www.wrike.com/filemeta/oriented/F49624024.A1741102
 
 ### Invite count [GET /api/1.0/analytics/invite-count{?vacancy_id,created_after,created_before,user_email}]
 
+???
+Не используется
+
 + Response 200 (application/json)
 
         {
@@ -8548,7 +8564,9 @@ https://storage.www.wrike.com/filemeta/oriented/F49624024.A1741102
 
 ### Videointerview duration [GET /api/1.0/analytics/video_interview/duration{?vacancy_id,created_after,created_before,user_email}]
 
-Общее время видео-интервью
+Общее время видео-интервью. Используется для виджета "Общее время интервью".
+
+УТОЧНИТЬ разряд времени.
 
 https://storage.www.wrike.com/filemeta/oriented/F49540352.A1741102
 
@@ -8573,6 +8591,8 @@ Duration unit: ms
 
 
 ### Videointerview average duration [GET /api/1.0/analytics/video_interview/average-duration{?vacancy_id,created_after,created_before,user_email}]
+
+Не используется.
 
 https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
 
@@ -8599,6 +8619,8 @@ Duration unit: ms
 
 ### Videointerview average question count [GET /api/1.0/analytics/video_interview/average-question-count{?vacancy_id,created_after,created_before,user_email}]
 
+Не используется
+
 https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
 
 + Response 200 (application/json)
@@ -8622,6 +8644,8 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
 
 ### Vacancy count [GET /api/1.0/analytics/vacancy-count{?vacancy_id,created_after,created_before,user_email}]
 
+Не используется.
+
 + Response 200 (application/json)
 
         {
@@ -8639,6 +8663,8 @@ https://storage.www.wrike.com/filemeta/oriented/F49548434.A1741102
         }
 
 ### Vacancy response summary table [GET /api/1.0/analytics/vacancy-response-summary-table{?vacancy_id,created_after,created_before,user_email}]
+
+Не используется.
 
 https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
 
@@ -8740,6 +8766,8 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
 
 
 ### Vacancy response summary table excel [GET /api/1.0/analytics/vacancy-response-summary-table-excel{?vacancy_id,created_after,created_before,user_email}]
+
+Не используется.
 
 https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
 
