@@ -8488,6 +8488,99 @@ https://storage.www.wrike.com/filemeta/oriented/F56197653.A1741102
 
 
 
+### User response summary table [GET /api/1.0/analytics/user-response-summary-table{?vacancy_id,created_after,created_before,user_email}]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "columns": [
+                        {
+                            "name": "employee",
+                            "index": 0,
+                            "title": "Employee",
+                            "unit": null
+                        },
+                        {
+                            "name": "response_count-1",
+                            "index": 1,
+                            "title": "New candidates",
+                            "unit": null
+                        },
+                        {
+                            "name": "response_count-13",
+                            "index": 2,
+                            "title": "Accepted candidates",
+                            "unit": null
+                        },
+                        {
+                            "name": "response_count-3",
+                            "index": 3,
+                            "title": "Invited candidates",
+                            "unit": null
+                        },
+                        {
+                            "name": "average_recruitment_duration",
+                            "index": 4,
+                            "title": "Average recruitment duration",
+                            "unit": "days"
+                        }
+                    ],
+                    "rows": [
+                        {
+                            "cells": [
+                                {
+                                    "value": "George"
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 0
+                                }
+                            ]
+                        },
+                        {
+                            "cells": [
+                                {
+                                    "value": "VCV Admin"
+                                },
+                                {
+                                    "value": 0
+                                },
+                                {
+                                    "value": 1
+                                },
+                                {
+                                    "value": 4
+                                },
+                                {
+                                    "value": 46
+                                }
+                            ]
+                        }
+                    ],
+                    "count": 2
+                }
+            ],
+            "meta": {
+                "id": "5ae0975c29066",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
 # Group Special process: Schlum
 
 ### Create questionnaire [POST /api/1.0/spec-public/schlum/questionnaire]
