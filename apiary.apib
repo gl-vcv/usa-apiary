@@ -5496,6 +5496,7 @@ Get response videointerview questions and source
             }
         }
 
+
 ### Create new statuses [POST]
 
 + Request (application/json)
@@ -5589,6 +5590,50 @@ The ID field is required for each status.
         }
 
 + Response 204 (application/json)
+
+
+
+## Response statuses by response [/api/1.0/responses/{response_id}/statuses]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve statuses [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "3",
+                    "is_base": false,
+                    "is_hidden": false,
+                    "priority": 130,
+                    "color": null,
+                    "on_top": true,
+                    "has_responses": true,
+                    "responses_count": 1,
+                    "name": "Invited"
+                },
+                {
+                    "id": "4",
+                    "is_base": false,
+                    "is_hidden": false,
+                    "priority": 140,
+                    "color": null,
+                    "on_top": true,
+                    "has_responses": true,
+                    "responses_count": 4,
+                    "name": "Refused"
+                }
+            ],
+            "meta": {
+                "id": "5afc2acd7c8e2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
 
 
 
