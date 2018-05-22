@@ -8282,6 +8282,29 @@ https://storage.www.wrike.com/filemeta/oriented/F49450376.A1741102
 
 
 
+### Conversion to employee [GET /api/1.0/analytics/response-status-employee-conversion{?vacancy_id,created_after,created_before,user_email}]
+
+Конверсия в сотрудника
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "percent": 100
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1,
+                "active_process": null
+            }
+        }
+
+
+
+
 ### Response average recruitment duration table [GET /api/1.0/analytics/response-average-recruitment-duration-table{?vacancy_id,created_after,created_before,user_email}]
 
 + Response 200 (application/json)
