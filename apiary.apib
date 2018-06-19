@@ -6239,13 +6239,14 @@ Sends only modified data. Updates only specified fields. The ID field is require
             }
         }
 
-## Invite xls file [/api/1.0/invites/report/xls{?vacancy_id,status_id}]
+## Invite xls file [/api/1.0/invites/report/xls{?vacancy_id,status_id,search_term}]
 
 ### Retrieve invite xls file url [GET]
 
 + Parameters
     + vacancy_id (string, `1`, optional) ... Vacancy id
     + status_id (string, `1`, optional) ... Status id
+    + search_term (string, `John`, optional) ... Search term
 
 + Response 200 (application/json)
 
