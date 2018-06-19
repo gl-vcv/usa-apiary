@@ -7049,6 +7049,100 @@ When changing password new_password field is required
 
 
 
+## User notification periods [/api/1.0/user-notification-periods]
+
+### Retrieve periods [GET]
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "Never",
+                        "period": -1,
+                        "is_active": false
+                    },
+                    {
+                        "id": 2,
+                        "name": "Immediately",
+                        "period": 0,
+                        "is_active": true
+                    },
+                    {
+                        "id": 3,
+                        "name": "Once a day",
+                        "period": 1440,
+                        "is_active": false
+                    },
+                    {
+                        "id": 4,
+                        "name": "Once a week",
+                        "period": 10080,
+                        "is_active": false
+                    }
+                ],
+                "meta": {
+                    "id": "5b28f0162af94",
+                    "error": null,
+                    "page": 1,
+                    "total": 4
+                }
+            }
+
+### Set period [PUT /api/1.0/user-notification-periods]
+
++ Request (application/json)
+    + Body
+
+            {
+              "periods": [
+                {
+                  "id": "2",
+                  "is_active": true
+                }
+              ]
+            }
+
++ Response 200 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": 1,
+                        "name": "Never",
+                        "period": -1,
+                        "is_active": false
+                    },
+                    {
+                        "id": 2,
+                        "name": "Immediately",
+                        "period": 0,
+                        "is_active": true
+                    },
+                    {
+                        "id": 3,
+                        "name": "Once a day",
+                        "period": 1440,
+                        "is_active": false
+                    },
+                    {
+                        "id": 4,
+                        "name": "Once a week",
+                        "period": 10080,
+                        "is_active": false
+                    }
+                ],
+                "meta": {
+                    "id": "5b28f0fddd88f",
+                    "error": null,
+                    "page": 1,
+                    "total": 4
+                }
+            }
+
+
+
 ## Companies [/api/1.0/companies]
 
 ### Retrieve companies [GET]
