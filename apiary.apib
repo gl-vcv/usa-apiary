@@ -7061,35 +7061,34 @@ When changing password new_password field is required
             {
                 "data": [
                     {
-                        "id": 1,
-                        "name": "Never",
-                        "period": -1,
-                        "is_active": false
-                    },
-                    {
-                        "id": 2,
-                        "name": "Immediately",
-                        "period": 0,
-                        "is_active": true
-                    },
-                    {
-                        "id": 3,
-                        "name": "Once a day",
-                        "period": 1440,
-                        "is_active": false
-                    },
-                    {
-                        "id": 4,
-                        "name": "Once a week",
-                        "period": 10080,
-                        "is_active": false
+                        "enabled": true,
+                        "periods": [
+                            {
+                                "id": "2",
+                                "name": "Immediately",
+                                "period": 0,
+                                "is_active": false
+                            },
+                            {
+                                "id": "3",
+                                "name": "Once a day",
+                                "period": 1440,
+                                "is_active": true
+                            },
+                            {
+                                "id": "4",
+                                "name": "Once a week",
+                                "period": 10080,
+                                "is_active": false
+                            }
+                        ]
                     }
                 ],
                 "meta": {
-                    "id": "5b28f0162af94",
+                    "id": "5b3a74e3e13a3",
                     "error": null,
                     "page": 1,
-                    "total": 4
+                    "total": 1
                 }
             }
 
@@ -7099,9 +7098,10 @@ When changing password new_password field is required
     + Body
 
             {
+              "enabled": true,
               "periods": [
                 {
-                  "id": "2",
+                  "id": "4",
                   "is_active": true
                 }
               ]
@@ -7112,35 +7112,34 @@ When changing password new_password field is required
             {
                 "data": [
                     {
-                        "id": 1,
-                        "name": "Never",
-                        "period": -1,
-                        "is_active": false
-                    },
-                    {
-                        "id": 2,
-                        "name": "Immediately",
-                        "period": 0,
-                        "is_active": true
-                    },
-                    {
-                        "id": 3,
-                        "name": "Once a day",
-                        "period": 1440,
-                        "is_active": false
-                    },
-                    {
-                        "id": 4,
-                        "name": "Once a week",
-                        "period": 10080,
-                        "is_active": false
+                        "enabled": true,
+                        "periods": [
+                            {
+                                "id": "2",
+                                "name": "Immediately",
+                                "period": 0,
+                                "is_active": false
+                            },
+                            {
+                                "id": "3",
+                                "name": "Once a day",
+                                "period": 1440,
+                                "is_active": false
+                            },
+                            {
+                                "id": "4",
+                                "name": "Once a week",
+                                "period": 10080,
+                                "is_active": true
+                            }
+                        ]
                     }
                 ],
                 "meta": {
-                    "id": "5b28f0fddd88f",
+                    "id": "5b3a74e3e13a3",
                     "error": null,
                     "page": 1,
-                    "total": 4
+                    "total": 1
                 }
             }
 
