@@ -4200,6 +4200,7 @@ Delete competence: id field should be specified in competence prototype
                         }
                     ],
                     "comments": [],
+                    "is_paid": true,
                     "voicebot": {
                         "id": "8"
                     },
@@ -4273,6 +4274,7 @@ Delete competence: id field should be specified in competence prototype
                             "name": "Very good"
                         }
                     ],
+                    "is_paid": true,
                     "voicebot": null,
                     "meta": {
                         "active_process": null
@@ -7377,6 +7379,33 @@ The ID field is required for each company.
             }
         }
 
+
+## Company limits [/api/1.0/company-limits]
+
+
+### Retrieve company limits [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "response_limit": 20,
+                    "response_balance": 6,
+                    "vacancy_limit": 18,
+                    "vacancy_balance": 18,
+                    "paid_from": "2018-01-01",
+                    "paid_to": "2018-12-20"
+                }
+            ],
+            "meta": {
+                "id": "5b4882dc6e353",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
 
 
 ## Interview [/api/1.0/interviews/{token}]
