@@ -1159,10 +1159,7 @@ The ID and user.email fields are required for each permission.
 + Response 204 (application/json)
 
 
-## Vacancy current user role [/api/1.0/vacancies/{vacancy_id}/current-role]
-
-+ Parameters
-    + vacancy_id (required, string, `1`) ... Vacancy id
+## Vacancy current user role [/api/1.0/current-roles]
 
 ### Retrieve permissions [GET]
 
@@ -1171,13 +1168,15 @@ The ID and user.email fields are required for each permission.
         {
             "data": [
                 {
-                    "id": "admin",
+                    "id": "role_read",
+                    "vacancy_id": 225,
                     "user": {
-                        "email": "john.johnson@gmail.com"
+                        "email": "ss1@vcv.ai"
                     }
                 }
             ],
             "meta": {
+                "id": "5b507a77a73cf",
                 "error": null,
                 "page": 1,
                 "total": 1
