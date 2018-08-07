@@ -348,6 +348,47 @@ Api types:
           }
         }
 
+## Vacancy response  email template recovery [/api/1.0/vacancies/{vacancy_id}/response-status-email-templates/recovery]
+    Восстановить шаблон вакансии до шаблона, который сзянан с как родитель в настройках компании. В случае успеха вернет новую информацию по восстанавливаемым шаблонам
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Recovery vacancy response email template  [POST]
+
++ Request (application/json)
+
+        {
+            "templates_ids": [1955]
+        }
+
++ Response 200 (application/json)
+    
+        {
+          "data": [
+            {
+              "id": "1955",
+              "response_status": {
+                "id": 3,
+                "title": "Invited"
+              },
+              "template_text": "Восстановленный текст шаблона из родителя в настройках компании",
+              "template_header": "Вы приглашены на собеседование в компанию {{company_name}}",
+              "title": "Invited",
+              "manual": 1,
+              "active": true,
+              "is_standard": true,
+              "created_at": "2018-07-25T18:12:31+03:00"
+            }
+          ],
+          "meta": {
+            "id": "5b697428775d5",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+
 
 ## Vacancies [/api/1.0/vacancies{?sort_by,sort_order,count,page,search_term,is_active}]
 
