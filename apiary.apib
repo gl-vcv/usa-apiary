@@ -2297,6 +2297,11 @@ Only ID field is required for each filter. Skip field if value hasn't changed
                 {
                     "id": "1",
                     "is_active": true,
+                    "name": null,
+                    "description": null,
+                    "question_limit": 0,
+                    "is_question_shuffle": false,
+                    "page_view": "single",
                     "vacancy": {
                         "id": "1"
                     },
@@ -2348,7 +2353,12 @@ The ID field is required for each test.
             "tests": [
                 {
                     "id": "1",
-                    "is_active": false
+                    "is_active": false,
+                    "name": "Name",
+                    "description": "Description",
+                    "question_limit": 5,
+                    "is_question_shuffle": true,
+                    "page_view": "separate_per_question",
                 }
             ]
         }
@@ -2362,6 +2372,11 @@ The ID field is required for each test.
                     {
                         "id": "1",
                         "is_active": false,
+                        "name": "Name",
+                        "description": "Description",
+                        "question_limit": 5,
+                        "is_question_shuffle": true,
+                        "page_view": "separate_per_question",
                         "vacancy": {
                             "id": "1"
                         },
@@ -2420,6 +2435,11 @@ The ID field is required for each test.
                 {
                     "id": "1",
                     "is_active": false,
+                    "name": null,
+                    "description": null,
+                    "question_limit": 0,
+                    "is_question_shuffle": false,
+                    "page_view": "single",
                     "vacancy": {
                         "id": "1"
                     },
@@ -5381,6 +5401,9 @@ Get response test questions and answers
             "data": [
                 {
                     "id": "1162",
+                    "name": null,
+                    "description": null,
+                    "page_view": "single",
                     "vacancy": {
                         "id": "218"
                     },
