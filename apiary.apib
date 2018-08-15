@@ -2492,6 +2492,8 @@ The ID field is required for each test.
 
 ## Test questions [/api/1.0/tests/{test_id}/questions]
 
+- type - тип вопроса [choice (единичный выбор), multichoice (множественный выбор), value (открытый вопрос)]
+
 + Parameters
     + test_id (required, string, `1`) ... Test id
     
@@ -2510,6 +2512,11 @@ The ID field is required for each test.
                     "name": "Question 2",
                     "body": "Who was the second president of USA?",
                     "type": "value"
+                },
+                {
+                    "name": "Question 3",
+                    "body": "Who was the third president of USA?",
+                    "type": "multichoice"
                 }
             ]
         }
