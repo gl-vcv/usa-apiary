@@ -2285,6 +2285,11 @@ Only ID field is required for each filter. Skip field if value hasn't changed
 
 ## Tests [/api/1.0/tests{?vacancy_id}]
 
+- time_limit - ограничение по времени, секунды
+- page_view - вид страницы [single (все вопросы на одной странице), separate_per_question (каждый вопрос на отдельной странице)]
+- is_question_shuffle - перемешивать вопросы
+- question_limit - количество случайных вопросов, которые будут отправлены соискателю
+
 ### Retrieve tests [GET]
 
 + Parameters
@@ -2299,6 +2304,7 @@ Only ID field is required for each filter. Skip field if value hasn't changed
                     "is_active": true,
                     "name": null,
                     "description": null,
+                    "time_limit": 1800,
                     "question_limit": 0,
                     "is_question_shuffle": false,
                     "page_view": "single",
@@ -7989,7 +7995,7 @@ Skip question. Available only for an optional questions (is_required: false)
                     "id": "1",
                     "date_start": "2018-03-22T15:53:56+03:00",
                     "remaining_time": 1171,
-                    "time_limit": 1800,fields t
+                    "time_limit": 1800,
                     "vacancy": {
                         "id": "1"
                     },
