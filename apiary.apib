@@ -5775,6 +5775,204 @@ The ID field is required for each status.
 
 
 
+## Response Status Email Template Default [/api/1.0/response-status-email-template-defaults]
+
+Работа с шаблонами по умолчанию, те что в настройках компании. Они копируются в новые вакансии. 
+Спека https://vcv-team.atlassian.net/wiki/spaces/VDR/pages/5111833
+
+###Get list[GET]
+
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": "13",
+              "title": "",
+              "response_status": {
+                "id": 3,
+                "title": "Invited"
+              },
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nМы рады пригласить вас на собеседование на позицию {{vacancy_title}} в нашу компанию!\n\nСобеседование пройдёт по адресу:\n\nСсылка на карту:\n\nС собой необходимо иметь:\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{recruiter_position}}\n{{recruiter_email}}\n{{recruiter_phone}}\n",
+              "template_header": "Компания {{company_name}} пригласила вас на собеседование на позицию {{vacancy_title}}",
+              "manual": 1,
+              "created_at": "2018-07-23T21:26:23+03:00",
+              "language": {
+                "id": "2",
+                "code": "ru",
+                "name": "Русский"
+              }
+            },
+            {
+              "id": "14",
+              "title": "",
+              "response_status": {
+                "id": 4,
+                "title": "Refused"
+              },
+              "template_text": "Здравствуйте, {{candidate_name}}!\n\nБлагодарим за отклик!\nК сожалению, мы не можем пригласить вас на следующий этап. В случае, если будут открыты новые вакансии, мы с вами свяжемся.\n\nС уважением,\n{{recruiter_name}} {{recruiter_lastname}}\n{{company_name}}\n",
+              "template_header": "К сожалению, мы не можем вас пригласить на следующий этап на позицию {{vacancy_title}}",
+              "manual": 1,
+              "created_at": "2018-07-23T21:26:23+03:00",
+              "language": {
+                "id": "2",
+                "code": "ru",
+                "name": "Русский"
+              }
+            },
+          ],
+          "meta": {
+            "id": "5b7d162c09d82",
+            "error": null,
+            "page": 1,
+            "total": 6
+          }
+        }
+
+
+###Create new [POST]
+
+Создавать можно без статуса. Тогда делать status: null
+
++ Request (application/json)
+
+        {
+          "templates": [
+            {
+              "template_text": "template_text",
+              "template_header": "template_header",
+              "title": "title1",
+              "response_status": {
+                 "id": 555
+              },
+              "language" : {
+                "id": 2,
+                "code" : "ru"
+              },
+              "manual": 1
+            }
+          ]
+        }
+        
+    
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": "400",
+              "title": "title1",
+              "response_status": null,
+              "template_text": "template_text",
+              "template_header": "template_header",
+              "manual": 1,
+              "created_at": "2018-08-22T10:49:30+03:00",
+              "language": {
+                "id": "2",
+                "code": "ru",
+                "name": "Русский"
+              }
+            }
+          ],
+          "meta": {
+            "id": "5b7d158a87a48",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+
+###Update[PUT]
+
++ Request (application/json)
+
+        {
+          "templates": [
+            {
+              "id" : 392,
+              "template_text": "template_text edit",
+              "template_header": "template_header edit",
+              "title": "title",
+              "manual" :1,
+              "language" : {
+                "id": 2,
+                "code" : "ru"
+              }
+            }
+          ]
+        }
+
+    
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": "392",
+              "title": "title",
+              "response_status": null,
+              "template_text": "template_text edit",
+              "template_header": "template_header edit",
+              "manual": 1,
+              "created_at": "2018-08-22T10:49:30+03:00",
+              "language": {
+                "id": "2",
+                "code": "ru",
+                "name": "Русский"
+              }
+            }
+          ],
+          "meta": {
+            "id": "5b7d158a87a48",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+        
+###Delete[DELETE]
+
+Главное передать от объекта только его id
+
++ Request (application/json)
+
+        {
+          "templates": [
+            {
+              "id" : 392
+            }
+          ]
+        }
+
+    
++ Response 200 (application/json)
+
+        {
+          "data": [
+            {
+              "id": "392",
+              "title": "title",
+              "response_status": null,
+              "template_text": "template_text edit",
+              "template_header": "template_header edit",
+              "manual": 1,
+              "created_at": "2018-08-22T10:49:30+03:00",
+              "language": {
+                "id": "2",
+                "code": "ru",
+                "name": "Русский"
+              }
+            }
+          ],
+          "meta": {
+            "id": "5b7d158a87a48",
+            "error": null,
+            "page": 1,
+            "total": 1
+          }
+        }
+      
+
 
 ## Response links [/api/1.0/response-links]
 
