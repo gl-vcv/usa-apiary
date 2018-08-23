@@ -10594,3 +10594,54 @@ get response data specified for bat team championship
                 "redirect_url": "https://localhost:8080/interviews/1df6a152"
             }
         }
+        
+# Group Special process: Citibank
+
+## Vacancy daya [/api/1.0/spec-private/citibank/vacancies/{vacancyId}]
+
++ Parameters
+    + vacancyId (required, numeric, `4089`) - vacancy id
+
+### Get data [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "vacancy_id": 4089,
+                    "id_external": 9999999
+                }
+            ],
+            "meta": {
+                "id": "5abcb88063e2b",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+### Update data [POST]
+
++ Request (application/json)
+
+        {
+            "id_external": 8888888
+        }
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "vacancy_id": 4089,
+                    "id_external": 8888888
+                }
+            ],
+            "meta": {
+                "id": "5abcb88063e2b",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
