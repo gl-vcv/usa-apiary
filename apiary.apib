@@ -8391,6 +8391,55 @@ The ID field is required for each answer. If question type is "value" then BODY 
 
 
 
+## Question for test [/api/1.0/interviews/{token}/tests/questions/{question_id}/show]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+    + question_id (string, `1`) ... Question id
+
+### Show questions [PUT]
+The ID field is required for each answer. If question type is "value" then BODY field is required.
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "261",
+                    "name": "",
+                    "body": "Какая фигура продолжит последовательность на картинке?",
+                    "type": "choice",
+                    "priority": 10066,
+                    "answers": [
+                        {
+                            "id": "1818",
+                            "body": "1",
+                            "is_chosen": false,
+                            "priority": 10000
+                        },
+                        {
+                            "id": "1819",
+                            "body": "2",
+                            "is_chosen": false,
+                            "priority": 10001
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "9571a6991cda161c02b22f96e03b2691",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+
+
+
+
 ## Google autocomplete URL [/api/1.0/geo/autocomplete-url]
 
 ### Retrieve autocomplete url [GET]
