@@ -10722,3 +10722,525 @@ get response data specified for bat team championship
                 "total": 1
             }
         }
+        
+## Invites [/api/1.0/spec-private/citibank/invites{?vacancy_id,status_id,response_status_id,token,force,search_term}]
+
+### Retrieve invites [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+    + status_id (string, `1`) ... Status id
+    + response_status_id (string, `1`) ... Status id of reponse
+    + token (string, `5966314500f31`) ... Token
+    + search_term (string, `test`) ... Search term
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "response": {
+                        "id": "1",
+                        "created_at": "2018-01-10T01:55:03-0800",
+                        "special_process": {
+                            "response_id": 1,
+                            "is_internal": true
+                        }
+                    },
+                    "status": {
+                        "id": "2",
+                        "name": "Sent"
+                    }
+                },
+                {
+                    "id": "2",
+                    "created_at": "2017-06-22T10:12:56+0300",
+                    "vacancy": {
+                        "id": "2",
+                        "name": "Finance Manager"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3011",
+                        "email": "william.johnson@gmail.com"
+                    },
+                    "response": {
+                        "id": "1",
+                        "created_at": "2018-01-10T01:55:03-0800",
+                        "special_process": {
+                            "response_id": 1,
+                            "is_internal": true
+                        }
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "New"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+### Create new invites [POST]
+
++ Parameters
+    + force (integer, `1`) ... Force send invites
+
++ Request (application/json)
+
+        {
+            "invites": [
+                {
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com",
+                        "is_internal": true
+                    }
+                },
+                {
+                    "vacancy": {
+                        "id": "2"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3011",
+                        "email": "william.johnson@gmail.com",
+                        "is_intenal": true
+                    }
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "1",
+                        "created_at": "2017-06-22T10:12:55+0300",
+                        "vacancy": {
+                            "id": "1",
+                            "name": "Finance Director"
+                        },
+                        "candidate": {
+                            "name": "John",
+                            "surname": "Smith",
+                            "gender": "male",
+                            "phone": "+1-541-754-3010",
+                            "email": "john.smith@gmail.com"
+                        },
+                        "response": {
+                            "id": "1",
+                            "created_at": "2018-01-10T01:55:03-0800",
+                            "special_process": {
+                                "response_id": 1,
+                                "is_internal": true
+                            }
+                        },
+                        "status": {
+                            "id": "2",
+                            "name": "Sent"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "created_at": "2017-06-22T10:12:56+0300",
+                        "vacancy": {
+                            "id": "2",
+                            "name": "Finance Manager"
+                        },
+                        "candidate": {
+                            "name": "William",
+                            "surname": "Johnson",
+                            "gender": "male",
+                            "phone": "+1-541-754-3011",
+                            "email": "william.johnson@gmail.com"
+                        },
+                        "response": {
+                            "id": "1",
+                            "created_at": "2018-01-10T01:55:03-0800",
+                            "special_process": {
+                                "response_id": 1,
+                                "is_internal": true
+                            }
+                        },
+                        "status": {
+                            "id": "1",
+                            "name": "New"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
+            
+## Invite xls file [/api/1.0/spec-private/citibank/invites/report/xls{?vacancy_id,status_id,search_term}]
+
+### Retrieve invite xls file url [GET]
+
++ Parameters
+    + vacancy_id (string, `1`, optional) ... Vacancy id
+    + status_id (string, `1`, optional) ... Status id
+    + search_term (string, `John`, optional) ... Search term
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "url": "https://s3.eu-central-1.amazonaws.com/ ... /report_f89a347295b23d5d863fc3a972e62637.xls"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+        
+## Response [/api/1.0/spec-private/citibank/responses/{response_id}]
+
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve response [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "token": "6ff72a0081c70e78f1be399cb669bf00",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "is_viewed": false,
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "Approved"
+                    },
+                    "star": {
+                        "value": 5,
+                        "created_at": "2017-08-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "2",
+                        "name": "Video interview"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484",
+                                "text": "I am fine, thanks",
+                                "emotions": {
+                                    "anger": 0,
+                                    "contempt": 0.002,
+                                    "disgust": 0,
+                                    "fear": 0,
+                                    "happiness": 0.021,
+                                    "neutral": 0.972,
+                                    "sadness": 0.001,
+                                    "surprise": 0.002
+                                }
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "token": "6ff72a0081c70e78f1be399cb669bf01",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": {
+                                "id": "2",
+                                "duration": 15,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484",
+                                "text": "No, work sux",
+                                "emotions": {
+                                    "anger": 0,
+                                    "contempt": 0.002,
+                                    "disgust": 0,
+                                    "fear": 0,
+                                    "happiness": 0.021,
+                                    "neutral": 0.972,
+                                    "sadness": 0.001,
+                                    "surprise": 0.002
+                                }                                
+                            }
+                        }
+                    ],
+                    "comments": [],
+                    "voicebot": {
+                        "id": "8"
+                    },
+                    "meta": {
+                        "active_process": "citibank"
+                    },
+                    "special_process": {
+                        "response_id": 1,
+                        "is_internal": false
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
+        
+## Responses [/api/1.0/spec-private/citibank/responses{?vacancy_id,vacancy_active,status_id,stage_id,sort_by,sort_order,count,page,search_term}]
+
+### Retrieve responses [GET]
+
++ Parameters
+    + vacancy_id (string, `1`) ... Vacancy id
+    + status_id (string, `1`) ... Status id
+    + stage_id (string, `1`) ... Stage id
+    + sort_by (string, `name`) ... Sort name
+    + sort_order (string, `asc`) ... Sort direction
+    + count (integer, `100`) ... Limit
+    + page (integer, `1`) ... Current page number
+    + search_term (string, `Fin`) ... Search term
+    + vacancy_active (integer, `1`) ... Vacancy active flag 
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:12:55+0300",
+                    "is_viewed": false,
+                    "vacancy": {
+                        "id": "1",
+                        "name": "Finance Director"
+                    },
+                    "candidate": {
+                        "name": "John",
+                        "surname": "Smith",
+                        "gender": "male",
+                        "phone": "+1-541-754-3010",
+                        "email": "john.smith@gmail.com"
+                    },
+                    "status": {
+                        "id": "2",
+                        "name": "Declined"
+                    },
+                    "star": {
+                        "value": 5,
+                        "created_at": "2017-08-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "1",
+                        "name": "Voice bot"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "1",
+                                "duration": 62,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks",
+                                "emotions": [
+                                    "anger": 0,
+                                    "contempt": 0.002,
+                                    "disgust": 0,
+                                    "fear": 0,
+                                    "happiness": 0.021,
+                                    "neutral": 0.972,
+                                    "sadness": 0.001,
+                                    "surprise": 0.002
+                                ]
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": {
+                                "id": "2",
+                                "duration": 15,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484"
+                                "text": "I am fine, thanks"
+                            }
+                        }
+                    ],
+                    "comments": [],
+                    "is_paid": true,
+                    "voicebot": {
+                        "id": "8"
+                    },
+                     "meta": {
+                        "active_process": "citibank"
+                    },
+                    "special_process": {
+                        "response_id": 1,
+                        "is_internal": false
+                    }
+                },
+                {
+                    "id": "2",
+                    "preview_link": "https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png",
+                    "created_at": "2017-06-22T10:15:55+0300",
+                    "is_viewed": true,
+                    "vacancy": {
+                        "id": "2",
+                        "name": "Finance Manager"
+                    },
+                    "candidate": {
+                        "name": "William",
+                        "surname": "Johnson",
+                        "gender": "male",
+                        "phone": "+1-541-754-3020",
+                        "email": "william.johnson@gmail.com"
+                    },
+                    "status": {
+                        "id": "1",
+                        "name": "Approved"
+                    },
+                    "star": {
+                        "value": 4,
+                        "created_at": "2017-09-23T09:26:27-0700"
+                    },
+                    "stage": {
+                        "id": "2",
+                        "name": "Video interview"
+                    },
+                    "source": {
+                        "id": "1",
+                        "name": "monster.com"
+                    },
+                    "questions": [
+                        {
+                            "id": "1",
+                            "name": "Question 1",
+                            "body": "How are you?",
+                            "video": {
+                                "id": "3",
+                                "duration": 8,
+                                "source": "https://d3hhevgjvpym1b.cloudfront.net/vcv.ru/4c86/c66d/5711/74d8/47d7027ad01f7598.mp4?1497818484",
+                                "emotions": [
+                                    "anger": 0,
+                                    "contempt": 0.002,
+                                    "disgust": 0,
+                                    "fear": 0,
+                                    "happiness": 0.021,
+                                    "neutral": 0.972,
+                                    "sadness": 0.001,
+                                    "surprise": 0.002
+                                ]
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": "Question 2",
+                            "body": "Do you want to work?",
+                            "video": null
+                        }
+                    ],
+                    "comments": [
+                        {
+                            "id": "1",
+                            "name": "Very good"
+                        }
+                    ],
+                    "is_paid": true,
+                    "voicebot": null,
+                     "meta": {
+                        "active_process": "citibank"
+                    },
+                    "special_process": {
+                        "response_id": 1,
+                        "is_internal": false
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+## Response xls file [/api/1.0/spec-private/citibank/responses/report/xls{?vacancy_id,status_id,ids}]
+
+### Retrieve response xls file url [GET]
+
++ Parameters
+    + vacancy_id (string, `1`, optional) ... Vacancy id
+    + status_id (string, `1`, optional) ... Status id
+    + ids (array, ``, optional) ... GET array of response ids to export: ids[]=1&ids[]=34
+    
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "url": "https://s3.eu-central-1.amazonaws.com/ ... /report_f89a347295b23d5d863fc3a972e62637.xls"
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
