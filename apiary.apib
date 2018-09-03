@@ -11251,3 +11251,56 @@ get response data specified for bat team championship
                 "total": 0
             }
         }
+        
+# Group Special process: Deloitte
+
+### SF vacancies list [GET /api/1.0/spec-private/deloitte/vacancy/vacancy-list]
+
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "vacancy_list": [
+                        {
+                            "sap_vacancy_id": 262,
+                            "title": "Vacancy title 1",
+                            "vacancy_id": null
+                        },
+                        {
+                            "sap_vacancy_id": 122,
+                            "title": "Vacancy title 2",
+                            "vacancy_id": null
+                        },
+                        {
+                            "sap_vacancy_id": 110,
+                            "title": "Vacancy title 3",
+                            "vacancy_id": null
+                        }
+                    ]
+                }
+            ]
+        }
+
+
+### Map Local vacancy with SF one [POST /api/1.0//spec-private/deloitte/vacancy/map/{vacancyId}]
+
++ Request (application/json)
+
+        {
+            "sap_vacancy_id": 262
+        }
+
+
++ Response 200 (application/json)       
+
+        {
+            "data": [],
+            "meta": {
+                "error": null,
+                "page": 0,
+                "total": 0
+            }
+        }
