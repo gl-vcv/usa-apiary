@@ -7730,7 +7730,154 @@ The ID field is required for each company.
                 "total": 1
             }
         }
+        
+        
 
+## Company modules [/api/1.0/company-module]
+
+
+### Retrieve company modules [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                },
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": false,
+                    "id": "videointerview"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+### Update company modules [PUT]
+
++ Request (application/json)
+
+        {
+            "modules": [
+                {
+                    "is_active_by_default": true,
+                    "id": "test"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+## Admin: Company modules [/api/1.0/admin/company-module/{companyId}]
+
+
+### Retrieve company modules [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                },
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": false,
+                    "id": "videointerview"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+## Admin: Update company modules [/api/1.0/admin/company-module]
+
+### Update company modules [PUT]
+
++ Request (application/json)
+
+        {
+            "modules": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "id": "test"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
 
 ## Interview [/api/1.0/interviews/{token}]
 
