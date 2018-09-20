@@ -7878,6 +7878,309 @@ The ID field is required for each company.
                 "total": 2
             }
         }
+        
+        
+                
+## Admin: Company [/api/1.0/admin/companies/{id}]
+
+### Retrieve company modules [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Test",
+                    "created_at": "2017-11-27 03:21:30.86591",
+                    "logo": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/new.vcv.ru/companies/1/logo_BAT-rus-logo%20fina_png.png",
+                    "active": 1,
+                    "geo": null,
+                    "paid": true,
+                    "paid_to": "2018-12-12",
+                    "phone": "",
+                    "api_token": "v215ba3ad003298d0.72226145",
+                    "users": [
+                        {
+                            "name": "Admin ",
+                            "surname": "VCV",
+                            "email": "test@vcv.me",
+                            "phone": "+4 (565) 576-67-76",
+                            "skype": "test",
+                            "position": "Client Success Manager",
+                            "logo": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/new.vcv.ru/users/1/logo_1513682990117",
+                            "created_at": "2017-11-27 14:20:43",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "1",
+                                    "name": "Admin",
+                                    "role": "ROLE_ADMIN"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ReadOnly",
+                            "surname": "r",
+                            "email": "ss333@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:31:45",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ReadScore",
+                            "surname": "r",
+                            "email": "ss222@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:31:23",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "RoleEdit",
+                            "surname": "r",
+                            "email": "ss111@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:30:46",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Егор",
+                            "surname": "Лазукин",
+                            "email": "gl@vcv.ru",
+                            "phone": "123",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2017-12-26 16:36:21",
+                            "geo": null,
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "6013c8c3e9aefb2627e8b043dfba1b4a",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+## Admin: Create company token [/api/1.0/admin/companies/{id}/token/create]
+
+### Retrieve company modules [PUT]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Test",
+                    "created_at": "2017-11-27 03:21:30.86591",
+                    "logo": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/new.vcv.ru/companies/1/logo_BAT-rus-logo%20fina_png.png",
+                    "active": 1,
+                    "geo": null,
+                    "paid": true,
+                    "paid_to": "2018-12-12",
+                    "phone": "",
+                    "api_token": "v215ba3ad003298d0.72226145",
+                    "users": [
+                        {
+                            "name": "Admin ",
+                            "surname": "VCV",
+                            "email": "test@vcv.me",
+                            "phone": "+4 (565) 576-67-76",
+                            "skype": "test",
+                            "position": "Client Success Manager",
+                            "logo": "https://s3.eu-central-1.amazonaws.com/ru.vcv.sber.static/new.vcv.ru/users/1/logo_1513682990117",
+                            "created_at": "2017-11-27 14:20:43",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "1",
+                                    "name": "Admin",
+                                    "role": "ROLE_ADMIN"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ReadOnly",
+                            "surname": "r",
+                            "email": "ss333@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:31:45",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "ReadScore",
+                            "surname": "r",
+                            "email": "ss222@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:31:23",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "RoleEdit",
+                            "surname": "r",
+                            "email": "ss111@vcv.ai",
+                            "phone": "+7 9153872922",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2018-07-23 05:30:46",
+                            "geo": {
+                                "id": "1",
+                                "description": "Москва, Россия",
+                                "name": "Москва, Россия",
+                                "formatted_address": "Москва, Россия",
+                                "address": "Москва, Россия",
+                                "place_id": "ChIJybDUc_xKtUYRTM9XV8zWRD0"
+                            },
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Егор",
+                            "surname": "Лазукин",
+                            "email": "gl@vcv.ru",
+                            "phone": "123",
+                            "skype": "",
+                            "position": null,
+                            "logo": null,
+                            "created_at": "2017-12-26 16:36:21",
+                            "geo": null,
+                            "roles": [
+                                {
+                                    "id": "3",
+                                    "name": "User",
+                                    "role": "ROLE_USER_COMPANY"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "6013c8c3e9aefb2627e8b043dfba1b4a",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
 
 ## Interview [/api/1.0/interviews/{token}]
 
