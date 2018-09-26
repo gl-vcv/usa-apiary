@@ -716,6 +716,8 @@ Sends only modified data. Updates only specified fields. The ID field is require
                 }
             }
 
+
+
 ### Delete vacancies [DELETE]
 
 The ID field is required for each vacancy.
@@ -820,6 +822,88 @@ The ID field is required for each vacancy.
                 }
             }
 
+
+
+## Vacancy logo [/api/1.0/vacancies/{vacancy_id}/logo]
+
++ Parameters
+    + vacancy_id (string, `1`) 
+
+### Save logo [POST]
+
++ Request (multipart/form-data;boundary=---BOUNDARY)
+    + Body
+
+            ---BOUNDARY
+            Content-Disposition: form-data; name="logo"; filename="8445314500f13.jpg"
+            Content-Type: video/mp4
+
+            data
+            ---BOUNDARY--
+        
++ Response 201 (application/json)
+
+            {
+                "data": [
+                    {
+                        "id": "5",
+                        "token": "41ea619a",
+                        "name": "Finance Director",
+                        "description": "Finance Director Vacancy",
+                        "is_active": true,
+                        "is_published": true,
+                        "is_private": false,
+                        "is_resume_required": false,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": true,
+                        "has_invites": true,
+                        "logo_url": "http://www.coca-cola.co.uk/content/dam/journey/gb/en/hidden/History/Heritage/596x334/the_logo_story_01122014_596x334.jpg",
+                        "geo": {
+                            "id": "8",
+                            "formatted_address": "Beijing, China",
+                            "description": "Peking, Beijing, China",
+                            "place_id": "ChIJuSwU55ZS8DURiqkPryBWYrk"
+                        },                        
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "6",
+                        "token": "51ea619a",
+                        "name": "Finance Manager",
+                        "description": null,
+                        "is_active": true,
+                        "is_published": false,
+                        "is_private": false,
+                        "created_at": "2017-06-22T10:15:55+0300",
+                        "has_responses": false,
+                        "has_invites": false,
+                        "modules": [
+                            {
+                                "name": "voicebot",
+                                "label": "Voice bot"
+                            },
+                            {
+                                "name": "video_interview",
+                                "label": "Video interview"
+                            }
+                        ]
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 2
+                }
+            }
 
 
 
