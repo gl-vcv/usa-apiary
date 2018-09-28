@@ -8907,11 +8907,10 @@ Skip question. Available only for an optional questions (is_required: false)
         }
 
 
-## Answer questions for test [/api/1.0/interviews/{token}/tests/questions/{question_id}/answers]
+## Questions for test [/api/1.0/interviews/{token}/tests/questions]
 
 + Parameters
     + token (string, `5966314500f31`) ... Interview token
-    + question_id (string, `1`) ... Question id
 
 ### Answer questions [PUT]
 The ID field is required for each answer. If question type is "value" then BODY field is required.
@@ -8919,22 +8918,82 @@ The ID field is required for each answer. If question type is "value" then BODY 
 + Request (application/json)
 
         {
-            "answers": [
+          "questions": [
+            {
+              "id": "9801",
+              "answers": [
                 {
-                    "id": "1",
-                    "body": "George Washington"
+                  "id": "68579"
+                },
+                {
+                  "id": "68578"
                 }
-            ]
+              ]
+            },
+            {
+              "id": "9802",
+              "answers": [
+                {
+                  "id": "68583",
+                  "body": "George Washington"
+                }
+              ]
+            }
+          ]
         }
-
 + Response 200 (application/json)
 
         {
             "data": [
                 {
-                    "id": "1",
-                    "body": "George Washington"
+                    "id": "9801",
+                    "name": "",
+                    "body": "1-й вопрос",
+                    "type": "choice",
+                    "priority": 130243615,
+                    "is_seen": true,
+                    "is_expired": false,
+                    "remaining_time": 2927,
+                    "answers": [
+                        {
+                            "id": "68579",
+                            "body": "1",
+                            "is_chosen": true,
+                            "priority": 10000
+                        },
+                        {
+                            "id": "68578",
+                            "body": "2",
+                            "is_chosen": true,
+                            "priority": 10000
+                        },
+                        {
+                            "id": "68577",
+                            "body": "3",
+                            "is_chosen": false,
+                            "priority": 10000
+                        }
+                    ]
+                },
+                {
+                    "id": "9802",
+                    "name": "",
+                    "body": "2-й вопрос",
+                    "type": "choice",
+                    "priority": 130267763,
+                    "is_seen": true,
+                    "is_expired": false,
+                    "remaining_time": 2927,
+                    "answers": [
+                        {
+                            "id": "68583",
+                            "body": "George Washington",
+                            "is_chosen": true,
+                            "priority": 10000
+                        }
+                    ]
                 }
+            ]
             ],
             "meta": {
                 "error": null,
