@@ -8784,48 +8784,10 @@ Skip question. Available only for an optional questions (is_required: false)
                     "vacancy": {
                         "id": "1"
                     },
-                    "questions": [
-                        {
-                            "id": "1",
-                            "name": "Question 1",
-                            "body": "Who was the first president of USA?",
-                            "type": "choice",
-                            "priority": 1000,
-                            "is_seen": true,
-                            "is_expired": false,
-                            "remaining_time": 60,
-                            "answers": [
-                                {
-                                    "id": "1",
-                                    "body": "George Washington",
-                                    "is_choosen": false,
-                                    "priority": 1000
-                                },
-                                {
-                                    "id": "2",
-                                    "body": "John Adams",
-                                    "is_choosen": true,
-                                    "priority": 2000
-                                },
-                                {
-                                    "id": "3",
-                                    "body": "Thomas Jefferson",
-                                    "is_choosen": false,
-                                    "priority": 3000
-                                }
-                            ]
-                        },
-                        {
-                            "id": "2",
-                            "name": null,
-                            "body": null,
-                            "type": "value",
-                            "is_seen": false,
-                            "is_expired": false,
-                            "remaining_time": null,
-                            "answers": []
-                        }
-                    ]
+                    "company": {
+                        "name": "Test",
+                        "logo": "http://123.png"
+                    }
                 }
             ],
             "meta": {
@@ -8835,6 +8797,60 @@ Skip question. Available only for an optional questions (is_required: false)
             }
         }
 
+
+### Retrieve test questions [GET /api/1.0/interviews/{token}/tests/questions]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "name": "Question 1",
+                    "body": "Who was the first president of USA?",
+                    "type": "choice",
+                    "priority": 1000,
+                    "is_seen": true,
+                    "is_expired": false,
+                    "remaining_time": 60,
+                    "answers": [
+                        {
+                            "id": "1",
+                            "body": "George Washington",
+                            "is_choosen": false,
+                            "priority": 1000
+                        },
+                        {
+                            "id": "2",
+                            "body": "John Adams",
+                            "is_choosen": true,
+                            "priority": 2000
+                        },
+                        {
+                            "id": "3",
+                            "body": "Thomas Jefferson",
+                            "is_choosen": false,
+                            "priority": 3000
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": null,
+                    "body": null,
+                    "type": "value",
+                    "is_seen": false,
+                    "is_expired": false,
+                    "remaining_time": null,
+                    "answers": []
+                }
+            ]
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
 
 
 
