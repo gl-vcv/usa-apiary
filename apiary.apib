@@ -8855,6 +8855,37 @@ Skip question. Available only for an optional questions (is_required: false)
 
 
 
+## Start test for interview [/api/1.0/interviews/{token}/tests/start]
+
++ Parameters
+    + token (string, `5966314500f31`) ... Interview token
+
+### End test [PUT]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "1",
+                    "vacancy": {
+                        "id": "1"
+                    },
+                    "company": {
+                        "name": "Test",
+                        "logo": "http://123.png"
+                    }
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
+
 ## End test for interview [/api/1.0/interviews/{token}/tests/end]
 
 + Parameters
@@ -8871,48 +8902,10 @@ Skip question. Available only for an optional questions (is_required: false)
                     "vacancy": {
                         "id": "1"
                     },
-                    "questions": [
-                        {
-                            "id": "1",
-                            "name": "Question 1",
-                            "body": "Who was the first president of USA?",
-                            "type": "choice",
-                            "answers": [
-                                {
-                                    "id": "1",
-                                    "body": "George Washington",
-                                    "is_choosen": false,
-                                    "priority": 1000
-                                },
-                                {
-                                    "id": "2",
-                                    "body": "John Adams",
-                                    "is_choosen": true,
-                                    "priority": 2000
-                                },
-                                {
-                                    "id": "3",
-                                    "body": "Thomas Jefferson",
-                                    "is_choosen": false,
-                                    "priority": 3000
-                                }
-                            ]
-                        },
-                        {
-                            "id": "2",
-                            "name": "Question 2",
-                            "body": "Who was the second president of USA?",
-                            "type": "value",
-                            "answers": [
-                                {
-                                    "id": "4",
-                                    "body": "Nobody",
-                                    "is_choosen": true,
-                                    "priority": 1000
-                                }
-                            ]
-                        }
-                    ]
+                    "company": {
+                        "name": "Test",
+                        "logo": "http://123.png"
+                    }
                 }
             ],
             "meta": {
@@ -8921,6 +8914,7 @@ Skip question. Available only for an optional questions (is_required: false)
                 "total": 2
             }
         }
+
 
 
 ## Questions for test [/api/1.0/interviews/{token}/tests/questions]
