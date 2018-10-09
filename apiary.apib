@@ -959,6 +959,39 @@ The ID field is required for each vacancy.
         }
 
 
+## Vacancy modules [/api/1.0/vacancies/{vacancy_id}/modules]
+
++ Parameters
+    + vacancy_id (required, string, `1`) ... Vacancy id
+
+### Retrieve vacancy modules [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "test",
+                    "is_active": false,
+                    "is_enabled": false,
+                    "entity_id": 3734
+                },
+                {
+                    "id": "videointerview",
+                    "is_active": true,
+                    "is_enabled": true,
+                    "entity_id": 3734
+                }
+            ],
+            "meta": {
+                "id": "ae1a156c7f4ecd606b6c740250adf9b7",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+
 
 
 ## Public vacancies [/api/1.0/public-vacancies/{vacancy_token}]
