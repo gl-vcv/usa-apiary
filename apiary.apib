@@ -992,6 +992,42 @@ The ID field is required for each vacancy.
         }
 
 
+### Update modules [PUT]
+
+The ID field is required for each source.
+
++ Request (application/json)
+
+        {
+            "modules": [
+                {
+                    "id": "test",
+                    "is_active": true
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "modules": [
+                    {
+                        "id": "test",
+                        "is_active": true,
+                        "is_enabled": true,
+                        "entity_id": "236"
+                    }
+                ],
+                "meta": {
+                    "id": "9a18a51839d23f5ab4ec640455fb0619",
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
 
 
 ## Public vacancies [/api/1.0/public-vacancies/{vacancy_token}]
