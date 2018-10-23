@@ -7011,6 +7011,91 @@ Sends only modified data. Updates only specified fields. The ID field is require
         
         
 
+## Validate invites [/api/1.0/invites/validate]
+
+### Validate invites [POST]
+
++ Request (application/json)
+
+        {
+            "invites": [
+                {
+                    "candidate": {
+                        "email": "ghtrj@mail.ru",
+                        "name": "димаr",
+                        "surname": "димаr",
+                        "phone": "79999665554"
+                    }
+                },
+                {
+                    "candidate": {
+                        "email": "fdsa@mail.ru",
+                        "name": "андреrй",
+                        "surname": "андреrй",
+                        "phone": "79999665554"
+                    }
+                },
+                {
+                    "candidate": {
+                        "email": "ivan.ivanov@mail.com",
+                        "name": "Иван",
+                        "surname": "Иванов",
+                        "phone": "+78967169141"
+                    }
+                }
+            ]
+        }
+            
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "candidate": {
+                        "email": "ghtrj@mail.ru",
+                        "name": "димаr",
+                        "surname": "димаr",
+                        "phone": "79999665554"
+                    }
+                },
+                {
+                    "candidate": {
+                        "email": "fdsa@mail.ru",
+                        "name": "андреrй",
+                        "surname": "андреrй",
+                        "phone": "79999665554"
+                    }
+                }
+            ],
+            "meta": {
+                "id": "7558d85be4073ab42f47c0cb1ab2ff9d",
+                "error": {
+                    "message": "Validation errors",
+                    "details": {
+                        "invites": [
+                            {
+                                "candidate": {
+                                    "email": "ivan.ivanov@mail.com",
+                                    "name": "Иван",
+                                    "surname": "Иванов",
+                                    "phone": "+78967169141"
+                                },
+                                "errors": {
+                                    "phone": [
+                                        "Некорректный формат телефона"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                "page": 0,
+                "total": 0
+            }
+        }
+        
+        
+
 
 ## Calls [/api/1.0/calls]
 
