@@ -5907,6 +5907,7 @@ The ID field is required for each status.
                     "total": 1
                 }
             }
+            
 ### Delete statuses [DELETE]
 
 The ID field is required for each status.
@@ -9525,6 +9526,95 @@ The ID field is required for each answer. If question type is "value" then BODY 
                     "error": null,
                     "page": 1,
                     "total": 2
+                }
+            }
+
+## Analytics statuses dictionary [/api/1.0/analytics/analytics-response-statuses]
+
+### Retrieve statuses [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": "15",
+                    "is_base": true,
+                    "is_hidden": true,
+                    "priority": 40,
+                    "name": "Created"
+                },
+                {
+                    "id": "5",
+                    "is_base": true,
+                    "is_hidden": true,
+                    "priority": 50,
+                    "name": "Searchbot"
+                },
+                {
+                    "id": "16",
+                    "is_base": true,
+                    "is_hidden": false,
+                    "priority": 50,
+                    "name": "Invite sent"
+                },
+                {
+                    "id": "6",
+                    "is_base": true,
+                    "is_hidden": true,
+                    "priority": 60,
+                    "name": "Landing"
+                },
+                {
+                    "id": "9",
+                    "is_base": true,
+                    "is_hidden": true,
+                    "priority": 80,
+                    "name": "Videointerview"
+                }
+            ],
+            "meta": {
+                "id": "07f2a9740ec171f74984c063954eb170",
+                "error": null,
+                "page": 1,
+                "total": 25
+            }
+        }
+
+
+### Update statuses [PUT]
+
+The ID field is required for each status.
+
++ Request (application/json)
+
+        {
+            "analytics_statuses": [
+                {
+                    "id": "15",
+                    "is_hidden": false,
+                    "priority": 80                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "data": [
+                    {
+                        "id": "15",
+                        "is_base": true,
+                        "is_hidden": false,
+                        "priority": 80,
+                        "name": "Created"
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
                 }
             }
 
