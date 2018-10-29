@@ -1557,6 +1557,85 @@ Not implemented
             }
 
 
+
+
+## Vacancy sms template renderer [/api/1.0/vacancies/{vacancy_id}/sms-templates/render]
+
+### Render vacancy sms templates [POST]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template":"{{company}} template content",
+                    "id": 12
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "12",
+                        "template": "Test template content",
+                        "created_at": "2017-08-29T02:27:44-0700",
+                        "enabled": true,
+                        "vacancy": {
+                            "id": 34,
+                            "title": "Manager"
+                        }
+                    }
+                ],
+                "meta": {
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
+
+
+## Vacancy sms remind template renderer [/api/1.0/vacancies/{vacancy_id}/sms-temind-templates/render]
+
+### Render vacancy remind sms templates [POST]
+
++ Request (application/json)
+
+        {
+            "templates": [
+                {
+                    "template":"{{name}} Kompania {{company}} priglasila vas na videointerviu. Proverte email ili posetite stranicy {{short link}}, proidyte etapy ili ukazhite prichinu otkaza. {{vacancy}}",
+                    "id": 12
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Body        
+        
+            {
+                "data": [
+                    {
+                        "id": "643",
+                        "template": "Admin VCV Kompania Test priglasila vas na videointerviu. Proverte email ili posetite stranicy https://localhost:8080/i/xxxxxxxx, proidyte etapy ili ukazhite prichinu otkaza. Vakansia bez imeni 10 VCV.RU +78002007790",
+                        "enabled": false,
+                        "created_at": "2018-10-22T08:59:19-07:00"
+                    }
+                ],
+                "meta": {
+                    "id": "3b576af0dc390fbfccdd26918e3be054",
+                    "error": null,
+                    "page": 1,
+                    "total": 1
+                }
+            }
+
 ## Vacancy Sms remind template [/api/1.0/vacancies/{vacancy_id}/sms-remind-templates]
 
 + Parameters
