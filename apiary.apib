@@ -8347,6 +8347,158 @@ The ID field is required for each company.
         }
 
 
+## Admin: company personal managers [/api/1.0/admin/company-personal-manager]
+
+
+### Retrieve personal managers [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "first_name": "Admin ",
+                    "last_name": "VCV",
+                    "email": "test@vcv.me",
+                    "phone": "+4 (565) 576-67-76",
+                    "company_id": 1,
+                    "user_id": 1
+                }
+            ],
+            "meta": {
+                "id": "7de67c7e79ab49cd0dbaf00dda2c9b94",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+### Update personal managers [PUT]
+
++ Request (application/json)
+
+        {
+            "managers": [
+                {
+                    "id": 1,
+                    "company_id": 1,
+                    "user_id": 2
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "first_name": "Admin2",
+                    "last_name": "VCV2",
+                    "email": "tes2t@vcv.me",
+                    "phone": "+4 (565) 576-67-76",
+                    "company_id": 1,
+                    "user_id": 2
+                }
+            ],
+            "meta": {
+                "id": "7de67c7e79ab49cd0dbaf00dda2c9b94",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+### Create personal managers [POST]
+
++ Request (application/json)
+
+        {
+            "managers": [
+                {
+                    "company_id": 1,
+                    "user_id": 1
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "first_name": "Admin2",
+                    "last_name": "VCV2",
+                    "email": "tes2t@vcv.me",
+                    "phone": "+4 (565) 576-67-76",
+                    "company_id": 1,
+                    "user_id": 1
+                }
+            ],
+            "meta": {
+                "id": "7de67c7e79ab49cd0dbaf00dda2c9b94",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+## Admin: company personal manager [/api/1.0/admin/company-personal-manager/{id}]
+
+### Retrieve personal manager [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "first_name": "Admin2",
+                    "last_name": "VCV2",
+                    "email": "tes2t@vcv.me",
+                    "phone": "+4 (565) 576-67-76",
+                    "company_id": 1,
+                    "user_id": 1
+                }
+            ],
+            "meta": {
+                "id": "7de67c7e79ab49cd0dbaf00dda2c9b94",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+        
+### Delete personal manager [DELETE]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": 1,
+                    "first_name": "Admin2",
+                    "last_name": "VCV2",
+                    "email": "tes2t@vcv.me",
+                    "phone": "+4 (565) 576-67-76",
+                    "company_id": 1,
+                    "user_id": 1
+                }
+            ],
+            "meta": {
+                "id": "7de67c7e79ab49cd0dbaf00dda2c9b94",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
 ## Admin: Company modules [/api/1.0/admin/company-module/{companyId}]
 
 
