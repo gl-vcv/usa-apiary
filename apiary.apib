@@ -6337,8 +6337,125 @@ The ID field is required for each link.
 
 + Response 204 (application/json)
 
+## System email templates [/api/1.0/{category}]
 
+###Get list[GET]
 
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "code": "share_response_link",
+                    "variables": [
+                        {
+                            "code": "recruiter_name",
+                            "name": "Recruiter name"
+                        },
+                        {
+                            "code": "recruiter_position",
+                            "name": "Recruiter position"
+                        },
+                        {
+                            "code": "recruiter_email",
+                            "name": "Recruiter email"
+                        },
+                        {
+                            "code": "recruiter_phone",
+                            "name": "Recruiter phone"
+                        },
+                        {
+                            "code": "candidate_name",
+                            "name": "Candidate name"
+                        },
+                        {
+                            "code": "vacancy",
+                            "name": "Vacancy name"
+                        },
+                        {
+                            "code": "recipient_name",
+                            "name": "Recipient name"
+                        },
+                        {
+                            "code": "comments",
+                            "name": "Comments"
+                        },
+                        {
+                            "code": "link",
+                            "name": "Link"
+                        }
+                    ],
+                    "body": "Hi, {{recipient_name}}!<br>\n<br>\n{{recruiter_name}} shared a candidate's {{candidate_name}} response to {{vacancy}} position with you.<br>\n<br>\n{{link}}<br>\n<br>\nComments:<br>\n<br>\n{ comments }<br>\n<br>\n<br>\nContacts of hiring manager:<br>\n<br>\n{{recruiter_name}}<br>\n<br>\n{{recruiter_position}}<br>\n<br>\n{{recruiter_email}}<br>\n<br>\n{recruiter_phone}<br>\n<br>\n<br>\n<br>\nBest regards,<br>\n<br>\nVCV team.",
+                    "subject": "{{recruiter_name}} shared a candidate's response with you"
+                }
+            ],
+            "meta": {
+                "id": "e53057f3ba06e2500cd8c88510877420",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+
+## Specific email template in category [/api/1.0/{category}/{code}]
+
+###Get by code[GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "code": "share_response_link",
+                    "variables": [
+                        {
+                            "code": "recruiter_name",
+                            "name": "Recruiter name"
+                        },
+                        {
+                            "code": "recruiter_position",
+                            "name": "Recruiter position"
+                        },
+                        {
+                            "code": "recruiter_email",
+                            "name": "Recruiter email"
+                        },
+                        {
+                            "code": "recruiter_phone",
+                            "name": "Recruiter phone"
+                        },
+                        {
+                            "code": "candidate_name",
+                            "name": "Candidate name"
+                        },
+                        {
+                            "code": "vacancy",
+                            "name": "Vacancy name"
+                        },
+                        {
+                            "code": "recipient_name",
+                            "name": "Recipient name"
+                        },
+                        {
+                            "code": "comments",
+                            "name": "Comments"
+                        },
+                        {
+                            "code": "link",
+                            "name": "Link"
+                        }
+                    ],
+                    "body": "Hi, {{recipient_name}}!<br>\n<br>\n{{recruiter_name}} shared a candidate's {{candidate_name}} response to {{vacancy}} position with you.<br>\n<br>\n{{link}}<br>\n<br>\nComments:<br>\n<br>\n{ comments }<br>\n<br>\n<br>\nContacts of hiring manager:<br>\n<br>\n{{recruiter_name}}<br>\n<br>\n{{recruiter_position}}<br>\n<br>\n{{recruiter_email}}<br>\n<br>\n{recruiter_phone}<br>\n<br>\n<br>\n<br>\nBest regards,<br>\n<br>\nVCV team.",
+                    "subject": "{{recruiter_name}} shared a candidate's response with you"
+                }
+            ],
+            "meta": {
+                "id": "e53057f3ba06e2500cd8c88510877420",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
 
 ## Response candidate emails [/api/1.0/response-candidate-emails]
 
