@@ -7875,6 +7875,7 @@ When changing password new_password field is required
                         "logo": "https://s3.eu-centr.../pig.jpg",
                         "company": {
                             "id": "1",
+                            "time_format": 24,
                             "name": "Coca-Cola"
                         },
                          "geo": {
@@ -7889,12 +7890,7 @@ When changing password new_password field is required
                                 "name": "Admin",
                                 "role": "ROLE_COMPANY_ADMIN"
                             }
-                        ],
-                        "email_activation": {
-                            "id":"86",
-                            "email":"test4@vcv.me",
-                            "activated":false
-                        }
+                        ]
                     }
                 ],
                 "meta": {
@@ -8196,6 +8192,7 @@ Retrieve company by user
                 {
                     "id": "1",
                     "name": "Coca-Cola",
+                    "time_format": 24,
                     "geo": {
                         "id": "3",
                         "formatted_address": "Buenos Aires, Nay., Mexico",
@@ -8227,6 +8224,7 @@ The ID field is required for each company.
                 {
                     "id": "1",
                     "name": "Coca-Cola Company",
+                    "time_format": 24,
                     "geo": {
                         "place_id": "ChIJfaHK0Y5MJ4QR7DLfNrzqGrI",
                         "description": "Buenos Aires, Mexico"
@@ -8244,6 +8242,7 @@ The ID field is required for each company.
                     {
                         "id": "1",
                         "name": "Coca-Cola Company",
+                        "time_format": 24,
                         "geo": {
                             "id": "3",
                             "formatted_address": "Buenos Aires, Nay., Mexico",
@@ -8425,6 +8424,73 @@ The ID field is required for each company.
                     "is_enabled": true,
                     "is_active_by_default": false,
                     "id": "videointerview"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": true,
+                  "is_requested": false,
+                  "is_active_by_default": true,
+                  "id": "test"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": true,
+                  "is_requested": true,
+                  "is_active_by_default": false,
+                  "id": "videointerview"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": false,
+                  "is_requested": true,
+                  "is_active_by_default": false,
+                  "id": "audiocall"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": false,
+                  "is_active_by_default": false,
+                  "id": "module name"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": true,
+                  "is_active_by_default": true,
+                  "id": "tdasest"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": false,
+                  "is_active_by_default": true,
+                  "id": "videoidanterview"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": true,
+                  "is_active_by_default": true,
+                  "id": "audioacall"
+                },
+                {
+                  "company": {
+                    "id": 1
+                  },
+                  "is_enabled": true,
+                  "is_active_by_default": true,
+                  "id": "modudle name"
                 }
             ],
             "meta": {
@@ -8450,6 +8516,39 @@ The ID field is required for each company.
 
 + Response 200 (application/json)
 
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+### Request payment for the module [POST]
+
++ Request (application/json)
+
+        {
+            "modules": [
+                {
+                    "id": "test"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
 
         {
             "data": [
