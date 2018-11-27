@@ -8422,75 +8422,8 @@ The ID field is required for each company.
                         "id": 1
                     },
                     "is_enabled": true,
-                    "is_active_by_default": false,
+                    "is_active_by_default": true,
                     "id": "videointerview"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": true,
-                  "is_requested": false,
-                  "is_active_by_default": true,
-                  "id": "test"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": true,
-                  "is_requested": true,
-                  "is_active_by_default": false,
-                  "id": "videointerview"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": false,
-                  "is_requested": true,
-                  "is_active_by_default": false,
-                  "id": "audiocall"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": false,
-                  "is_active_by_default": false,
-                  "id": "module name"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": true,
-                  "is_active_by_default": true,
-                  "id": "tdasest"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": false,
-                  "is_active_by_default": true,
-                  "id": "videoidanterview"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": true,
-                  "is_active_by_default": true,
-                  "id": "audioacall"
-                },
-                {
-                  "company": {
-                    "id": 1
-                  },
-                  "is_enabled": true,
-                  "is_active_by_default": true,
-                  "id": "modudle name"
                 }
             ],
             "meta": {
@@ -8508,7 +8441,7 @@ The ID field is required for each company.
         {
             "modules": [
                 {
-                    "is_active_by_default": true,
+                    "is_active_by_default": false,
                     "id": "test"
                 }
             ]
@@ -8549,6 +8482,70 @@ The ID field is required for each company.
         }
 
 + Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "company": {
+                        "id": 1
+                    },
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+## Global modules [/api/1.0/global-module]
+
+
+### Retrieve global modules [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "test"
+                },
+                {
+                    "is_enabled": true,
+                    "is_active_by_default": true,
+                    "id": "videointerview"
+                }
+            ],
+            "meta": {
+                "id": "48e3bd76ce15d69f11e96b96ca73c9d2",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+        
+### Update global modules [PUT]
+
++ Request (application/json)
+
+        {
+            "modules": [
+                {
+                    "is_active_by_default": false,
+                    "id": "test"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
 
         {
             "data": [
