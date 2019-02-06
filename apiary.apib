@@ -9062,6 +9062,65 @@ The ID field is required for each company.
             }
         }
 
+        
+## Admin: Audio token list [/api/1.0/admin/response-video/codecs]
+
+### Get list [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "name": "aac"
+                },
+                {
+                    "name": "libmp3lame"
+                }
+            ],
+            "meta": {
+                "id": "97e1f487ae354d9be624ce0028c9dff0",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
+
+        
+## Admin: reconvert video [/api/1.0/admin/response-video/reconvert]
+
+### Reconvert [POST]
+
++ Request (application/json)
+
+        {
+            "video_partitions": [
+                {
+                    "id": 512462,
+                    "audio_codec": "libmp3lame"
+                }
+            ]
+        }
+
++ Response 200 (application/json)
+
+
+        {
+            "data": [
+                {
+                    "id": 512462,
+                    "take_number": 1,
+                    "description": "Это первый вопрос. Расскажите, пожалуйста, о себе то, что считаете нужным. У вас будет 2 минуты. Запись начнется после того, как вы нажмете «начать запись»"
+                }
+            ],
+            "meta": {
+                "id": "9da980a9b1e0c18c3dfdf72cd181b18b",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
 
 ## Interview [/api/1.0/interviews/{token}]
 
