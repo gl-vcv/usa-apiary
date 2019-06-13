@@ -5169,7 +5169,305 @@ If resume_url is higher priority then resume
 
 
 
+## Response survey [/api/1.0/responses/{response_id}/survey]
 
++ Parameters
+    + response_id (required, string, `1`) ... Response id
+
+### Retrieve response survey [GET]
+
++ Response 200 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 2,
+                    "name": "Название тестовой анкеты",
+                    "description": "Описание анкеты",
+                    "date_created": "2019-06-13 15:41:48",
+                    "questions": [
+                        {
+                            "id": 3,
+                            "name": "Первый вопрос с выбором одного возможного варианта",
+                            "type": "single",
+                            "description": "Детальное описание вопроса",
+                            "font_style": "bold",
+                            "answers": [
+                                {
+                                    "id": 9,
+                                    "content": "первый ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 10,
+                                    "content": "второй ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 11,
+                                    "content": "третий ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 12,
+                                    "content": "четвертый ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 4,
+                            "name": "Второй вопрос с выбором нескольких вариантов",
+                            "type": "multiple",
+                            "description": "Детальное описание вопроса",
+                            "font_style": null,
+                            "answers": [
+                                {
+                                    "id": 13,
+                                    "content": "первый ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 14,
+                                    "content": "второй ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 15,
+                                    "content": "третий ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                },
+                                {
+                                    "id": 16,
+                                    "content": "четвертый ответ на вопрос",
+                                    "date_created": "2019-06-13 15:41:48"
+                                }
+                            ]
+                        }
+                    ],
+                    "records": [
+                        {
+                            "question": {
+                                "id": 3,
+                                "name": "Первый вопрос с выбором одного возможного варианта",
+                                "type": "single",
+                                "description": "Детальное описание вопроса",
+                                "font_style": "bold"
+                            },
+                            "answer": {
+                                "id": 1,
+                                "type": "single",
+                                "content": "второй ответ на вопрос",
+                                "date_created": "2019-06-13 15:44:55"
+                            }
+                        },
+                        {
+                            "question": {
+                                "id": 4,
+                                "name": "Второй вопрос с выбором нескольких вариантов",
+                                "type": "multiple",
+                                "description": "Детальное описание вопроса",
+                                "font_style": null
+                            },
+                            "answer": {
+                                "id": 2,
+                                "type": "multiple",
+                                "content": "третий ответ на вопрос, четвертый ответ на вопрос",
+                                "date_created": "2019-06-13 15:44:55"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "id": "d88b9b277a2950e7e1bc71a93670ca46",
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+### Create new survey [POST]
+
++ Request (application/json)
+
+        {
+            "survey_template_id": 20
+        }
+        
+    
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "id": 3,
+                    "name": "Название тестовой анкеты",
+                    "description": "Описание анкеты",
+                    "date_created": "2019-06-13 18:19:55",
+                    "questions": [
+                        {
+                            "id": 5,
+                            "name": "Первый вопрос с выбором одного возможного варианта",
+                            "type": "single",
+                            "description": "Детальное описание вопроса",
+                            "font_style": "bold",
+                            "answers": [
+                                {
+                                    "id": 17,
+                                    "content": "первый ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 18,
+                                    "content": "второй ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 19,
+                                    "content": "третий ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 20,
+                                    "content": "четвертый ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                }
+                            ]
+                        },
+                        {
+                            "id": 6,
+                            "name": "Второй вопрос с выбором нескольких вариантов",
+                            "type": "multiple",
+                            "description": "Детальное описание вопроса",
+                            "font_style": null,
+                            "answers": [
+                                {
+                                    "id": 21,
+                                    "content": "первый ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 22,
+                                    "content": "второй ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 23,
+                                    "content": "третий ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                },
+                                {
+                                    "id": 24,
+                                    "content": "четвертый ответ на вопрос",
+                                    "date_created": "2019-06-13 18:19:55"
+                                }
+                            ]
+                        }
+                    ],
+                    "records": [
+                        {
+                            "question": {
+                                "id": 3,
+                                "name": "Первый вопрос с выбором одного возможного варианта",
+                                "type": "single",
+                                "description": "Детальное описание вопроса",
+                                "font_style": "bold"
+                            },
+                            "answer": {
+                                "id": 1,
+                                "type": "single",
+                                "content": "второй ответ на вопрос",
+                                "date_created": "2019-06-13 15:44:55"
+                            }
+                        },
+                        {
+                            "question": {
+                                "id": 4,
+                                "name": "Второй вопрос с выбором нескольких вариантов",
+                                "type": "multiple",
+                                "description": "Детальное описание вопроса",
+                                "font_style": null
+                            },
+                            "answer": {
+                                "id": 2,
+                                "type": "multiple",
+                                "content": "третий ответ на вопрос, четвертый ответ на вопрос",
+                                "date_created": "2019-06-13 15:44:55"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "meta": {
+                "error": null,
+                "page": 1,
+                "total": 1
+            }
+        }
+        
+        
+## Response survey records [/api/1.0/responses/{response_id}/survey/records]
+        
+### Create new survey records [POST]
+
++ Request (application/json)
+
+        {
+            "answers": [
+                {
+                    "question_id": 3,
+                    "answer_id": 10
+                },
+                {
+                    "question_id": 4,
+                    "answers": [15, 16]
+                }
+            ]
+        }
+        
++ Response 201 (application/json)
+
+        {
+            "data": [
+                {
+                    "question": {
+                        "id": 5,
+                        "name": "Первый вопрос с выбором одного возможного варианта",
+                        "type": "single",
+                        "description": "Детальное описание вопроса",
+                        "font_style": "bold"
+                    },
+                    "answer": {
+                        "id": 3,
+                        "type": "single",
+                        "content": "второй ответ на вопрос",
+                        "date_created": "2019-06-13 18:24:43"
+                    }
+                },
+                {
+                    "question": {
+                        "id": 6,
+                        "name": "Второй вопрос с выбором нескольких вариантов",
+                        "type": "multiple",
+                        "description": "Детальное описание вопроса",
+                        "font_style": null
+                    },
+                    "answer": {
+                        "id": 4,
+                        "type": "multiple",
+                        "content": "второй ответ на вопрос, третий ответ на вопрос",
+                        "date_created": "2019-06-13 18:24:43"
+                    }
+                }
+            ],
+            "meta": {
+                "id": "0fd1a9f0a631cdc03292750662be837c",
+                "error": null,
+                "page": 1,
+                "total": 2
+            }
+        }
 
 ## Response comments [/api/1.0/responses/{response_id}/comments]
 
